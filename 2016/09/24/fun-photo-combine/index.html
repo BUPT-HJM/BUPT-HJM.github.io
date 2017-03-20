@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>揭开QQ缩略图与大图不同背后的秘密（附简单合成工具） | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="揭开QQ缩略图与大图不同背后的秘密（附简单合成工具）">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/09/24/fun-photo-combine/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/change.gif">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk18.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk17.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/zhuangbi.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/change1.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/change22.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk2.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk3.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk4.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk5.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk6.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/xiasi.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/liangdu.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk7.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk9.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk8.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk10.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk11.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/images.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk%2012.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk13.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk14.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/kk15.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/jizhi.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="揭开QQ缩略图与大图不同背后的秘密（附简单合成工具）">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E4%B8%8B%E8%BD%BD.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-fun-photo-combine" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/24/fun-photo-combine/" class="article-date">
+  	<time datetime="2016-09-23T16:00:00.000Z" itemprop="datePublished">2016-09-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      揭开QQ缩略图与大图不同背后的秘密（附简单合成工具）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ps/">ps</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E4%B8%8B%E8%BD%BD.png" alt=""><br><a id="more"></a><br>不知道你是否看过在QQ中看到这样的图片，没点开时是一张图，点开后瞬间变成另外一张如果没见过的话请看下图，如果想要那张图的话访问下面第二个地址<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/change.gif" alt=""><br><strong>效果图地址：</strong><a href="http://7xp9v5.com1.z0.glb.clouddn.com/change.png" target="_blank" rel="external">http://7xp9v5.com1.z0.glb.clouddn.com/change.png</a><br>（你可以保存到手机发到QQ玩玩）</p>
+<p>或者你有没有看过QQ空间有段时间刷屏了很多的<br><strong>小图时</strong><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk18.png" alt=""><br><strong>大图时</strong><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk17.png" alt=""></p>
+<p>你肯定觉得很神奇，然而这是如何做到的呢？<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/zhuangbi.jpg" alt=""></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h2><p>其实原理不是很复杂，有人觉得是两帧的gif，其实不然，背后的秘密是png格式的图片，它背景是透明的，然而在QQ或贴吧某些地方，当它是小图时，背景是白色的，当你点击打开后，背景是黑色，你只要控制这张png在白色背景和黑色背景下显示不同的图像就可以了，如果你还不懂,我分<code>PS</code>和<code>程序</code>方面分别讲制作方法。</p>
+<blockquote>
+<p><strong>先睹为快！合成器访问地址</strong>：<a href="https://bupt-hjm.github.io/fun-photo-combine/">https://bupt-hjm.github.io/fun-photo-combine/</a><br><strong>github地址</strong>：<a href="https://github.com/BUPT-HJM/fun-photo-combine" target="_blank" rel="external">https://github.com/BUPT-HJM/fun-photo-combine</a></p>
+</blockquote>
+<h2 id="PS部分"><a href="#PS部分" class="headerlink" title="PS部分"></a><strong>PS部分</strong></h2><h3 id="1-先准备好两张图片"><a href="#1-先准备好两张图片" class="headerlink" title="1.先准备好两张图片"></a><strong>1.先准备好两张图片</strong></h3><blockquote>
+<p>这里略去了去色的步骤（图像-&gt;调整-&gt;去色），注意这个步骤是必须的，因为这里图片是黑白，所以这个步骤没有用到。</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/change1.jpg" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/change22.jpg" alt=""></p>
+<p>准备好两张图片，并在下方间好两个背景测试图层，方便看效果<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk2.png" alt=""></p>
+<h3 id="2-白底显示部分"><a href="#2-白底显示部分" class="headerlink" title="2.白底显示部分"></a><strong>2.白底显示部分</strong></h3><p>对于白底显示的图片，我们就需要把高光（白色）部分（你也可以通过取样颜色取图片的高光点）去掉，以保证在背景为黑色的时候，看不出来这个照片<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk.png" alt=""><br>颜色容差和范围自己来选择，选到合适的范围，对于这张图你也可以选跟我一样的，颜色容差42，色彩范围249，然后点击确定<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk3.png" alt=""><br>按delete删除<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk4.png" alt=""><br>然后将白色背景点亮看一下效果<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk5.png" alt=""><br>把黑色背景点亮看一下效果<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk6.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/xiasi.jpg" alt=""><br>我们要的效果是在黑色背景的时候不会显示它的，该怎么做呢？<br>点击下图红色框框部分，调整该图层的亮度和对比度<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/liangdu.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk7.png" alt=""><br>然后做几层应用到那个图层上，在那个调整图层和那个白底图层之间按住alt就可以把那个调整图层只应用到那个图层上（万分重要），最后做成的效果就是原来那个惊悚的女的消失在黑夜中<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk9.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk8.png" alt=""><br>最后把那个图层透明度调整成50%就可以了<br>你可以点亮白底和黑底图层测试一下，是不是白底图层点亮时显示，黑底图层看到的是全部黑色，如果达到这一步就完成了。</p>
+<h3 id="3-黑底显示部分"><a href="#3-黑底显示部分" class="headerlink" title="3.黑底显示部分"></a>3.<strong>黑底显示部分</strong></h3><p>黑底其实和白底的处理过程是大概相同的。我们就需要把黑色部分（你也可以通过取样颜色取图片的黑色）去掉，以保证在背景为白色的时候，看不出来这个照片<br>则就是色彩范围选择的时候将颜色改成取样颜色，然后取黑色，如下这样<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk10.png" alt=""><br>选中后delete，再跟白底处理的一样看一下黑底和白底的时候怎么显示的<br>同样的，它在白色背景的时候也是辣么惊悚！！<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk11.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/images.jpg" alt=""><br>还是一样的做亮度对比度处理<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk%2012.png" alt=""><br>跟上面一样也是做好几层调整图层应用到该图层上，直到基本看不见那个黑人<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk13.png" alt=""><br>最后调整下透明度为50%就行</p>
+<h3 id="4-效果展示"><a href="#4-效果展示" class="headerlink" title="4.效果展示"></a><strong>4.效果展示</strong></h3><p>我们可以做一下图层合并处理（注意:黑底显示图片必须在白底显示图片的图层下方），将除了背景图以外的图层全合并起来，然后我们分别点亮看看效果<br><strong>当白色背景点亮时</strong><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk14.png" alt=""><br><strong>当黑色背景点亮时</strong><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/kk15.png" alt=""><br>是不是很神奇？<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/jizhi.jpg" alt=""></p>
+<blockquote>
+<p>如果还不懂可以直接问我hhh</p>
+</blockquote>
+<h2 id="canvas合成器"><a href="#canvas合成器" class="headerlink" title="canvas合成器"></a><strong>canvas合成器</strong></h2><p>原理搞懂了，做一个合成器难度也不会很大了，不过在图像处理上还是需要一些小算法，比如去色和调高亮度这些。</p>
+<blockquote>
+<p><strong>合成器访问地址</strong>：<a href="https://bupt-hjm.github.io/fun-photo-combine/">https://bupt-hjm.github.io/fun-photo-combine/</a><br><strong>github地址</strong>：<a href="https://github.com/BUPT-HJM/fun-photo-combine" target="_blank" rel="external">https://github.com/BUPT-HJM/fun-photo-combine</a></p>
+</blockquote>
+<h3 id="类似PS图层"><a href="#类似PS图层" class="headerlink" title="类似PS图层"></a><strong>类似PS图层</strong></h3><p>这个合成器我是用两个canvas来做的，一个上传图片显示的canvas，一个背景canvas，绝对定位到同一地方，实现类似PS图层的效果。</p>
+<h3 id="ImageData"><a href="#ImageData" class="headerlink" title="ImageData"></a><strong>ImageData</strong></h3><p>我们需要将上传图片的ImageData拿出来做处理。<br><strong>1.去色</strong><br>其实去色并不难，我从网上找到的算法，就是将r，g，b全部设为图像的亮度就好了</p>
+<blockquote>
+<p><strong>亮度公式：</strong>0.299 <em> red + 0.587 </em> green + 0.114 * blue</p>
+</blockquote>
+<p><strong>2.色彩范围处理</strong><br>对于白底所要展示的图片，我们需要将高光部分去掉，我们可以对每个像素点做亮度的判断然后根据亮度来做透明度的处理就可以实现效果。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//白底呈现的图片处理</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">processing</span>(<span class="params">canvas</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="keyword">var</span> imgData = ctx.createImageData(canvas.width, canvas.height);</div><div class="line">    <span class="keyword">var</span> arr = imgData.data;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = data.length; i &lt; len; i += <span class="number">4</span>) &#123;</div><div class="line">        <span class="keyword">var</span> red = data[i],</div><div class="line">            green = data[i + <span class="number">1</span>],</div><div class="line">            blue = data[i + <span class="number">2</span>],</div><div class="line">            alpha = data[i + <span class="number">3</span>],</div><div class="line">            y = <span class="number">0.299</span> * red + <span class="number">0.587</span> * green + <span class="number">0.114</span> * blue; <span class="comment">//亮度</span></div><div class="line">        <span class="keyword">var</span> k = <span class="number">130</span>;</div><div class="line">        arr[i] = y;</div><div class="line">        arr[i + <span class="number">1</span>] = y;</div><div class="line">        arr[i + <span class="number">2</span>] = y;</div><div class="line">        arr[i + <span class="number">3</span>] = alpha * (k - y) / <span class="number">255</span>;</div><div class="line">        <span class="keyword">if</span> (y &gt; k) &#123;</div><div class="line">            arr[i + <span class="number">3</span>] = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> imgData;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">//黑底呈现的图片处理</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">processingBlack</span>(<span class="params">canvas</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="keyword">var</span> imgData = ctx.createImageData(canvas.width, canvas.height);</div><div class="line">    <span class="keyword">var</span> arr = imgData.data;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = data.length; i &lt; len; i += <span class="number">4</span>) &#123;</div><div class="line">        <span class="keyword">var</span> red = data[i],</div><div class="line">            green = data[i + <span class="number">1</span>],</div><div class="line">            blue = data[i + <span class="number">2</span>],</div><div class="line">            alpha = data[i + <span class="number">3</span>],</div><div class="line">            y = <span class="number">0.299</span> * red + <span class="number">0.587</span> * green + <span class="number">0.114</span> * blue; <span class="comment">//亮度</span></div><div class="line">        y = y * <span class="number">4.5</span>;</div><div class="line">        <span class="keyword">var</span> k = <span class="number">100</span>;</div><div class="line">        arr[i] = y;</div><div class="line">        arr[i + <span class="number">1</span>] = y;</div><div class="line">        arr[i + <span class="number">2</span>] = y;</div><div class="line">        arr[i + <span class="number">3</span>] = alpha * y / <span class="number">255</span> * <span class="number">0.08</span>;</div><div class="line">        <span class="keyword">if</span> (y &lt; <span class="number">150</span>) &#123;</div><div class="line">            arr[i + <span class="number">3</span>] = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> imgData;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="图像保存"><a href="#图像保存" class="headerlink" title="图像保存"></a><strong>图像保存</strong></h2><p>由于没有后台，移动端有些无法直接保存生成的图片</p>
+<blockquote>
+<p>PC端可以直接右键保存或者点击下载图片<br>移动端可以尝试点击下载图片或者生成图片后长按保存</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//下载图片</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveImg</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> imgUrl = canvas_img.toDataURL(<span class="string">"image/png"</span>).replace(<span class="string">"image/png"</span>, <span class="string">"image/octet-stream"</span>);</div><div class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</div><div class="line">    a.download = <span class="string">"fun.png"</span>;<span class="comment">//指明以产生后缀</span></div><div class="line">    a.href = canvas_img.toDataURL();</div><div class="line">    a.click();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//生成图片</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createImg</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    imgBox.innerHTML = <span class="string">""</span>;</div><div class="line">    <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">    img.src = canvas_img.toDataURL(<span class="string">"image/png"</span>);</div><div class="line">    imgBox.appendChild(img);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h2><p>谢谢阅读~<br>欢迎上<a href="https://github.com/BUPT-HJM/fun-photo-combine" target="_blank" rel="external">https://github.com/BUPT-HJM/fun-photo-combine</a>给个小star哈哈哈<br>然后我最近开了个公众号，欢迎关注~推送技术相关或随笔等等hh<br><strong>欢迎关注</strong><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg" alt=""></p>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+<p><strong>点击阅读原文访问合成器</strong></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/31/nodejs-spider-experience/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          个人nodejs爬虫相关模块小整合
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/21/ten-drop/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于canvas的十滴水小游戏</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="fun-photo-combine" data-title="揭开QQ缩略图与大图不同背后的秘密（附简单合成工具）" data-url="https://bupt-hjm.github.io/2016/09/24/fun-photo-combine/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

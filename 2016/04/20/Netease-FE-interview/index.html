@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>记一次网易前端实习面试 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记一次网易前端实习面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次网易前端实习面试">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/04/20/Netease-FE-interview/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="记一次网易前端实习面试">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次网易前端实习面试">
+<meta name="twitter:description" content="记一次网易前端实习面试">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Netease-FE-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/20/Netease-FE-interview/" class="article-date">
+  	<time datetime="2016-04-19T16:00:00.000Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      记一次网易前端实习面试
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/面试/">面试</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>记一次网易前端实习面试<br><a id="more"></a></p>
+<blockquote>
+<p>很幸运地能收到网易的面试通知，就毫不犹豫翘了课去面试了hhhh~<br>三点的面试，因为从来没去过那个中关村西北旺区，吃完饭早早就去了,想象中那里应该是繁华的地方hhhh，到了发现都在建设中，很多还在建设中，看到了网易旁边的百度和搜狐，都是长长的大楼或者是高高的建筑，满满大企业的既视感~一进网易楼就没网= =，在里面也没事干，就呆在外面看看前端的东西准备下，到2点40的时候跟前台说了下，一个网易年轻姐姐就带我上去了~</p>
+</blockquote>
+<h2 id="步入正题-笔试"><a href="#步入正题-笔试" class="headerlink" title="步入正题-笔试"></a><strong>步入正题-笔试</strong></h2><blockquote>
+<p>本来我以为只有面试的，发现那个姐姐并不是带我去面试的，带我去了个房间，留了两张题目给我，说半小时来说，毫无防备hhh接下来步入正题吧~</p>
+</blockquote>
+<h3 id="1-alert-1-amp-amp-2-alert-1-0"><a href="#1-alert-1-amp-amp-2-alert-1-0" class="headerlink" title="1.alert(1&amp;&amp;2),alert(1||0)"></a><strong>1.alert(1&amp;&amp;2),alert(1||0)</strong></h3><blockquote>
+<p>具体我不记得了反正就这两个，我以为考的是纯粹的与运算和或运算，后来发现太天真了</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">alert(<span class="number">1</span>&amp;&amp;<span class="number">2</span>)的结果是<span class="number">2</span></div><div class="line">只要“&amp;&amp;”前面是<span class="literal">false</span>，无论“&amp;&amp;”后面是<span class="literal">true</span>还是<span class="literal">false</span>，结果都将返“&amp;&amp;”前面的值;</div><div class="line">只要“&amp;&amp;”前面是<span class="literal">true</span>，无论“&amp;&amp;”后面是<span class="literal">true</span>还是<span class="literal">false</span>，结果都将返“&amp;&amp;”后面的值;</div><div class="line"></div><div class="line">alert(<span class="number">0</span><span class="params">||</span><span class="number">1</span>)的结果是<span class="number">1</span></div><div class="line">只要“<span class="params">||</span>”前面为<span class="literal">false</span>,不管“<span class="params">||</span>”后面是<span class="literal">true</span>还是<span class="literal">false</span>，都返回“<span class="params">||</span>”后面的值。</div><div class="line">只要“<span class="params">||</span>”前面为<span class="literal">true</span>,不管“<span class="params">||</span>”后面是<span class="literal">true</span>还是<span class="literal">false</span>，都返回“<span class="params">||</span>”前面的值。</div></pre></td></tr></table></figure>
+<h3 id="2-mouseenter和mouseover的区别"><a href="#2-mouseenter和mouseover的区别" class="headerlink" title="2.mouseenter和mouseover的区别"></a><strong>2.mouseenter和mouseover的区别</strong></h3><blockquote>
+<p>这个之前看了下，大概是答出来了，但可能不够详细吧</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。对应mouseout</div><div class="line">只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。对应mouseleave</div></pre></td></tr></table></figure>
+<h3 id="3-用正则表达式匹配字符串，以字母开头，后面是数字、字符串或者下划线，长度为9-20"><a href="#3-用正则表达式匹配字符串，以字母开头，后面是数字、字符串或者下划线，长度为9-20" class="headerlink" title="3.用正则表达式匹配字符串，以字母开头，后面是数字、字符串或者下划线，长度为9-20"></a><strong>3.用正则表达式匹配字符串，以字母开头，后面是数字、字符串或者下划线，长度为9-20</strong></h3><blockquote>
+<p>看到这题我是崩溃的，因为正则学的不多，但是稍微写了下也差不多只是忘了些</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var re=new RegExp("^[<span class="string">a-zA-Z</span>][<span class="symbol">a-zA-Z0-9_</span>]&#123;9,20&#125;$");</div></pre></td></tr></table></figure>
+<h3 id="4-js字符串两边截取空白的trim的原型方法的实现"><a href="#4-js字符串两边截取空白的trim的原型方法的实现" class="headerlink" title="4.js字符串两边截取空白的trim的原型方法的实现"></a><strong>4.js字符串两边截取空白的trim的原型方法的实现</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//我的笨方法，当时还想错了一些，回来后实现了一下，思路是这样</span></div><div class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> arr=<span class="keyword">this</span>.split(<span class="string">""</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</div><div class="line">       <span class="keyword">if</span>(arr[<span class="number">0</span>]==<span class="string">" "</span>) &#123;</div><div class="line">           arr.shift();</div><div class="line">           <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(arr[arr.length<span class="number">-1</span>]==<span class="string">" "</span>) &#123;</div><div class="line">            arr.pop();</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr.join(<span class="string">""</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//后来面试官跟我说一句话就解决了，然而我正则都忘了，平时没怎么用</span></div><div class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>,<span class="string">''</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="5-三道判断输出的题都是经典的题"><a href="#5-三道判断输出的题都是经典的题" class="headerlink" title="5.三道判断输出的题都是经典的题"></a><strong>5.三道判断输出的题都是经典的题</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//5.1</span></div><div class="line"><span class="keyword">var</span> a=<span class="number">4</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   a=<span class="number">3</span>;</div><div class="line">   <span class="built_in">console</span>.log(a);</div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">&#125;</div><div class="line">b();</div><div class="line"><span class="comment">//明显输出是3，因为里面修改了a这个全局变量，那个function a()&#123;&#125;是用来干扰的，虽然函数声明会提升，就被a给覆盖掉了，这是我的理解</span></div><div class="line"></div><div class="line"><span class="comment">//5.2</span></div><div class="line"><span class="comment">//不记得具体的就类似如下</span></div><div class="line"><span class="keyword">var</span> baz=<span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> bazz=&#123;</div><div class="line">   <span class="attr">baz</span>: <span class="number">2</span>,</div><div class="line">   <span class="attr">getbaz</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> <span class="keyword">this</span>.baz</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(bazz.getbaz())</div><div class="line"><span class="keyword">var</span> g=bazz.getbaz;</div><div class="line"><span class="built_in">console</span>.log(g());</div><div class="line"><span class="comment">//第一个输出是2，第二个输出是3，这题考察的就是this的指向，函数作为对象本身属性调用的时候this指向对象，作为普通函数调用的时候就指向全局了</span></div><div class="line"></div><div class="line"><span class="comment">//5.3</span></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)</div><div class="line">&#123; </div><div class="line">   arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(i)&#125;</div><div class="line">&#125;</div><div class="line">arr[<span class="number">3</span>]();</div><div class="line"><span class="comment">//典型的闭包啊，看都不用看，肯定弹出5啊</span></div></pre></td></tr></table></figure>
+<h3 id="6-写出position不同值和区别"><a href="#6-写出position不同值和区别" class="headerlink" title="6.写出position不同值和区别"></a><strong>6.写出position不同值和区别</strong></h3><blockquote>
+<p>突然想到还有inherit，当时忘记了，后来面试的时候又重新问了我一下</p>
+</blockquote>
+<p>1.absolute: 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。(不占位)<br>2.relative: 生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。（占位）<br>3.static：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）<br>inherit：规定应该从父元素继承 position 属性的值。<br>4.fixed：生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
+<h3 id="7-写一个div-css布局，左边图片右边文字，文字环绕图片，外面容器固定宽度，文字不固定（这是后来根据面试官描述的，笔试题上只有图我就不放上来了"><a href="#7-写一个div-css布局，左边图片右边文字，文字环绕图片，外面容器固定宽度，文字不固定（这是后来根据面试官描述的，笔试题上只有图我就不放上来了" class="headerlink" title="7.写一个div+css布局，左边图片右边文字，文字环绕图片，外面容器固定宽度，文字不固定（这是后来根据面试官描述的，笔试题上只有图我就不放上来了)"></a><strong>7.写一个div+css布局，左边图片右边文字，文字环绕图片，外面容器固定宽度，文字不固定（这是后来根据面试官描述的，笔试题上只有图我就不放上来了)</strong></h3><blockquote>
+<p>这道题我没答好，刚开始我不清楚那个文字是要自适应的<br>面试官说用p标签包裹文字，我当时就紧张了下，把p标签错当成内联了，然后我再修正，然后加左浮动,然后不行，我就跟面试官说，我以前都直接就一个img它float：left，加文字不加p标签就好了<br>然后我回来试一试才发现= =，直接加p标签就可以了啊= =，omg我的错误！！！</p>
+</blockquote>
+<h3 id="8-讲述你对reflow和repaint的理解"><a href="#8-讲述你对reflow和repaint的理解" class="headerlink" title="8.讲述你对reflow和repaint的理解"></a><strong>8.讲述你对reflow和repaint的理解</strong></h3><blockquote>
+<p>这个真不会了没接触，第一个我猜是重新布局，第二个倒是见过就是重绘，就想到document.write(),这个后来也没再问我了<br>查查查</p>
+</blockquote>
+<p>repaint就是重绘，reflow就是回流。repaint主要是针对某一个DOM元素进行的重绘，reflow则是回流，针对整个页面的重排</p>
+<p><strong>严重性：</strong> </p>
+<blockquote>
+<p>在性能优先的前提下，性能消耗 reflow大于repaint。</p>
+</blockquote>
+<p><strong>体现：</strong></p>
+<blockquote>
+<p>repaint是某个DOM元素进行重绘；reflow是整个页面进行重排，也就是页面所有DOM元素渲染。</p>
+</blockquote>
+<p><strong>如何触发：</strong></p>
+<blockquote>
+<p>style变动造成repaint和reflow。<br>不涉及任何DOM元素的排版问题的变动为repaint，例如元素的color/text-align/text-decoration等等属性的变动。<br>除上面所提到的DOM元素style的修改基本为reflow。例如元素的任何涉及长、宽、行高、边框、display等style的修改。</p>
+</blockquote>
+<p><strong>常见触发场景：</strong></p>
+<p>触发repaint：</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">color</span>的修改，如<span class="keyword">color</span>=#ddd；</div><div class="line"><span class="keyword">text</span>-<span class="keyword">align</span>的修改，如<span class="keyword">text</span>-<span class="keyword">align</span>=center；</div><div class="line">a:hover也会造成重绘。</div><div class="line">:hover引起的颜色等不导致页面回流的style变动。</div></pre></td></tr></table></figure>
+<p>触发reflow：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">width</span>/<span class="built_in">height</span>/<span class="built_in">border</span>/margin/padding的修改，如<span class="built_in">width</span>=778px；</div><div class="line">动画，:hover等伪类引起的元素表现改动，<span class="built_in">display</span>=none等造成页面回流；</div><div class="line">appendChild等DOM元素操作；</div><div class="line"><span class="built_in">font</span>类<span class="built_in">style</span>的修改；</div><div class="line"><span class="built_in">background</span>的修改，注意着字面上可能以为是重绘，但是浏览器确实回流了，经过浏览器厂家的优化，部分<span class="built_in">background</span>的修改只触发repaint，当然IE不用考虑；</div><div class="line">scroll页面，这个不可避免；</div><div class="line">resize页面，桌面版本的进行浏览器大小的缩放，移动端的话，还没玩过能拖动程序，resize程序窗口大小的多窗口操作系统。</div><div class="line">读取元素的属性（这个无法理解，但是技术达人是这么说的，那就把它当做定理吧）：读取元素的某些属性（offsetLeft、offsetTop、offsetHeight、offsetWidth、scrollTop/Left/Width/Height、clientTop/Left/Width/Height、getComputedStyle()、currentStyle(<span class="keyword">in</span> IE))；</div></pre></td></tr></table></figure>
+<p><strong>如何避免：</strong></p>
+<ul>
+<li>尽可能在DOM末梢通过改变class来修改元素的style属性：尽可能的减少受影响的DOM元素。</li>
+<li>避免设置多项内联样式：使用常用的class的方式进行设置样式，以避免设置样式时访问DOM的低效率。</li>
+<li>设置动画元素position属性为fixed或者absolute：由于当前元素从DOM流中独立出来，因此受影响的只有当前元素，元素repaint。</li>
+<li>牺牲平滑度满足性能：动画精度太强，会造成更多次的repaint/reflow，牺牲精度，能满足性能的损耗，获取性能和平滑度的平衡。</li>
+<li>避免使用table进行布局：table的每个元素的大小以及内容的改动，都会导致整个table进行重新计算，造成大幅度的repaint或者reflow。改用div则可以进行针对性的repaint和避免不必要的reflow。</li>
+<li>避免在CSS中使用运算式：学习CSS的时候就知道，这个应该避免，不应该加深到这一层再去了解，因为这个的后果确实非常严重，一旦存在动画性的repaint/reflow，那么每一帧动画都会进行计算，性能消耗不容小觑。</li>
+</ul>
+<h2 id="面试部分"><a href="#面试部分" class="headerlink" title="面试部分"></a><strong>面试部分</strong></h2><blockquote>
+<p>半小时写完笔试后，等待面试，hh中途遇到了北邮的师兄聊了一些nodejs的东西<br>步入正题面试</p>
+</blockquote>
+<p>1.什么时候开始学前端<br>2.如何学前端<br>3.看过谁的博客<br>4.开始看我的简历问了，问项目，问webpack/gulp区别，问项目如何实现什么的，再问了笔试题（上面讲过了）<br>5.等等等都问的项目</p>
+<blockquote>
+<p>基本也就这些，面试官人挺好的，感觉没什么压力~<br>最后也让我过了吧，就后面暑假放假再去联系~说我还得多去看看基础的东西~确实基础还不够扎实哈，不过总的来说，这人生第一次面试还挺顺利的说，也是运气好吧~希望学校早放假能去实习一番~</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/22/invnovation2016/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          大创项目提交与投票系统之前端小结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/07/together-git/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于github开发</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Netease-FE-interview" data-title="记一次网易前端实习面试" data-url="https://bupt-hjm.github.io/2016/04/20/Netease-FE-interview/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

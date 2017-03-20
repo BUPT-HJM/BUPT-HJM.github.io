@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>JavaScript-弹出层的实现 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="弹出层的实现思路
+本文讲述的弹出层是点击按钮后弹出两个层，一个是遮罩层,一个是弹出的想让用户看到的层，不能改变页面布局怎么做呢？就需要动态生成这两个层，用js控制它们的出现与消失，控制它们的位置，然后css中写对应的样式代码，这也就是构建弹出层的大体思路
+
+遮罩层的实现
+遮罩层的实现要遮罩住整个页面，这个层就需要有整个页面的高度和宽度
+
+12var allWidth=document.body.s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript-弹出层的实现">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/01/05/js-popup/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="弹出层的实现思路
+本文讲述的弹出层是点击按钮后弹出两个层，一个是遮罩层,一个是弹出的想让用户看到的层，不能改变页面布局怎么做呢？就需要动态生成这两个层，用js控制它们的出现与消失，控制它们的位置，然后css中写对应的样式代码，这也就是构建弹出层的大体思路
+
+遮罩层的实现
+遮罩层的实现要遮罩住整个页面，这个层就需要有整个页面的高度和宽度
+
+12var allWidth=document.body.s">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript-弹出层的实现">
+<meta name="twitter:description" content="弹出层的实现思路
+本文讲述的弹出层是点击按钮后弹出两个层，一个是遮罩层,一个是弹出的想让用户看到的层，不能改变页面布局怎么做呢？就需要动态生成这两个层，用js控制它们的出现与消失，控制它们的位置，然后css中写对应的样式代码，这也就是构建弹出层的大体思路
+
+遮罩层的实现
+遮罩层的实现要遮罩住整个页面，这个层就需要有整个页面的高度和宽度
+
+12var allWidth=document.body.s">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-js-popup" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/05/js-popup/" class="article-date">
+  	<time datetime="2016-01-04T16:00:00.000Z" itemprop="datePublished">2016-01-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript-弹出层的实现
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <h2 id="弹出层的实现思路"><a href="#弹出层的实现思路" class="headerlink" title="弹出层的实现思路"></a><strong>弹出层的实现思路</strong></h2><blockquote>
+<p>本文讲述的弹出层是点击按钮后弹出两个层，一个是遮罩层,一个是弹出的想让用户看到的层，不能改变页面布局怎么做呢？就需要动态生成这两个层，用js控制它们的出现与消失，控制它们的位置，然后css中写对应的样式代码，这也就是构建弹出层的大体思路</p>
+</blockquote>
+<h2 id="遮罩层的实现"><a href="#遮罩层的实现" class="headerlink" title="遮罩层的实现"></a><strong>遮罩层的实现</strong></h2><blockquote>
+<p>遮罩层的实现要遮罩住整个页面，这个层就需要有整个页面的高度和宽度</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> allWidth=<span class="built_in">document</span>.body.scrollWidth;</div><div class="line"><span class="keyword">var</span> allHeight=<span class="built_in">document</span>.body.scrollHeight;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>scrollHeight: 获取对象的滚动高度。<br>scrollLeft:设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离<br>scrollTop:设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离<br>scrollWidth:获取对象的滚动宽度<br>offsetHeight:获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度<br>offsetLeft:获取对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置<br>offsetTop:获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置<br>event.clientX 相对文档的水平座标<br>event.clientY 相对文档的垂直座标<br>event.offsetX 相对容器的水平坐标<br>event.offsetY 相对容器的垂直坐标<br>document.documentElement.scrollTop 垂直方向滚动的值<br>event.clientX+document.documentElement.scrollTop 相对文档的水平座标+垂直方向滚动的量<br><a href="http://blog.csdn.net/xuantian868/article/details/3116442" target="_blank" rel="external">参考链接</a><br><a id="more"></a><br>然后生成结点并在页面中生成<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> oMask=document.createElement(<span class="string">"div"</span>);</div><div class="line">    oMask.id=<span class="string">"mask"</span>;</div><div class="line">    oMask.<span class="built_in">style</span>.<span class="built_in">width</span>=allWidth+<span class="string">"px"</span>;</div><div class="line">    oMask.<span class="built_in">style</span>.<span class="built_in">height</span>=allHeight+<span class="string">"px"</span>;</div><div class="line">    document.body.appendChild(oMask);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>这也就大致完成了操作，然而遮罩层所需的css样式需要半透明，在css样式中实现<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#mask</span> &#123;</div><div class="line">        <span class="attribute">background-color</span>: <span class="number">#000</span>;</div><div class="line">        <span class="attribute">opacity</span>: <span class="number">0.5</span>;</div><div class="line">        <span class="attribute">filter</span>: <span class="built_in">alpha</span>(opacity=50); </div><div class="line">        <span class="attribute">position</span>: absolute; </div><div class="line">        <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">        <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">        <span class="attribute">z-index</span>: <span class="number">1000</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>filer是为了兼容ie</p>
+</blockquote>
+<h2 id="遮罩层用户弹出层的实现"><a href="#遮罩层用户弹出层的实现" class="headerlink" title="遮罩层用户弹出层的实现"></a><strong>遮罩层用户弹出层的实现</strong></h2><blockquote>
+<p>同样是获取高度和宽度，这次就不加以赘述，略有不同，可以在css中设置好，重点在于定位方面，要定位在页面中央</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> seeHeight=<span class="built_in">document</span>.documentElement.clientHeight;</div><div class="line"><span class="keyword">var</span> oalert=<span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">    oalert.id=<span class="string">"alertsth"</span>;</div><div class="line">    oalert.innerHTML=<span class="string">"&lt;div class='sth'&gt;&lt;div id='close'&gt;点击关闭&lt;/div&gt;&lt;/div&gt;"</span>;</div><div class="line">    <span class="built_in">document</span>.body.appendChild(oalert);</div><div class="line"><span class="keyword">var</span> sthHeight=oalert.offsetHeight;</div><div class="line"><span class="keyword">var</span> sthWidth=oalert.offsetWidth;</div><div class="line">    oalert.style.left=(allWidth-sthWidth)/<span class="number">2</span>+<span class="string">"px"</span>;</div><div class="line">    oalert.style.top=(seeHeight-sthHeight)/<span class="number">2</span>+<span class="string">"px"</span>;</div></pre></td></tr></table></figure>
+<h2 id="弹出与关闭的实现"><a href="#弹出与关闭的实现" class="headerlink" title="弹出与关闭的实现"></a><strong>弹出与关闭的实现</strong></h2><blockquote>
+<p>页面的js代码</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> oBtn=<span class="built_in">document</span>.getElementById(<span class="string">"alertBtn"</span>);</div><div class="line">    oBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        opensth();</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//阻止浏览器默认下一步操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">opensth</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> allWidth=<span class="built_in">document</span>.body.scrollWidth;</div><div class="line">    <span class="keyword">var</span> allHeight=<span class="built_in">document</span>.body.scrollHeight;</div><div class="line">    <span class="keyword">var</span> seeHeight=<span class="built_in">document</span>.documentElement.clientHeight</div><div class="line">    <span class="keyword">var</span> oMask=<span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">        oMask.id=<span class="string">"mask"</span>;</div><div class="line">        oMask.style.width=allWidth+<span class="string">"px"</span>;</div><div class="line">        oMask.style.height=allHeight+<span class="string">"px"</span>;</div><div class="line">        <span class="built_in">document</span>.body.appendChild(oMask);</div><div class="line">    <span class="keyword">var</span> oalert=<span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">        oalert.id=<span class="string">"alertsth"</span>;</div><div class="line">        oalert.innerHTML=<span class="string">"&lt;div class='sth'&gt;&lt;div id='close'&gt;点击关闭&lt;/div&gt;&lt;/div&gt;"</span>;</div><div class="line">        <span class="built_in">document</span>.body.appendChild(oalert);</div><div class="line">    <span class="keyword">var</span> sthHeight=oalert.offsetHeight;</div><div class="line">    <span class="keyword">var</span> sthWidth=oalert.offsetWidth;</div><div class="line">        oalert.style.left=(allWidth-sthWidth)/<span class="number">2</span>+<span class="string">"px"</span>;</div><div class="line">        oalert.style.top=(seeHeight-sthHeight)/<span class="number">2</span>+<span class="string">"px"</span>;</div><div class="line">    <span class="keyword">var</span> oClose=<span class="built_in">document</span>.getElementById(<span class="string">"close"</span>);</div><div class="line">    oClose.onclick=oMask.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">document</span>.body.removeChild(oalert);</div><div class="line">        <span class="built_in">document</span>.body.removeChild(oMask);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/05/nodejs-ejs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          nodejs学习-ejs模板引擎
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/03/blog（express+mongodb)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于Express+MongoDB搭建的简单功能的博客</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="js-popup" data-title="JavaScript-弹出层的实现" data-url="https://bupt-hjm.github.io/2016/01/05/js-popup/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

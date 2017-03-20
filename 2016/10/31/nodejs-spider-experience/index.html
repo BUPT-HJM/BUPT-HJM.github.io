@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>个人nodejs爬虫相关模块小整合 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用node爬虫也有一段时间了，最近也帮好友爬了XX网的10万+的数据，这个月还没有写博客，就来写写自己爬虫的经验以及自己常用的一些模块/库吧~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人nodejs爬虫相关模块小整合">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/10/31/nodejs-spider-experience/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="用node爬虫也有一段时间了，最近也帮好友爬了XX网的10万+的数据，这个月还没有写博客，就来写写自己爬虫的经验以及自己常用的一些模块/库吧~">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="个人nodejs爬虫相关模块小整合">
+<meta name="twitter:description" content="用node爬虫也有一段时间了，最近也帮好友爬了XX网的10万+的数据，这个月还没有写博客，就来写写自己爬虫的经验以及自己常用的一些模块/库吧~">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-nodejs-spider-experience" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/31/nodejs-spider-experience/" class="article-date">
+  	<time datetime="2016-10-30T16:00:00.000Z" itemprop="datePublished">2016-10-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      个人nodejs爬虫相关模块小整合
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/nodejs/">nodejs</a><a class="article-category-link" href="/categories/前端/nodejs/爬虫/">爬虫</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>用node爬虫也有一段时间了，最近也帮好友爬了XX网的10万+的数据，这个月还没有写博客，就来写写自己爬虫的经验以及自己常用的一些模块/库吧~<br><a id="more"></a></p>
+<p>爬虫关键步骤都围绕在于<code>请求</code>、 <code>获取数据</code>、<code>处理数据</code>，当然还有应对一些反爬虫的策略，比如伪造headers，ip代理等等，下文就主要围绕nodejs我常用的模块和经验谈起</p>
+<h3 id="请求和获取数据模块"><a href="#请求和获取数据模块" class="headerlink" title="请求和获取数据模块"></a><strong>请求和获取数据模块</strong></h3><p><strong><a href="https://github.com/visionmedia/superagent" target="_blank" rel="external">superagent</a></strong> </p>
+<p>名字就叫做超级代理，是一个非常实用的http请求模块，常用于<code>get</code>、<code>post</code>等请求，对于nodejs爬虫我主要就用它来实现请求操作，还有一些表单post操作，模拟ajax请求等,z支持链式调用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">superagent.post(url)</div><div class="line">    .set(headers) <span class="comment">//设置请求头</span></div><div class="line">    .set(<span class="string">'Cookie'</span>, cookie) <span class="comment">// 设置cookie</span></div><div class="line">    .type(<span class="string">'form'</span>)</div><div class="line">    .send(&#123;</div><div class="line">        <span class="comment">//表单数据</span></div><div class="line">    &#125;)</div><div class="line">    .end(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</div><div class="line">        <span class="comment">//数据与错误处理</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>中文文档：</strong><a href="https://cnodejs.org/topic/5378720ed6e2d16149fa16bd" target="_blank" rel="external">https://cnodejs.org/topic/5378720ed6e2d16149fa16bd</a></p>
+</blockquote>
+<p><strong><a href="https://github.com/magicdawn/superagent-charset" target="_blank" rel="external">superagent-charset</a></strong></p>
+<p>这个是上面那个模块的拓展,因为<code>superagent</code>只支持<code>UTF-8</code>,用了这个库可以指定编码,当你用<code>superagent</code>爬出乱码时可以使用它</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">superagent.get(url)</div><div class="line">    .set(headers) </div><div class="line">    .charset(<span class="string">'gbk'</span>) <span class="comment">//指定编码</span></div><div class="line">    .end(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.err(err);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<p><strong><a href="https://github.com/segmentio/superagent-retry" target="_blank" rel="external">superagent-retry</a></strong></p>
+<p>当你遇到以下错误的时候,可以使用它,之前我用了它确实错误问题就解决了</p>
+<ul>
+<li>ECONNRESET</li>
+<li>ECONNREFUSED</li>
+<li>ETIMEDOUT</li>
+<li>EADDRINFO</li>
+<li>ESOCKETTIMEDOUT</li>
+<li>superagent client timeouts</li>
+<li>bad gateway errors (502, 503, 504 statuses)</li>
+<li>Internal Server Error (500 status)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> superagent = <span class="built_in">require</span>(<span class="string">'superagent'</span>);</div><div class="line"><span class="built_in">require</span>(<span class="string">'./superagent-retry'</span>)(superagent);</div><div class="line">superagent.get(url)</div><div class="line">    .set(headers_visit)</div><div class="line">    .retry(<span class="number">2</span>) <span class="comment">//在响应前请求两次</span></div><div class="line">    .end(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.err(err);</div><div class="line">        &#125;</div><div class="line">     &#125;)</div></pre></td></tr></table></figure>
+<h3 id="处理数据模块"><a href="#处理数据模块" class="headerlink" title="处理数据模块"></a><strong>处理数据模块</strong></h3><p><strong><a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">cheerio</a></strong></p>
+<p>这是一个非常好用的处理模块,是jQuery的子集,可以使用大量jQuery的语法来获取你爬虫请求到的数据,用正则真是太不友好~</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">superagent.get(url)</div><div class="line">    .set(headers)</div><div class="line">    .end(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.err(err);</div><div class="line">        &#125;</div><div class="line">        $ = cheerio.load(res.text);</div><div class="line">        <span class="comment">// $(".XXX")选中class</span></div><div class="line">        <span class="comment">// $("#XXX")选中id</span></div><div class="line">        <span class="comment">// ...</span></div><div class="line">        &#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>中文文档:</strong> <a href="https://cnodejs.org/topic/5203a71844e76d216a727d2e" target="_blank" rel="external">https://cnodejs.org/topic/5203a71844e76d216a727d2e</a></p>
+</blockquote>
+<p><strong>fs</strong></p>
+<p>它虽然是一个模块,但并不需要从npm下载(npm里的那个就一句话<code>console.log(&quot;I&#39;m fs modules&quot;);</code>),是nodejs自带的文件系统模块,直接引入即可,提供了nodejs本地读写的能力,可以写入读取本地文件,我们爬虫如果不需要写入数据库,写入本地的话,就必须得用到它了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="comment">// 读取文件</span></div><div class="line">fs.readFile(<span class="string">'input.txt'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">     <span class="keyword">return</span> <span class="built_in">console</span>.error(err);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 写入文件</span></div><div class="line">fs.writeFile(<span class="string">'input.txt'</span>, <span class="string">'XXX'</span>,  <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span> (err) &#123;</div><div class="line">       <span class="keyword">return</span> <span class="built_in">console</span>.error(err);</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>中文教程:</strong> <a href="http://www.runoob.com/nodejs/nodejs-fs.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-fs.html</a></p>
+</blockquote>
+<p><strong>excel相关</strong></p>
+<p>最近爬的数据需要爬入excel,然而fs模块并不能直接写入xlsx,就得用别的途径</p>
+<p><strong><a href="https://github.com/mgcrea/node-xlsx" target="_blank" rel="external">node-xlsx</a></strong></p>
+<p>这个模块挺简单上手的,我只试过导出excel,也可以读取,觉得挺方便,具体其他可以直接看docs<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xlsx = <span class="built_in">require</span>(<span class="string">'node-xlsx'</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> data = [</div><div class="line">    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">    [<span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">null</span>, <span class="string">'sheetjs'</span>],</div><div class="line">    [<span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2014-02-19T14:30Z'</span>), <span class="string">'0.3'</span>],</div><div class="line">    [<span class="string">'baz'</span>, <span class="literal">null</span>, <span class="string">'qux'</span>]</div><div class="line">];</div><div class="line"></div><div class="line"><span class="keyword">var</span> buffer = xlsx.build([&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'mySheet'</span>,</div><div class="line">    <span class="attr">data</span>: data</div><div class="line">&#125;]);</div><div class="line"></div><div class="line">fs.writeFile(<span class="string">'test.xlsx'</span>, buffer, &#123;</div><div class="line">        <span class="string">'flag'</span>: <span class="string">'w+'</span></div><div class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.error(err);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"写入成功"</span>);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>tips:</strong>不过因为我爬取大量数据,如果一味放数组里也会让程序崩溃,但是我开启<code>a+</code>这个fs的追加模式,发现写入有点问题,所以我最近采用了逗号分割csv的方式</p>
+</blockquote>
+<p><strong><a href="https://zh.wikipedia.org/zh-hans/%E9%80%97%E5%8F%B7%E5%88%86%E9%9A%94%E5%80%BC" target="_blank" rel="external">csv</a></strong></p>
+<p>.csv后缀文件可以以纯文本存储表格数据,然后我直接用<code>fs</code>写入,用<code>,</code>来分割列,用<code>\n</code>来分割行就解决问题了,这个简单快捷</p>
+<blockquote>
+<p>当你用utf-8写入csv后,用excel直接打开是会乱码的,你可以先用记事本打开另存为ANSI编码格式,再打开就正常显示了</p>
+</blockquote>
+<h3 id="异步处理模块"><a href="#异步处理模块" class="headerlink" title="异步处理模块"></a><strong>异步处理模块</strong></h3><blockquote>
+<p>这个我没去调研各个模块,,就只介绍我用过的</p>
+</blockquote>
+<p>对于异步这在node爬虫中是必须去处理的,因为fs写入文件,superagent请求这些都是异步的,我们可以用<code>promise</code>来解决,当然es6出现了<code>generator</code>生成器解决回调,还有es7的<code>async/await</code>的异步解决方案,这里就暂且不说这些了,我就只介绍下我使用的<code>async</code>模块</p>
+<p><strong><a href="https://github.com/caolan/async" target="_blank" rel="external">async</a></strong></p>
+<p>这是一个异步流程控制模块,还可以在爬虫时控制并发数目,通常来说我们爬取一堆url有规律的数据,我通常构造一个数组然后使用它来解决异步</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 我这里对一个有规律的url+urlArr[i]进行爬取</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">900000</span>; i++) &#123;</div><div class="line">    urlArr.push(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 这里是分6批执行,每一批并行,批之间按顺序</span></div><div class="line"><span class="keyword">async</span>.eachLimit(urlArr, <span class="number">6</span>, <span class="function"><span class="keyword">function</span>(<span class="params">item, callback</span>) </span>&#123;</div><div class="line">    spider(item, callback);<span class="comment">//爬虫函数</span></div><div class="line">    <span class="comment">// 用callback(null)代表完成</span></div><div class="line">    <span class="comment">// 用callback('err')代表错误</span></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.log(err);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"结束"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个模块就可以解决我的异步问题了,更多用法看这位作者写的,挺详细的,<a href="https://github.com/alsotang/async_demo" target="_blank" rel="external">https://github.com/alsotang/async_demo</a></p>
+</blockquote>
+<h3 id="其他模块"><a href="#其他模块" class="headerlink" title="其他模块"></a><strong>其他模块</strong></h3><blockquote>
+<p>这些模块就有些针对爬虫特定需求的</p>
+</blockquote>
+<p><strong><a href="https://github.com/desmondmorris/node-tesseract" target="_blank" rel="external">node-tesseract</a></strong></p>
+<p>这是验证码识别相关的</p>
+<ul>
+<li>可以看我的文章<a href="https://bupt-hjm.github.io/2016/05/29/buptclass/">https://bupt-hjm.github.io/2016/05/29/buptclass/</a></li>
+<li>还有这位前辈写的<a href="http://think2011.net/2016/01/31/node-ocr/" target="_blank" rel="external">http://think2011.net/2016/01/31/node-ocr/</a></li>
+</ul>
+<p><strong><a href="https://github.com/node-schedule/node-schedule" target="_blank" rel="external">node-schedule</a></strong></p>
+<p>当我们的爬虫需要定时爬取的时候,它就可以发挥巨大作用啦</p>
+<ul>
+<li><a href="http://nodeclass.com/articles/78767" target="_blank" rel="external">node.js中使用node-schedule实现定时任务实例</a></li>
+</ul>
+<p><strong><a href="https://github.com/robogeek/node-ssh2sync" target="_blank" rel="external">node-ssh2sync</a></strong></p>
+<p>之前我爬取教务系统,因为只能校园网访问,所以我就只能本地爬取上传服务器,这个不是npm下载的模块,直接从github下载,作为我简单的上传需求,它还是挺好用的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ssh2sync = <span class="built_in">require</span>(<span class="string">'ssh2sync'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> root_local = ... ; <span class="comment">// Grab these from command line arguments?</span></div><div class="line"><span class="keyword">var</span> root_remote = ...;</div><div class="line"><span class="keyword">var</span> force = <span class="literal">true</span>;</div><div class="line"></div><div class="line">ssh2sync.upload(root_local, root_remote, force, &#123;</div><div class="line"></div><div class="line">    <span class="comment">//    de<span class="doctag">bug:</span> console.log,</span></div><div class="line">    host: ... remote host name ...,</div><div class="line">    <span class="attr">port</span>: <span class="number">22</span>,</div><div class="line">    <span class="attr">username</span>: ... user name ...,</div><div class="line">    <span class="attr">privateKey</span>: <span class="built_in">require</span>(<span class="string">'fs'</span>).readFileSync(<span class="string">'/path/to/users/.ssh/id_dsa'</span>)</div><div class="line">    <span class="comment">// OR password: ... the password ..</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p>谢谢阅读~<br>欢迎follow我哈哈<a href="https://github.com/BUPT-HJM" target="_blank" rel="external">https://github.com/BUPT-HJM</a><br>欢迎继续观光我的博客~</p>
+<p><strong>欢迎关注</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg" alt=""></h2><blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/13/hackathon/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          记一次Hackathon经历
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/24/fun-photo-combine/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">揭开QQ缩略图与大图不同背后的秘密（附简单合成工具）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="nodejs-spider-experience" data-title="个人nodejs爬虫相关模块小整合" data-url="https://bupt-hjm.github.io/2016/10/31/nodejs-spider-experience/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>关于github开发 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近正好在合作开发，便来整理一下这些流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于github开发">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/03/07/together-git/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="最近正好在合作开发，便来整理一下这些流程">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于github开发">
+<meta name="twitter:description" content="最近正好在合作开发，便来整理一下这些流程">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-together-git" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/07/together-git/" class="article-date">
+  	<time datetime="2016-03-06T16:00:00.000Z" itemprop="datePublished">2016-03-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于github开发
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/git/">git</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>最近正好在合作开发，便来整理一下这些流程<br><a id="more"></a></p>
+<h2 id="廖雪峰git多人开发协作"><a href="#廖雪峰git多人开发协作" class="headerlink" title="廖雪峰git多人开发协作"></a><strong>廖雪峰git多人开发协作</strong></h2><p>链接：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000" target="_blank" rel="external">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000</a></p>
+<blockquote>
+<p>但是今天这并不符合我们的需求，这是写的是大家一起来维护一个项目，大家都有push的权限，所以要一起在dev分支下修改，最后由审核人来决定是否并入master</p>
+</blockquote>
+<h2 id="我们的流程是怎样的呢"><a href="#我们的流程是怎样的呢" class="headerlink" title="我们的流程是怎样的呢"></a><strong>我们的流程是怎样的呢</strong></h2><ul>
+<li>首先到项目<code>fork</code>，你会发现你的仓库里多了一个项目</li>
+<li>其次将你的项目的东西下到本地，通过<code>git clone</code></li>
+<li>然后你可以尽情地修改你的代码，然后<code>git remote</code>,<code>git add</code>,<code>git commit -m &quot;XXX</code>到你的项目里</li>
+<li>最后就可以通过<code>pull request</code>来让我是否接受你的代码，如果有问题，我会让你修改</li>
+<li>但是有可能会发生冲突，比如我已经修改了master的东西，但是你那里并没有，参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="external">链接</a></li>
+</ul>
+<blockquote>
+<p>由于小伙伴的操作不熟，就不把SSHkey给大家直接在这个项目本身来push（不然哪里改坏了就不知道了），就得通过pull request来合作了，来通过审核开发</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/20/Netease-FE-interview/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          记一次网易前端实习面试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/25/technology-learning/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">那些年我不懂的东西（技术大杂烩）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="together-git" data-title="关于github开发" data-url="https://bupt-hjm.github.io/2016/03/07/together-git/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

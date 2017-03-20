@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>那些年我不懂的东西（技术大杂烩） | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="随笔总结一下近期学到的新东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="那些年我不懂的东西（技术大杂烩）">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/02/25/technology-learning/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="随笔总结一下近期学到的新东西">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="那些年我不懂的东西（技术大杂烩）">
+<meta name="twitter:description" content="随笔总结一下近期学到的新东西">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-technology-learning" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/25/technology-learning/" class="article-date">
+  	<time datetime="2016-02-24T16:00:00.000Z" itemprop="datePublished">2016-02-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      那些年我不懂的东西（技术大杂烩）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/less/">less</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/随笔/">随笔</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>随笔总结一下近期学到的新东西<br><a id="more"></a></p>
+<p>[TOC]</p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a><strong>网络</strong></h2><p>没学过计算机网络，就只有大一时的计算机基础（基本忘光光的），<br>所以最近也补了一些知识，我就尽量用简单的语言阐述，详细就需要去看书搜索了</p>
+<blockquote>
+<p>前面也写过一篇关于主机服务器网站访问的，<a href="http://bupt-hjm.github.io/2015/12/15/%E5%85%B3%E4%BA%8E%E4%B8%BB%E6%9C%BA%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A5%E5%8F%8A%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE/">访问入口</a></p>
+</blockquote>
+<h4 id="IP地址是什么"><a href="#IP地址是什么" class="headerlink" title="IP地址是什么"></a><strong>IP地址是什么</strong></h4><blockquote>
+<p>IP地址就是给每个连接在互联网上的主机分配的一个32位地址。<br>IP地址就好像电话号码（地址码）：有了某人的电话号码，你就能与他通话了。同样，有了某台主机的IP地址，你就能与这台主机通信了。</p>
+</blockquote>
+<h4 id="子网掩码是什么"><a href="#子网掩码是什么" class="headerlink" title="子网掩码是什么"></a><strong>子网掩码是什么</strong></h4><blockquote>
+<p>子网掩码就是将某个IP地址划分成网络地址和主机地址两部分。</p>
+</blockquote>
+<h4 id="网关是什么"><a href="#网关是什么" class="headerlink" title="网关是什么"></a><strong>网关是什么</strong></h4><blockquote>
+<p>网关就是一个网络连接到另一个网络的“关口”。也就是网络关卡。简单来讲，不同网络需要通过网关</p>
+</blockquote>
+<h4 id="DNS是什么"><a href="#DNS是什么" class="headerlink" title="DNS是什么"></a><strong>DNS是什么</strong></h4><blockquote>
+<p>它就是用来让IP与域名映射解析的</p>
+</blockquote>
+<h4 id="TCP-IP三次握手"><a href="#TCP-IP三次握手" class="headerlink" title="TCP/IP三次握手"></a><strong>TCP/IP三次握手</strong></h4><blockquote>
+<p>第一次：你在吗<br>第二次：我在啊,你还在吗<br>第三次：在啊</p>
+</blockquote>
+<h4 id="网络相关命令"><a href="#网络相关命令" class="headerlink" title="网络相关命令"></a><strong>网络相关命令</strong></h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ping www<span class="selector-class">.baidu</span><span class="selector-class">.com</span>  <span class="comment">//查看与对应的连接情况</span></div><div class="line">netstat -an         <span class="comment">//不用不知道，查看本机的各种连接与端口</span></div><div class="line">ipconfig /all       <span class="comment">//查看本机的ip，DHCP等等等（windows）</span></div><div class="line">ifconfig            <span class="comment">//查看本机的ip，DHCP等等等（linux）</span></div><div class="line">...</div></pre></td></tr></table></figure>
+<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a><strong>linux</strong></h2><p>linux不同于windows，它一切皆文件，它开源，它拥有真正的root权限</p>
+<h4 id="虚拟机安装linux"><a href="#虚拟机安装linux" class="headerlink" title="虚拟机安装linux"></a><strong>虚拟机安装linux</strong></h4><blockquote>
+<p>我用的是VMware，由于系统是win10，不兼容低版本的，安了12版本，装虚拟机并不是很困难，在网上下一个centos镜像，作为DVD载入安装即可，然后配置一下硬件，就next就next很快就大功告成了</p>
+</blockquote>
+<h4 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a><strong>ssh</strong></h4><blockquote>
+<p>ssh是远程登录比较安全的协议，用了非对称密钥加密，获取接收方的公钥进行加密发送，接受方用自己的私钥与密码进行解密<br>windows连接linux可以通过Xshell或secureCRT通过ssh来连接方便快捷</p>
+<p>教程： <code>http://www.imooc.com/learn/258</code></p>
+</blockquote>
+<h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a><strong>Vue.js</strong></h2><blockquote>
+<p>Vue.js 是用于构建交互式的 Web  界面的库。它提供了 MVVM 数据绑定和一个可组合的组件系统，具有简单、灵活的 API。从技术上讲， Vue.js 集中在 MVVM 模式上的视图模型层，并通过双向数据绑定连接视图和模型。实际的 DOM 操作和输出格式被抽象出来成指令和过滤器。相比其它的 MVVM 框架，Vue.js 更容易上手。</p>
+<p><strong>注意：</strong>vue在使用插件时浏览器端是不遵循commonjs规范的，则需用webpack或browserify来让它遵循规范</p>
+<p>vue开发起来是很顺手但是组件化开发需要转变思维，这个还需要时日去了解</p>
+<p>教程： <code>http://cn.vuejs.org/guide/</code></p>
+</blockquote>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a><strong>webpack</strong></h2><blockquote>
+<p>web开发中常用到的静态资源主要有JavaScript、CSS、图片、Jade等文件，webpack中将静态资源文件称之为模块。webpack是一个模块打包工具，其可以兼容多种js书写规范，且可以处理模块间的依赖关系，具有更强大的js模块化的功能</p>
+<p><strong>什么是js模块化</strong>: js模块化是出现在我们页面越来越复杂，还有多人协作时每个人开发不同功能后出现，要防止每个人开发的部分不互相污染，则需要用到闭包，然后后来出现了require.js,来处理模块与模块之间的依赖关系</p>
+<p>教程： <code>http://www.hubwiz.com/course/5670d0a77e7d40946afc5e65/</code></p>
+</blockquote>
+<h4 id="webpack优点"><a href="#webpack优点" class="headerlink" title="webpack优点"></a><strong>webpack优点</strong></h4><blockquote>
+<p>Webpack是前端一个工具，可以让各个模块进行加载，预处理，再进行打包，它能有Grunt或Gulp所有基本功能。优点如下：</p>
+<ul>
+<li>支持commonJS和AMD模块。</li>
+<li>支持很多模块加载器的调用，可以使模块加载器灵活定制，比如babel-loader加载器，该加载器能使我们使用ES6的语法来编写代码。</li>
+<li>可以通过配置打包成多个文件，有效的利用浏览器的缓存功能提升性能。</li>
+<li>使用模块加载器，可以支持sass，less等处理器进行打包且支持静态资源样式及图片进行打包。</li>
+<li>教程: <code>http://www.hubwiz.com/course/562089cb1bc20c980538e25b/</code></li>
+</ul>
+</blockquote>
+<h2 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a><strong>gulp</strong></h2><blockquote>
+<p>上面提到了gulp，gulp和grunt是干嘛用的呢<br>gulp是基于Nodejs的自动任务运行器， 她能自动化地完成 javascript、coffee、sass、less、html/image、css 等文件的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。在实现上，她借鉴了Unix操作系统的管道（pipe）思想，前一级的输出，直接变成后一级的输入，使得在操作上非常简单。</p>
+<p>教程: <code>http://www.hubwiz.com/course/562089cb1bc20c980538e25b/</code></p>
+</blockquote>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a><strong>less</strong></h2><blockquote>
+<p>less是一种css预处理器，就是用较为少的语言与较为明了的方式来开发，来处理样式重用等问题，也便于后期的维护</p>
+<p>教程: <code>www.imooc.com/learn/102</code></p>
+</blockquote>
+<h2 id="git多人协作"><a href="#git多人协作" class="headerlink" title="git多人协作"></a><strong>git多人协作</strong></h2><blockquote>
+<p>最近有个项目，也让我去了解了一下多人协作的开发流程<br>首先我先创建一个项目，分成master和dev分支，协作的人fork我的项目，然后在它们本地修改，再pull request，我再来决定是否修改，最后开发完成后，再merge进master便大功告成<br><strong>教程</strong>： <code>http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/07/together-git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          关于github开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/23/express-ajax/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">express+ajax小练习</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="technology-learning" data-title="那些年我不懂的东西（技术大杂烩）" data-url="https://bupt-hjm.github.io/2016/02/25/technology-learning/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>学习vuejs官网示例 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="讲述vuejs官方示例中学习到的东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习vuejs官网示例">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/07/17/study-vue-demo/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="讲述vuejs官方示例中学习到的东西">
+<meta property="og:image" content="https://vuejs.org.cn/images/logo.png">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习vuejs官网示例">
+<meta name="twitter:description" content="讲述vuejs官方示例中学习到的东西">
+<meta name="twitter:image" content="https://vuejs.org.cn/images/logo.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-study-vue-demo" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/17/study-vue-demo/" class="article-date">
+  	<time datetime="2016-07-16T16:00:00.000Z" itemprop="datePublished">2016-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习vuejs官网示例
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-js/">vue.js</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p><img src="https://vuejs.org.cn/images/logo.png" alt=""><br>讲述vuejs官方示例中学习到的东西<br><a id="more"></a></p>
+<h2 id="Markdown-编辑器-Example"><a href="#Markdown-编辑器-Example" class="headerlink" title="Markdown 编辑器 Example"></a><strong>Markdown 编辑器 Example</strong></h2><blockquote>
+<p><strong>极简的 Markdown 编辑器。</strong></p>
+<ol>
+<li>需要引入<code>marked.js</code> </li>
+<li>通过构造函数Vue创建了一个Vue的根实例</li>
+<li>通过<code>el</code>为实例挂载元素</li>
+<li>这个例子在<code>textarea</code>表单绑定<code>v-model</code><br>设置了<code>debounce=&quot;300&quot;</code>,用这个包装处理器让触发更新延迟300ms，来有效地减少重复的无用的提交</li>
+<li><code>data</code>为实例中的数据对象</li>
+<li>本例子中<code>v-html</code>，通过<code>textarea</code>的<code>v-model</code>的改变，通过<code>v-html</code>更新<code>div</code>中的<code>innerHTML</code>，实现数据更新</li>
+<li>Vue实例中通过<code>filters</code>为<code>marked: marked</code>,在html中<code>&lt;div v-html=&quot;input | marked&quot;&gt;&lt;/div&gt;</code>实现markdown的转换</li>
+<li>当你设置一个元素为 <code>box-sizing: border-box;</code> 时，此元素的内边距和边框不再会增加它的宽度</li>
+</ol>
+</blockquote>
+<h2 id="GitHub-提交-Example"><a href="#GitHub-提交-Example" class="headerlink" title="GitHub 提交 Example"></a><strong>GitHub 提交 Example</strong></h2><blockquote>
+<p><strong>这个例子通过 GitHub 的 API 获取 Vue.js 最近的提交记录，并展示为一个列表。你可以在 master 和 dev 分支之间切换。</strong></p>
+<ol>
+<li><code>v-bind:href</code>可缩写为<code>:href</code></li>
+<li><code>watch</code>,键是观察表达式，值是对应回调</li>
+<li><code>methods</code>为实例方法</li>
+<li>这个例子整体思路便是一个选择表单为绑定<code>v-model</code>，通过它来选择master和dev，再通过实例方法<code>methods</code>里的方法<code>fetchData</code>原生的<code>xhr</code>去获取数据，然后通过<code>v-for</code>循环渲染到页面</li>
+</ol>
+</blockquote>
+<h2 id="Firebase-验证-Example"><a href="#Firebase-验证-Example" class="headerlink" title="Firebase + 验证 Example"></a><strong>Firebase + 验证 Example</strong></h2><blockquote>
+<p><strong>这个例子使用 Firebase 作为后台数据存储，并与客户端实时同步 (你可以在多个浏览器标签中打开它)。另外，它使用计算属性实时校验，并且在添加/删除项目时触发 CSS 过渡效果。</strong></p>
+<ol>
+<li><code>computed</code>为实例计算属性</li>
+<li>为了应用过渡效果，需要在目标元素上使用 <code>transition</code> 特性,具体查看官网<a href="http://vuejs.org.cn/guide/transitions.html#CSS-过渡" target="_blank" rel="external">过渡</a></li>
+<li>这个例子通过firebase后台，调用API存储，通过<code>computed</code>验证合法性，通过css配合<code>transition</code>实现删除和添加user时的过渡效果。</li>
+</ol>
+</blockquote>
+<h2 id="表格组件-Example"><a href="#表格组件-Example" class="headerlink" title="表格组件 Example"></a><strong>表格组件 Example</strong></h2><blockquote>
+<p><strong>这个例子创建了一个可复用的表格组件，用外部数据使用它。</strong></p>
+<ol>
+<li>注册组件，传入一个选项对象（自动调用 Vue.extend）<br><code>Vue.component(&#39;my-component&#39;, { /* ... */ })</code></li>
+<li>组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用<code>props</code> 把数据传给子组件。</li>
+<li><code>v-bind:class</code>缩写为<code>:class</code></li>
+<li>此例子通过注册语法糖传入选项对象，创建组件，通过<code>props</code>传递数据，通过<code>filterBy</code>与表单绑定过滤数据，用<code>orderBy</code>来排序</li>
+</ol>
+</blockquote>
+<h2 id="树状视图-Example"><a href="#树状视图-Example" class="headerlink" title="树状视图 Example"></a><strong>树状视图 Example</strong></h2><blockquote>
+<p><strong>这个例子实现了一个简单的树状视图，演示如何递归使用组件。</strong></p>
+<ol>
+<li>此例子用递归组件，组件在模板楼内递归地调用自己</li>
+<li><code>Vue.set( object, key, value )</code>设置对象的属性,使之响应</li>
+</ol>
+</blockquote>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/24/css3-flip-book/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          一个纯CSS3实现的酷炫翻书效果
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/10/boom/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于一个基于canvas的原生js图片爆炸插件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="study-vue-demo" data-title="学习vuejs官网示例" data-url="https://bupt-hjm.github.io/2016/07/17/study-vue-demo/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

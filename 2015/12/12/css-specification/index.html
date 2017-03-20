@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>css编写规范 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于css编写书写顺序和规范学习前端几个月了，都还没有好好地看看css编写规范，觉得自己代码写得都很乱，现在稍微从网上找了些来总结一下，当然并不完整，选一些比较重要的写写我也记一下
+
+CSS书写顺序
+位置属性(position, top, right, z-index, display, float等)
+大小(width, height, padding, margin)
+文字系列(font, l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css编写规范">
+<meta property="og:url" content="https://bupt-hjm.github.io/2015/12/12/css-specification/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="关于css编写书写顺序和规范学习前端几个月了，都还没有好好地看看css编写规范，觉得自己代码写得都很乱，现在稍微从网上找了些来总结一下，当然并不完整，选一些比较重要的写写我也记一下
+
+CSS书写顺序
+位置属性(position, top, right, z-index, display, float等)
+大小(width, height, padding, margin)
+文字系列(font, l">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css编写规范">
+<meta name="twitter:description" content="关于css编写书写顺序和规范学习前端几个月了，都还没有好好地看看css编写规范，觉得自己代码写得都很乱，现在稍微从网上找了些来总结一下，当然并不完整，选一些比较重要的写写我也记一下
+
+CSS书写顺序
+位置属性(position, top, right, z-index, display, float等)
+大小(width, height, padding, margin)
+文字系列(font, l">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-css-specification" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/12/css-specification/" class="article-date">
+  	<time datetime="2015-12-11T16:00:00.000Z" itemprop="datePublished">2015-12-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css编写规范
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/css/">css</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>关于css编写书写顺序和规范<br>学习前端几个月了，都还没有好好地看看css编写规范，觉得自己代码写得都很乱，现在稍微从网上找了些来总结一下，当然并不完整，选一些比较重要的写写我也记一下</p>
+<hr>
+<h2 id="CSS书写顺序"><a href="#CSS书写顺序" class="headerlink" title="CSS书写顺序"></a><strong>CSS书写顺序</strong></h2><ul>
+<li>位置属性(position, top, right, z-index, display, float等)</li>
+<li>大小(width, height, padding, margin)</li>
+<li>文字系列(font, line-height, letter-spacing, color- text-align等)</li>
+<li>背景(background, border等)</li>
+<li>其他(animation, transition等)</li>
+</ul>
+<blockquote>
+<p>总体来说就是先写定位，再写盒模型，再写其他的<br>通过规范的css书写顺序可以提升浏览器渲染dom的速度<br><a id="more"></a></p>
+</blockquote>
+<h2 id="CSS书写规范"><a href="#CSS书写规范" class="headerlink" title="CSS书写规范"></a><strong>CSS书写规范</strong></h2><ul>
+<li>tab四个空格缩进（这个我还被吐槽过代码混乱哈哈，这个在sublime里可以设置哈哈）</li>
+<li>尽量不要用驼峰式命名class，也不要用下划线，用-这个比较好点，也不要用大写字母<br>网上的解释是下划线命名的选择器不支持ie6，还有JS命名变量用_下划线，才可以加以区分</li>
+<li>关于空格的使用<ul>
+<li>选择器与{之间有空格</li>
+<li>属性名后要有空格</li>
+</ul>
+</li>
+<li>关于选择器<ul>
+<li>每个选择器占一行</li>
+<li>不要随意使用id选择器，id的优先级高于class</li>
+</ul>
+</li>
+<li>关于样式<ul>
+<li>链接的样式a:link-&gt;a:visited-&gt;a:hover-&gt;a:active</li>
+<li>去掉小数点之前的0</li>
+<li>统一0后面就不要加单位啦</li>
+</ul>
+</li>
+<li>【转】常用的CSS命名规则<br>头：header<br>内容：content/container<br>尾：footer<br>导航：nav<br>侧栏：sidebar<br>栏目：column<br>页面外围控制整体佈局宽度：wrapper<br>左右中：left right center<br>登录条：loginbar<br>标志：logo<br>广告：banner<br>页面主体：main<br>热点：hot<br>新闻：news<br>下载：download<br>子导航：subnav<br>菜单：menu<br>子菜单：submenu<br>搜索：search<br>友情链接：friendlink<br>页脚：footer<br>版权：copyright<br>滚动：scroll<br>内容：content<br>标签：tags<br>文章列表：list<br>提示信息：msg<br>小技巧：tips<br>栏目标题：title<br>加入：joinus<br>指南：guide<br>服务：service<br>注册：regsiter<br>状态：status<br>投票：vote<br>合作伙伴：partner</li>
+<li>【转】id的命名<ul>
+<li>页面结构<br>容器: container<br>页头：header<br>内容：content/container<br>页面主体：main<br>页尾：footer<br>导航：nav<br>侧栏：sidebar<br>栏目：column<br>页面外围控制整体佈局宽度：wrapper<br>左右中：left right center</li>
+<li>导航<br>导航：nav<br>主导航：mainnav<br>子导航：subnav<br>顶导航：topnav<br>边导航：sidebar<br>左导航：leftsidebar<br>右导航：rightsidebar<br>菜单：menu<br>子菜单：submenu<br>标题: title<br>摘要: summary</li>
+<li>功能<br>标志：logo<br>广告：banner<br>登陆：login<br>登录条：loginbar<br>注册：register<br>搜索：search<br>功能区：shop<br>标题：title<br>加入：joinus<br>状态：status<br>按钮：btn<br>滚动：scroll<br>标籤页：tab<br>文章列表：list<br>提示信息：msg<br>当前的: current<br>小技巧：tips<br>图标: icon<br>注释：note<br>指南：guild<br>服务：service<br>热点：hot<br>新闻：news<br>下载：download<br>投票：vote<br>合作伙伴：partner<br>友情链接：link<br>版权：copyright</li>
+</ul>
+</li>
+<li>【转】注释的写法</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Header */</span></div><div class="line">内容区</div><div class="line"><span class="comment">/* End Header */</span></div></pre></td></tr></table></figure>
+<ul>
+<li>CSS样式表文件命名</li>
+</ul>
+<p>主要的 master.css<br>模块 module.css<br>基本共用 base.css<br>布局、版面 layout.css<br>主题 themes.css<br>专栏 columns.css<br>文字 font.css<br>表单 forms.css<br>补丁 mend.css<br>打印 print.css</p>
+<blockquote>
+<p>参考链接：<a href="http://www.shejidaren.com/css-written-specifications.html" target="_blank" rel="external">http://www.shejidaren.com/css-written-specifications.html</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/15/host-server-visiting/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          关于主机、服务器以及网站访问
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/12/2048(pc)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2048小游戏的实现（PC版）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="css-specification" data-title="css编写规范" data-url="https://bupt-hjm.github.io/2015/12/12/css-specification/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>记一次Hackathon经历 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="抱着小伙伴的大腿参加了今年北大、清华、北航、北邮四校MSC联合主办的Hackathon，本来想着做做前端划划水，没想到项目中对前端可视化动画要求挺高，整个不够两天的Hackathon基本一直处于出现问题、解决问题的过程，过程足够难忘，最后也获得了“最佳视觉奖”，happy，写此文章纪录一下与小伙伴们奋斗两天的历程~纪录下开发中遇到的一些问题~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次Hackathon经历">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/12/13/hackathon/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="抱着小伙伴的大腿参加了今年北大、清华、北航、北邮四校MSC联合主办的Hackathon，本来想着做做前端划划水，没想到项目中对前端可视化动画要求挺高，整个不够两天的Hackathon基本一直处于出现问题、解决问题的过程，过程足够难忘，最后也获得了“最佳视觉奖”，happy，写此文章纪录一下与小伙伴们奋斗两天的历程~纪录下开发中遇到的一些问题~">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2971.JPG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2973.JPG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/h.gif">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2898%2820161212-063938%29.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/tu.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/beziercurve.gif">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/zhuangtaiji.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2894%2820161212-063938%29.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2972.JPG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次Hackathon经历">
+<meta name="twitter:description" content="抱着小伙伴的大腿参加了今年北大、清华、北航、北邮四校MSC联合主办的Hackathon，本来想着做做前端划划水，没想到项目中对前端可视化动画要求挺高，整个不够两天的Hackathon基本一直处于出现问题、解决问题的过程，过程足够难忘，最后也获得了“最佳视觉奖”，happy，写此文章纪录一下与小伙伴们奋斗两天的历程~纪录下开发中遇到的一些问题~">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2971.JPG">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-hackathon" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/13/hackathon/" class="article-date">
+  	<time datetime="2016-12-12T16:00:00.000Z" itemprop="datePublished">2016-12-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      记一次Hackathon经历
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/项目小结/">项目小结</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>抱着小伙伴的大腿参加了今年北大、清华、北航、北邮四校MSC联合主办的Hackathon，本来想着做做前端划划水，没想到项目中对前端可视化动画要求挺高，整个不够两天的Hackathon基本一直处于出现问题、解决问题的过程，过程足够难忘，最后也获得了“最佳视觉奖”，happy，写此文章纪录一下与小伙伴们奋斗两天的历程~纪录下开发中遇到的一些问题~<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2971.JPG" alt=""><br><a id="more"></a></p>
+<hr>
+<h2 id="Hackathon之初了解"><a href="#Hackathon之初了解" class="headerlink" title="Hackathon之初了解"></a><strong>Hackathon之初了解</strong></h2><p>其实从名字就可以看出来，hack+marathon，简单来说，比赛就是需要参赛队伍在有限的时间内根据主题想出一个创意idea，并且去实现这个idea。<br>但是其实连两天都不到，周六早上去的时候先是有一个开场，然后周日下午1点就开始demo opening，时间是相当紧迫，不仅考验思维和创意方面，在代码能力和精力体力方面也是一个考验。</p>
+<h2 id="走进我们的Hackathon"><a href="#走进我们的Hackathon" class="headerlink" title="走进我们的Hackathon"></a><strong>走进我们的Hackathon</strong></h2><p>一图解千言（烤鱼精湛的美工:-D）<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2973.JPG" alt=""></p>
+<p><strong>核心都在算法方面上</strong>，培根大佬引领我们走向成功:-D</p>
+<blockquote>
+<p>算法方面表示我也了解不多，最多刷刷leetcode233，所以本文就不再多阐述算法方面如何实现车辆/人的识别以及实现如何红绿灯调度，重点放在前端方面~</p>
+</blockquote>
+<h2 id="Hackathon之前端开发历程"><a href="#Hackathon之前端开发历程" class="headerlink" title="Hackathon之前端开发历程"></a><strong>Hackathon之前端开发历程</strong></h2><p>主要是设计稿还原，然后就是红绿灯调度动画的实现，实现调度可视化，显示倒计时以及各种道路转向、红绿灯切换、堵塞情况展示等等。</p>
+<blockquote>
+<p>录制了一段简单的gif，帧数取得不多，看起来没有现实的流畅</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/h.gif" alt=""><br>(可以稍微看下整体的动画，红绿灯的调度)</p>
+<p>基本实现了所需的功能。</p>
+<h3 id="项目部分细节"><a href="#项目部分细节" class="headerlink" title="项目部分细节"></a><strong>项目部分细节</strong></h3><p>整体布局方面不成问题，主要时间都花在控制页中那个红绿灯调度动画的实现上，刚开始看到这个需求，由于需要展现堵塞情况，有个圆是动画扩散的，很容易让我想到css3动画的transition或者keyframe去轻松地完成它，并且背景中有些东西是固定不变的，只需将css3动画的dom元素定位到图片的某个位置即可，但是又一想，css3在画线方面能力是不足的，考虑到如果增加需求的话需要更复杂的动画（果然后面真的需要动态的线路），那css3根本做不到，就决定全部使用canvas来实现。</p>
+<p>当时在实现时画的各种草图<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2898%2820161212-063938%29.jpg" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/tu.png" alt=""></p>
+<h4 id="1-绘制各种图形"><a href="#1-绘制各种图形" class="headerlink" title="1. 绘制各种图形"></a><strong>1. 绘制各种图形</strong></h4><p>其实canvas动画在画项目中直线和圆方面并不难，都是直接使用canvas里的一些方法直接调用绘制即可。不过在画一些没有那么规则的图形时是需要费工夫去思考的。</p>
+<h4 id="roundRect圆角矩形"><a href="#roundRect圆角矩形" class="headerlink" title="roundRect圆角矩形"></a><strong><code>roundRect</code>圆角矩形</strong></h4><p>（也就是红绿灯外面的框），其实就是在绘制的时候使用<code>arcTo()</code>方法绘制弧线；</p>
+<h4 id="虚线"><a href="#虚线" class="headerlink" title="虚线"></a><strong>虚线</strong></h4><p>canvas是没有专门的方法去实现虚线的，所以其实在画直线虚线时，其实是直接使用for循环对所要画的直线端点之间分割成很多点，实现间隔的moveTo，lineTo实现的，可能你会想问曲线虚线怎么画，其实这个我当时也没有做到，本来是绘制动态曲线采用虚线间隔变化，但是虚线曲线没有实现，所以采用另外一种方式，后面会讲。</p>
+<h4 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a><strong>曲线</strong></h4><p>绘制曲线这种平时接触比较少，本项目使用的是<code>bezierCurveTo()</code>方法,绘制三次贝塞尔曲线，说实话挺麻烦的，需要用两个点去控制曲线，所以那两个控制点的位置都得算好。<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/beziercurve.gif" alt=""></p>
+<blockquote>
+<p>基本绘制方面也就这些，基本就是封装一些对象可供调用来复用绘制各种图形，因为每个图形基本不会只画一次，需要注意的点在于当你的canvas足够复杂时，更应该关注<code>ctx.save()</code>，<code>ctx.restore()</code>，<code>ctx.beginPath()</code>,<code>ctx.closePath()</code>这些方法的使用，不然之间互相影响，就将留下祸患，在后面出现bug你找都找不到。</p>
+</blockquote>
+<h3 id="2-实现动画控制"><a href="#2-实现动画控制" class="headerlink" title="2. 实现动画控制"></a><strong>2. 实现动画控制</strong></h3><p>项目中的动画基本就几个，一个是堵塞情况展示圆的动态扩散，一个是红绿灯的切换，还有一个是红绿灯切换相应路线的动态引导曲线。动画均放在<code>requestAnimationFrame</code>实现，不断擦除重绘。</p>
+<h4 id="堵塞情况展示圆的动态扩散"><a href="#堵塞情况展示圆的动态扩散" class="headerlink" title="堵塞情况展示圆的动态扩散"></a><strong>堵塞情况展示圆的动态扩散</strong></h4><p>这个实现比较简单，封装一个对象，然后对象里内圆的绘制使用<code>fill()</code>，然后外面扩散圆以内圆半径为基础设一个<code>outRadius</code>，然后每次重绘时这个<code>outRadius</code>增加，增加到一定程度再重新设为初值，就能实现扩散动画。</p>
+<h4 id="红绿灯切换相应路线的动态引导曲线"><a href="#红绿灯切换相应路线的动态引导曲线" class="headerlink" title="红绿灯切换相应路线的动态引导曲线"></a><strong>红绿灯切换相应路线的动态引导曲线</strong></h4><p>本来设计方面其实是一条条虚线的曲线，但是觉得虚线难以实现，参考了皮蛋学长的文章<a href="https://molunerfinn.com/marklinejs/#ds-thread" target="_blank" rel="external">https://molunerfinn.com/marklinejs/#ds-thread</a>，使用svg绘制贝塞尔曲线，因为svg可以轻松地取到svg长度length的相应的x和y坐标，通过在绘制svg，然后通过定时器来改变（每次增加percent偏移量）我们所需要取到的svg的length*percent，得到相应的x和y坐标，然后将这些坐标给让canvas绘制，就能实现跟随曲线运动（有兴趣可以点击文章，写得挺清楚的~），然后我在曲线上放三个白色小球（与背景色相同），然后设定它们的间隔，循环地在曲线上运动，也就实现了动态引导线的效果（产生线上有间隔的错觉，其实就是几个圆在上面运动）</p>
+<h3 id="红绿灯切换"><a href="#红绿灯切换" class="headerlink" title="红绿灯切换"></a><strong>红绿灯切换</strong></h3><p>其实这部分动画并不难，就是我根据倒计时然后将灯的颜色变了就行，但是难点在于需要实现比较真实的红绿灯，本项目中，实现的是，先直行-&gt;转弯-&gt;此路口红灯，每个路口都是这样，然后横向全红灯，则纵向出现绿灯，反之亦然，当时半夜在实现这个，有点乱，培根大大跟我讲了几遍，我后面捋了捋才恍然大悟233，其实就是一个状态机的实现，有兴趣的可以再仔细看看上面那个gif~<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/zhuangtaiji.png" alt=""></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h2><p>基本我做的部分就这些，不过花的时间真挺多的，需求在变化，说实话刚开始要是一来让我看这个东西需要的需求，我肯定是惊呆的，写了1000多行代码（时间紧，很多是垃圾代码），烤鱼算我的时间说我写了17个小时233，开发效率有待提高，不过最后完成了需求也是蛮高兴的，也是不管结果怎样，这个Hackathon的过程是印象深刻的，也算是锻炼了自己吧，最后还出乎意料地拿到了“最佳视觉奖”，真是令人兴奋的，当然这跟队友是分不开的，感谢培根/烤鱼/菜菜/猫猫~<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2894%2820161212-063938%29.jpg" alt=""></p>
+<p>最后附上大功臣之一烤鱼（美工大佬）做的很好玩的图吧~哈哈哈<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_2972.JPG" alt=""></p>
+<p><strong>最后广告hhh，个人公众号，欢迎关注</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg" alt=""></h2><blockquote>
+<p>转载/引用需要经过作者同意。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/20/reverse-proxy/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          基于node的stream pipe实现反向代理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/31/nodejs-spider-experience/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">个人nodejs爬虫相关模块小整合</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="hackathon" data-title="记一次Hackathon经历" data-url="https://bupt-hjm.github.io/2016/12/13/hackathon/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

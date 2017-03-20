@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>大创项目提交与投票系统之前端小结 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在4月份接手了这个项目，此次大创网站基于去年的网站基础改进，前端部分全面改版，功能方面增加项目分类、项目提交、在线抽奖等功能，虽然网站在上线过程中遇到了问题，不过也算最终圆满完成使命。写此文章来记录与大创技术组小伙伴一起奋斗的一个月~记录下项目遇到的坑~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大创项目提交与投票系统之前端小结">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/05/22/invnovation2016/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="在4月份接手了这个项目，此次大创网站基于去年的网站基础改进，前端部分全面改版，功能方面增加项目分类、项目提交、在线抽奖等功能，虽然网站在上线过程中遇到了问题，不过也算最终圆满完成使命。写此文章来记录与大创技术组小伙伴一起奋斗的一个月~记录下项目遇到的坑~">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%209%20-%20%E5%A4%A7%E5%88%9B%E5%B1%95%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F%20-%20http___10.3.240.199_projectSearch.action_Judge%3D0.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%2010%20-%20%E5%A4%A7%E5%88%9B%E6%8F%90%E4%BA%A4%E7%B3%BB%E7%BB%9F%20-%20http___10.3.240.199_login.jsp.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%89%8B%E6%9C%BA.PNG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/2.PNG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA%E9%A1%B5.PNG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%209%20-%20%E5%A4%A7%E5%88%9B%E5%B1%95%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F%20-%20http___10.3.240.199_projectSearch.action_Judge%3D0.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_0897.JPG">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大创项目提交与投票系统之前端小结">
+<meta name="twitter:description" content="在4月份接手了这个项目，此次大创网站基于去年的网站基础改进，前端部分全面改版，功能方面增加项目分类、项目提交、在线抽奖等功能，虽然网站在上线过程中遇到了问题，不过也算最终圆满完成使命。写此文章来记录与大创技术组小伙伴一起奋斗的一个月~记录下项目遇到的坑~">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-invnovation2016" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/22/invnovation2016/" class="article-date">
+  	<time datetime="2016-05-21T16:00:00.000Z" itemprop="datePublished">2016-05-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      大创项目提交与投票系统之前端小结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/项目小结/">项目小结</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>在4月份接手了这个项目，此次大创网站基于去年的网站基础改进，前端部分全面改版，功能方面增加项目分类、项目提交、在线抽奖等功能，虽然网站在上线过程中遇到了问题，不过也算最终圆满完成使命。写此文章来记录与大创技术组小伙伴一起奋斗的一个月~记录下项目遇到的坑~<br><a id="more"></a></p>
+<h2 id="最终上线页面"><a href="#最终上线页面" class="headerlink" title="最终上线页面"></a><strong>最终上线页面</strong></h2><blockquote>
+<p>不多说话，先放图<br>前端部分采用bootstrap框架，完成对手机的适配，前端部分我负责项目分页展示页面，项目详细页面、项目提交页面</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%209%20-%20%E5%A4%A7%E5%88%9B%E5%B1%95%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F%20-%20http___10.3.240.199_projectSearch.action_Judge%3D0.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%2010%20-%20%E5%A4%A7%E5%88%9B%E6%8F%90%E4%BA%A4%E7%B3%BB%E7%BB%9F%20-%20http___10.3.240.199_login.jsp.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%89%8B%E6%9C%BA.PNG" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/2.PNG" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA%E9%A1%B5.PNG" alt=""></p>
+<h2 id="开发中问题以及解决问题"><a href="#开发中问题以及解决问题" class="headerlink" title="开发中问题以及解决问题"></a><strong>开发中问题以及解决问题</strong></h2><h3 id="如何完成图片上传，并且在其前端方面进行上传格式的限制"><a href="#如何完成图片上传，并且在其前端方面进行上传格式的限制" class="headerlink" title="如何完成图片上传，并且在其前端方面进行上传格式的限制"></a><strong>如何完成图片上传，并且在其前端方面进行上传格式的限制</strong></h3><p>由于面向的群体为大创参展项目的同学们，所以文件上传方面直接采用formdata进行上传，<br>formdata需要chrome7+，IE10+，Safari5+或其他浏览器高速模式才可以正常兼容，这个在页面上提示即可。注意得在form表单中加入<code>enctype=&quot;multipart/form-data&quot;</code>，同时在<code>jquery ajax</code>提交中加入<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">processData:</span> <span class="literal">false</span>,  <span class="comment">// 告诉jQuery不要去处理发送的数据</span></div><div class="line"><span class="string">contentType:</span> <span class="literal">false</span>   <span class="comment">// 告诉jQuery不要去设置Content-Type请求头</span></div></pre></td></tr></table></figure></p>
+<p>否则会造成提交失败。</p>
+<p>然后对于格式判断，我直接采用正则表达式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">"submit-img"</span>).files[<span class="number">0</span>];<span class="comment">//获取图片信息</span></div><div class="line"><span class="keyword">var</span> img_type = img.type;</div><div class="line"><span class="keyword">var</span> img_test = <span class="regexp">/jpg|jpeg|png/g</span>;</div><div class="line"><span class="keyword">if</span>(!img_test.test(img_type)) &#123; <span class="comment">//判断格式中是否带有jpg、jpeg、png字样</span></div><div class="line">    <span class="comment">//响应代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="在项目组上传不同尺寸图片，如何优雅地展示"><a href="#在项目组上传不同尺寸图片，如何优雅地展示" class="headerlink" title="在项目组上传不同尺寸图片，如何优雅地展示"></a><strong>在项目组上传不同尺寸图片，如何优雅地展示</strong></h3><p>这需要在css方面稍微下点功夫，我对每个项目缩略图外做了高度固定栅格系统的小格子，用<code>width: 100%;</code>，<code>height</code>不加以设置，来保证图片正常的宽高比，用<code>overflow: hidden</code>来截取图片，在牺牲某些图片在缩略图下的效果，来保证整体的美观。同时用css3的<code>transition</code>结合<code>hover</code>，同时<code>position</code>的<code>relative</code>与<code>absolute</code>定位，来实现hover动态遮罩层，来提升用户PC端体验。移动端方面通过<code>.col-sm-*</code>类在移动端换得更好的显示。</p>
+<h3 id="项目分页的实现以及正则表达式的快速应用解决问题"><a href="#项目分页的实现以及正则表达式的快速应用解决问题" class="headerlink" title="项目分页的实现以及正则表达式的快速应用解决问题"></a><strong>项目分页的实现以及正则表达式的快速应用解决问题</strong></h3><p>本来打算用bootstrap的分页插件解决，后来由于时间仓促，延续去年的方式，在jsp页面直接用<code>s:iterator</code>与<code>s:property</code>j解决了分页部分<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%209%20-%20%E5%A4%A7%E5%88%9B%E5%B1%95%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F%20-%20http___10.3.240.199_projectSearch.action_Judge%3D0.png" alt=""></p>
+<blockquote>
+<p>之前都觉得正则很少用，用在爬虫方面居多，在这次开发中，觉得正则表达式重要而且强大</p>
+</blockquote>
+<p>由于后台数据库存取图片地址时存在问题，我想起前端方面可以迅速搞定问题，便直接在前端取出地址时正则表达式截取字符串，虽然简单，但是迅速解决了问题,后来发现移动端在图片src指定加载失败后，后再用js来替换src不能正常加载，便采取了先提取后端给出的地址，再存入src，解决了问题。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;             </div><div class="line">          <span class="keyword">var</span> src = $(<span class="string">".detail-img-src"</span>).text();</div><div class="line">            <span class="keyword">var</span> re = <span class="string">"C:\\vote\\InnovationVote\\"</span>;</div><div class="line">            src = src.replace(re,<span class="string">""</span>);</div><div class="line">            $(<span class="string">".project-detail-img-box"</span>).find(<span class="string">"img"</span>)[<span class="number">0</span>].src = src;</div><div class="line">                    </div><div class="line">                    </div><div class="line">                    </div><div class="line">            <span class="keyword">var</span> rr = <span class="regexp">/picture/</span>;</div><div class="line">          <span class="keyword">var</span> src = $(<span class="string">".project-detail-img-box"</span>).find(<span class="string">"img"</span>)[<span class="number">0</span>].src;</div><div class="line">          <span class="keyword">if</span>(!rr.test(src))</div><div class="line">              $(<span class="string">".project-detail-img-box"</span>).find(<span class="string">"img"</span>)[<span class="number">0</span>].src = <span class="string">"/images/logo.png"</span>;</div><div class="line">            &#125;</div><div class="line">)</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="web安全问题"><a href="#web安全问题" class="headerlink" title="web安全问题"></a><strong>web安全问题</strong></h3><p>首先位于内网也算一个小安全吧，本来打算采用验证码，由于时间仓促，便取消了验证码，延续去年用刷卡取得有效的投票资格。但是由于小伙伴在对免卡登录的嘉宾号采用了错误的方式，没有采用随机数，导致在开展第二天出现脚本刷票情况（谁叫我们是在北邮hhh），最后当天晚上我们也紧急处理了情况，删除了刷票的异常数据，采用了新的嘉宾号码，最后解决了问题。觉得明年应该处理ip频繁请求问题，否则会导致网站异常问题。觉得可以<code>nginx</code>来处理频繁请求ip以及负载均衡问题。。</p>
+<h3 id="高并发或数据流问题"><a href="#高并发或数据流问题" class="headerlink" title="高并发或数据流问题"></a><strong>高并发或数据流问题</strong></h3><p>由于这个项目基于去年的基础开发，忽略了这个方面的处理，由于平时对这方面经验也颇少，无法进行测试，导致网站在开展过程中出现错误情况，但是也以重启服务予以解决。（觉得主要还有这个鬼windows服务器的锅hhh）</p>
+<blockquote>
+<p>后端同学也异常辛苦，熬了好多个夜，也解决了很多棘手的问题，比如一些后台抽奖与投票逻辑等等，本文侧重个人前端方面，其他就不多说了</p>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h4><p>在这个访问量达到10000+的网站的开发中，也是我第一次跟java后端进行交互，真的丰富了很多实际开发经验。<br>最后，感谢大创技术组的各个小伙伴，一起奋斗解决问题的感觉真是很好，最后也是圆满完成任务，hhh有种像士兵平时训练然后最后一起上战场然后最后完成胜利的感觉hhh，所以嘛，必须记录一下。</p>
+<blockquote>
+<p>恩恩，继续放图啊~(我还是那么凶，恩恩hh你说的没错)</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/IMG_0897.JPG" alt=""></p>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/29/buptclass/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          nodejs爬取空闲自习室之全过程记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/20/Netease-FE-interview/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记一次网易前端实习面试</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="invnovation2016" data-title="大创项目提交与投票系统之前端小结" data-url="https://bupt-hjm.github.io/2016/05/22/invnovation2016/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>nodejs爬取空闲自习室之全过程记录 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="网站访问地址：http://buptclass.com/网站截图(pc端效果)：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs爬取空闲自习室之全过程记录">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/05/29/buptclass/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="网站访问地址：http://buptclass.com/网站截图(pc端效果)：">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%2014%20-%20%E5%8C%97%E9%82%AE%E6%9C%AC%E9%83%A8%E8%87%AA%E4%B9%A0%E5%AE%A4%20-%20http___buptclass.com_.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/mobile.PNG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/KOGNXIAN.PNG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/chulikongxian.PNG">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%2014%20-%20%E5%8C%97%E9%82%AE%E6%9C%AC%E9%83%A8%E8%87%AA%E4%B9%A0%E5%AE%A4%20-%20http___buptclass.com_.png">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs爬取空闲自习室之全过程记录">
+<meta name="twitter:description" content="网站访问地址：http://buptclass.com/网站截图(pc端效果)：">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%2014%20-%20%E5%8C%97%E9%82%AE%E6%9C%AC%E9%83%A8%E8%87%AA%E4%B9%A0%E5%AE%A4%20-%20http___buptclass.com_.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-buptclass" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/29/buptclass/" class="article-date">
+  	<time datetime="2016-05-28T16:00:00.000Z" itemprop="datePublished">2016-05-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodejs爬取空闲自习室之全过程记录
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/nodejs/">nodejs</a><a class="article-category-link" href="/categories/前端/nodejs/爬虫/">爬虫</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>网站访问地址：<a href="http://buptclass.com/" target="_blank" rel="external">http://buptclass.com/</a><br>网站截图(pc端效果)：<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%2014%20-%20%E5%8C%97%E9%82%AE%E6%9C%AC%E9%83%A8%E8%87%AA%E4%B9%A0%E5%AE%A4%20-%20http___buptclass.com_.png" alt=""><br><a id="more"></a><br>网站截图(手机端效果)：<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/mobile.PNG" alt=""><br>爬虫开源：<br><a href="https://github.com/BUPT-HJM/buptclass" target="_blank" rel="external">https://github.com/BUPT-HJM/buptclass</a><br>（欢迎star啦啦啦）</p>
+<h2 id="项目起源"><a href="#项目起源" class="headerlink" title="项目起源"></a><strong>项目起源</strong></h2><p>小伙伴@Ncer在寒假时写了<a href="https://bbs.byr.cn/#!article/Python/12316?p=1" target="_blank" rel="external">爬取教务系统空闲自习室的python版本</a>,然后我当时正学爬虫和nodejs，觉得可以试试写个nodejs爬虫版本，然后这个小项目就开始啦</p>
+<h2 id="项目开发过程"><a href="#项目开发过程" class="headerlink" title="项目开发过程"></a><strong>项目开发过程</strong></h2><p>下面就讲述并小结下开发中遇到的问题。</p>
+<h3 id="如何实现验证码识别"><a href="#如何实现验证码识别" class="headerlink" title="如何实现验证码识别"></a><strong>如何实现验证码识别</strong></h3><p>这个是第一个需要克服的问题。<br>然后就尝试去寻找nodejs有没有相关的资源学习，然后就找到了<a href="http://think2011.net/2016/01/31/node-ocr/" target="_blank" rel="external">用node.js实现验证码简单识别</a>,使用<code>node-tesseract</code>和<code>gm</code>，先用<code>gm</code>对图像进行适当处理，然后用<code>node-tesseract</code>进行图像识别</p>
+<blockquote>
+<p><strong>Tesseract 开源的 OCR 识别工具</strong><br><a href="http://linusp.github.io/2015/04/17/tesseract-install-usage.html" target="_blank" rel="external">Tesseract:安装与命令行使用</a><br><a href="https://github.com/desmondmorris/node-tesseract" target="_blank" rel="external">node-tesseract</a><br><a href="http://www.cnblogs.com/chinanetwind/p/3179513.html" target="_blank" rel="external">tesseract-ocr 学习笔记</a><br><a href="http://www.51testing.com/html/14/87714-3693118.html" target="_blank" rel="external">Tesseract-OCR的下载安装</a><br><strong>graphicsmagick 图像处理工具</strong><br><a href="https://github.com/aheckmann/gm" target="_blank" rel="external">gm</a><br><a href="http://aheckmann.github.io/gm/" target="_blank" rel="external">gm文档</a></p>
+</blockquote>
+<p>由于教务系统的验证码识别比较简单，我就没有通过<code>tesseract 训练</code>来提高识别率，我用<code>gm</code>去了斑h再调整了一下对比度识别率基本就很高了，然后后面加上了识别失败再次访问换图片识别，100%完成正常登陆。</p>
+<h3 id="如何获取验证码图片"><a href="#如何获取验证码图片" class="headerlink" title="如何获取验证码图片"></a><strong>如何获取验证码图片</strong></h3><p>本来我以为实现了了解验证码识别后，基本登录教务系统这个关卡没什么问题了，然后发现教务系统那个验证码图片是这样的<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img id=<span class="string">"vchart"</span> <span class="built_in">width</span>=<span class="string">"59"</span> <span class="built_in">height</span>=<span class="string">"24"</span> src=<span class="string">"/validateCodeAction.do?random="</span> +math.<span class="built_in">random</span>()=<span class="string">""</span> align=<span class="string">"absmiddle"</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>= =我怎么才能知道它的random什么鬼呢，看了network也没有用，也是random<br>我请教了下@Ncer，才发现其中之道。</p>
+<blockquote>
+<p>感谢@Ncer耐心指导hhh</p>
+</blockquote>
+<p>最后实现就是，先不设cookie访问访问教务系统登录页面，拿到当前cookie，用这个cookie再去访问图片地址，就能拿到当前页面的验证码图片。</p>
+<h2 id="如何登录"><a href="#如何登录" class="headerlink" title="如何登录"></a><strong>如何登录</strong></h2><p>大概就是，用<code>fs</code>将验证码图片写入本地，再<code>gm</code>读取图片，祛斑，调对比度，然后用<code>tesseract</code>实现验证码识别，然后我用正则表达式来判断这次识别的合法性，不合法则重来一次，再加上学号和密码post基本100%实现登录</p>
+<blockquote>
+<p>登录方面用了<code>superagent</code></p>
+</blockquote>
+<h2 id="如何爬取空闲教室列表"><a href="#如何爬取空闲教室列表" class="headerlink" title="如何爬取空闲教室列表"></a><strong>如何爬取空闲教室列表</strong></h2><p>就在全校课表中的教室使用情况查询里面来爬取<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/KOGNXIAN.PNG" alt=""><br>要爬取这个空闲的表，就意味着我得获取到这些空白的td格，并且得获取到相应的日期和对应的教室与对应的节数，这就需要花点时间来思考。<br>首先，我先把这个请求可以获得到的页面下到本地，然后本地测试爬取单独的一张table，因为发现是不按照规律的，我就用<code>cheerio</code>处理了一下页面，让它更加易于我的爬取。<br>处理完大概是这样的<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/chulikongxian.PNG" alt=""><br>接下来就是找规律了哈哈，</p>
+<blockquote>
+<p>爬虫有开源，这部分也写得略傻吧~</p>
+</blockquote>
+<p>爬出来的数据结构没弄得很好，大概如此<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"date"</span>: <span class="string">"星期一(05月09日)"</span>,</div><div class="line">    <span class="attr">"building"</span>: <span class="string">"主楼"</span>,</div><div class="line">    <span class="attr">"classNu"</span>: <span class="string">"1-2节"</span>,</div><div class="line">    <span class="attr">"classroomNu"</span>: <span class="string">"主-324(80)"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"date"</span>: <span class="string">"星期一(05月09日)"</span>,</div><div class="line">    <span class="attr">"building"</span>: <span class="string">"主楼"</span>,</div><div class="line">    <span class="attr">"classNu"</span>: <span class="string">"3-4节"</span>,</div><div class="line">    <span class="attr">"classroomNu"</span>: <span class="string">"主-324(80)"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"date"</span>: <span class="string">"星期一(05月09日)"</span>,</div><div class="line">    <span class="attr">"building"</span>: <span class="string">"主楼"</span>,</div><div class="line">    <span class="attr">"classNu"</span>: <span class="string">"5-6节"</span>,</div><div class="line">    <span class="attr">"classroomNu"</span>: <span class="string">"主-324(80)"</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>其实爬取的时候中间也存在一个爬取不到的问题，爬取要先访问一个地址作为另外一个地址的跳板才可以正常爬取到数据</p>
+</blockquote>
+<h2 id="如何循环爬取多个教学楼空闲教室列表"><a href="#如何循环爬取多个教学楼空闲教室列表" class="headerlink" title="如何循环爬取多个教学楼空闲教室列表"></a><strong>如何循环爬取多个教学楼空闲教室列表</strong></h2><p>总不能一个教学楼写一个函数吧，因为这些请求都是有规律的，想着外面套一个for循环不就完了，这样做发现由于这些操作都是异步的会产生问题，所以就得寻求异步的解决方案了。<br>花了一点时间了解<code>promise</code>后，便打算采用<code>async</code>来解决这个问题</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/marujunyy/article/details/8695205" target="_blank" rel="external">Async 详解</a><br><a href="http://www.alloyteam.com/2016/03/from-the-promise-then-said-on/" target="_blank" rel="external">从Promise的Then说起</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//代码部分大概这样吧</span></div><div class="line"><span class="keyword">var</span> count1 = <span class="number">0</span>;</div><div class="line"><span class="keyword">async</span>.whilst(<span class="comment">//处理异步</span></div><div class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> count1 &lt;= <span class="number">5</span> &#125;,</div><div class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"爬取"</span>+buildings[count1]+<span class="string">"完成"</span>);</div><div class="line">        spiderGo(count1);</div><div class="line">        count1++;</div><div class="line">        setTimeout(cb, <span class="number">2000</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"爬取成功"</span>)</div><div class="line">        <span class="comment">//console.log('1.1 err: ', err); // -&gt; undefined</span></div><div class="line">        <span class="keyword">var</span> byrclass = db.get(<span class="string">'byrclass'</span>);<span class="comment">//数据库处理</span></div><div class="line">        byrclass.insert(study,<span class="function"><span class="keyword">function</span>(<span class="params">err,doc</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span> (err) <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">"数据库写入成功"</span>)</div><div class="line">        &#125;);</div><div class="line">        db.close();</div><div class="line">        sync();<span class="comment">//upload</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"上传成功"</span>);</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="爬取的数据要放到哪里"><a href="#爬取的数据要放到哪里" class="headerlink" title="爬取的数据要放到哪里"></a><strong>爬取的数据要放到哪里</strong></h2><p>刚开始想着用mongodb，便学习着@piegg的<a href="https://github.com/Molunerfinn/Nodejs-ByrTopTen" target="_blank" rel="external">爬取十大</a>跟着写了本地mongodb的存取,使用<code>monk</code>和<code>mongodb</code>连接数据库并且插入数据库。</p>
+<p>然后也写了个<code>fs</code>直接写入json文件</p>
+<blockquote>
+<p>由于后来直接用vue-resource读取，然后就直接用json了，后面会介绍</p>
+</blockquote>
+<h2 id="如何展现爬取的数据"><a href="#如何展现爬取的数据" class="headerlink" title="如何展现爬取的数据"></a><strong>如何展现爬取的数据</strong></h2><p>因为也在练手学<code>vue</code>,于是就采用了<code>vue</code>做前端框架，而且这个也算单页面应用，后面说不定还会加点东西，所以选择了<code>vue</code><br>然后用到了<code>vue-resource</code>来获取json数据，最后data渲染到页面，然后想着要做table过滤，然后发现了<code>vue</code>官方示例正好有一个很类似的<a href="http://vuejs.org.cn/examples/grid-component.html" target="_blank" rel="external">表格组件</a>,于是加以改造，便得到了现在这个页面。</p>
+<blockquote>
+<p>css部分我就直接用了boostrap.min.css了快捷点，其实那个也不大。</p>
+</blockquote>
+<p>我直接用<code>webpack</code>来处理那个require (vue-resource)，因为后面也说不定会加上一些vue组件,也练一下手，就用上了打包成一个bundle.js，页面加载这个就OK。而在使用webpack的过程中发现了<code>webpack-dev-server</code>，其实我现在这个页面也没有后台，直接起一个静态资源服务器也未尝不可吧，在云主机用nginx反向代理一下，就完成了。<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/FireShot%20Capture%2014%20-%20%E5%8C%97%E9%82%AE%E6%9C%AC%E9%83%A8%E8%87%AA%E4%B9%A0%E5%AE%A4%20-%20http___buptclass.com_.png" alt=""></p>
+<h2 id="最后的问题"><a href="#最后的问题" class="headerlink" title="最后的问题"></a><strong>最后的问题</strong></h2><p>本来打算用下<code>node-schedule</code>（在@piegg学到的）然后定时爬取<br>在我把项目文件放到云主机上突然发现= =教务系统是无法外网访问的<br>所以想着解决方案，omg，访问<a href="http://sslvpn.bupt.edu.cn/，这个vpn关闭了？" target="_blank" rel="external">http://sslvpn.bupt.edu.cn/，这个vpn关闭了？</a><br>最后就放弃在云主机上部署爬虫，估计很难行得通，便打算直接在本地上传数据，但是总不能我手动吧= =这也太2了hhh<br>然后就打算再写一个脚本来实现这些操作，觉得要用node就全用node吧<br>就发现了<code>node-ssh</code></p>
+<blockquote>
+<p>github真是天堂，找什么都有<br>and node大法好！</p>
+</blockquote>
+<p>然后我看着<code>node-ssh</code>只有介绍ssh登录服务器的一些操作，然后想着应该有人封装好了上传文件的东西吧，查了一下还真有，不过star量并不多，叫做<a href="https://github.com/robogeek/node-ssh2sync" target="_blank" rel="external">node-ssh2sync</a>,依赖于上面这个<code>node-ssh</code>，然后在填写了一些配置信息后也成功可以实现上传同步。</p>
+<p>then<br>肯定不能我自己点着脚本再上传啊~接着就把写了个bat文件注册成windows服务，一开机登录网关，登上校园网，爬取数据，上传云主机，大功告成~</p>
+<h3 id="待解决的问题"><a href="#待解决的问题" class="headerlink" title="待解决的问题"></a><strong>待解决的问题</strong></h3><ul>
+<li>页面上数据冗余量大，有一些不必要的信息存在</li>
+</ul>
+<blockquote>
+<p>由于页面直接用<code>vue</code>的<code>filterBy</code>来过滤，再加上爬虫部分其实数据结构也可以改进，这个问题我会想想</p>
+</blockquote>
+<ul>
+<li>由于直接用<code>vue-resource</code>加载整个<code>json</code>，加载速度有待改进-</li>
+</ul>
+<blockquote>
+<p>这些都会慢慢改进，有什么好建议也可以直接跟我说</p>
+</blockquote>
+<p><strong>爬虫开源：</strong><br><a href="https://github.com/BUPT-HJM/buptclass" target="_blank" rel="external">https://github.com/BUPT-HJM/buptclass</a><br>（欢迎star啦啦啦）</p>
+<blockquote>
+<p>本文可能有很多错误欢迎指正啦~<br>感谢@Ncer提供域名和指导，还有@piegg的指导</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/10/boom/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          关于一个基于canvas的原生js图片爆炸插件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/22/invnovation2016/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">大创项目提交与投票系统之前端小结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="buptclass" data-title="nodejs爬取空闲自习室之全过程记录" data-url="https://bupt-hjm.github.io/2016/05/29/buptclass/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

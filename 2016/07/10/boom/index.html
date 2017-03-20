@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>关于一个基于canvas的原生js图片爆炸插件 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="关于一个基于canvas的原生js图片爆炸插件">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/07/10/boom/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%9B%BE%E5%83%8F%201.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/3703396155-5781c95668ee3_articlex.gif">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于一个基于canvas的原生js图片爆炸插件">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%9B%BE%E5%83%8F%201.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-boom" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/10/boom/" class="article-date">
+  	<time datetime="2016-07-09T16:00:00.000Z" itemprop="datePublished">2016-07-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于一个基于canvas的原生js图片爆炸插件
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%9B%BE%E5%83%8F%201.jpg" alt=""><br><a id="more"></a><br><strong>DEMO访问地址：</strong><a href="https://bupt-hjm.github.io/BoomGo/">https://bupt-hjm.github.io/BoomGo/</a><br><strong>插件及使用方法地址：</strong> <a href="https://github.com/BUPT-HJM/BoomGo" target="_blank" rel="external">https://github.com/BUPT-HJM/BoomGo</a><br><strong>动画：</strong><img src="http://7xp9v5.com1.z0.glb.clouddn.com/3703396155-5781c95668ee3_articlex.gif" alt=""></p>
+<h2 id="1-参考JQuery，支持链式调用"><a href="#1-参考JQuery，支持链式调用" class="headerlink" title="1.参考JQuery，支持链式调用"></a><strong>1.参考JQuery，支持链式调用</strong></h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"><span class="built_in">window</span>, <span class="literal">undefined</span></span>) </span>&#123;</div><div class="line">  <span class="comment">//...</span></div><div class="line">  <span class="comment">// A.prototype.init.prototype指向A.prototype</span></div><div class="line">  boom.prototype.init.prototype = boom.prototype;</div><div class="line">  <span class="comment">//暴露变量</span></div><div class="line">  <span class="built_in">window</span>.boom = boom;</div><div class="line">&#125;)(<span class="built_in">window</span>)</div></pre></td></tr></table></figure>
+<h2 id="2-Canvas-API-getImageData对图像颜色采样"><a href="#2-Canvas-API-getImageData对图像颜色采样" class="headerlink" title="2.Canvas API getImageData对图像颜色采样"></a><strong>2.Canvas API <code>getImageData</code>对图像颜色采样</strong></h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 获取canvas像素值,构造colors数组</div><div class="line"> * <span class="doctag">@param</span>   ctx    绘图上下文</div><div class="line"> * <span class="doctag">@param</span>   canvas canvas元素</div><div class="line"> * <span class="doctag">@return</span>  colors colors数组</div><div class="line"> */</div><div class="line">function initColors(ctx, canvas) &#123;</div><div class="line">  <span class="keyword">var</span> colors = [];</div><div class="line">  <span class="keyword">var</span> imagedata = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</div><div class="line">  <span class="keyword">var</span> <span class="keyword">data</span> = imagedata.<span class="keyword">data</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="number">0</span>; x &lt; canvas.width; x++) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> y = <span class="number">0</span>; y &lt; canvas.height; y++) &#123;</div><div class="line">      <span class="comment">//获取进入数组的偏移量</span></div><div class="line">      <span class="keyword">var</span> i = ((y * canvas.width) + x) * <span class="number">4</span>;</div><div class="line"></div><div class="line">      <span class="keyword">var</span> r = <span class="keyword">data</span>[i];</div><div class="line">      <span class="keyword">var</span> g = <span class="keyword">data</span>[i + <span class="number">1</span>];</div><div class="line">      <span class="keyword">var</span> b = <span class="keyword">data</span>[i + <span class="number">2</span>];</div><div class="line">      <span class="keyword">var</span> a = <span class="keyword">data</span>[i + <span class="number">3</span>];</div><div class="line">      <span class="keyword">var</span> color = &#123;</div><div class="line">        r: r,</div><div class="line">        g: g,</div><div class="line">        b: b,</div><div class="line">        a: a</div><div class="line">      &#125;</div><div class="line">      colors.push(color);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> colors;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-支持自定义爆炸参数"><a href="#3-支持自定义爆炸参数" class="headerlink" title="3.支持自定义爆炸参数"></a><strong>3.支持自定义爆炸参数</strong></h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//默认参数</span></div><div class="line"><span class="keyword">var</span> argOptions = &#123;</div><div class="line">    <span class="string">'radius'</span>: <span class="number">10</span>,<span class="comment">//小球大小</span></div><div class="line">    <span class="string">'minVx'</span>: <span class="number">-30</span>,<span class="comment">//最小水平喷射速度</span></div><div class="line">    <span class="string">'maxVx'</span>: <span class="number">30</span>,<span class="comment">//最大水平喷射速度</span></div><div class="line">    <span class="string">'minVy'</span>: <span class="number">-50</span>,<span class="comment">//最小垂直喷射速度</span></div><div class="line">    <span class="string">'maxVy'</span>: <span class="number">50</span>,<span class="comment">//最大垂直喷射速度</span></div><div class="line">    <span class="string">'edgeOpacity'</span>: <span class="literal">false</span><span class="comment">//canvas是否边缘羽化</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//爆炸go支持延时默认为立即爆炸即go(0)</span></div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用自定义参数，可以不写全</span></div><div class="line"><span class="keyword">var</span> argOptions = &#123;</div><div class="line">    <span class="string">'radius'</span>: <span class="number">10</span>,<span class="comment">//小球大小</span></div><div class="line">    <span class="string">'minVx'</span>: <span class="number">-30</span>,<span class="comment">//最小水平喷射速度</span></div><div class="line">    <span class="string">'maxVx'</span>: <span class="number">30</span>,<span class="comment">//最大水平喷射速度</span></div><div class="line">    <span class="string">'minVy'</span>: <span class="number">-50</span>,<span class="comment">//最小垂直喷射速度</span></div><div class="line">    <span class="string">'maxVy'</span>: <span class="number">50</span>,<span class="comment">//最大垂直喷射速度</span></div><div class="line">    <span class="string">'edgeOpacity'</span>: <span class="literal">false</span><span class="comment">//是否canvas边缘羽化</span></div><div class="line">&#125;</div><div class="line">boom(<span class="string">"canvas1"</span>,<span class="string">"imgs/test1.jpg"</span>,argOptions).<span class="keyword">go</span>(<span class="number">3000</span>);</div><div class="line"><span class="comment">//3s后按argOptions参数爆炸id为canvas1的图片</span></div></pre></td></tr></table></figure>
+<h2 id="更多东西由你发现"><a href="#更多东西由你发现" class="headerlink" title="更多东西由你发现"></a><strong>更多东西由你发现</strong></h2><blockquote>
+<p>初学canvas，欢迎follow和star，pull request，提出您的宝贵意见<br><strong>github地址：</strong> <a href="https://github.com/BUPT-HJM/BoomGo" target="_blank" rel="external">https://github.com/BUPT-HJM/BoomGo</a></p>
+</blockquote>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a><strong>感谢</strong></h2><ul>
+<li>感谢@chokcoco与@xxycode带来的灵感和部分代码参考</li>
+<li>感谢@kiki9611的建议</li>
+<li>参考<ul>
+<li><a href="https://github.com/chokcoco/boomJS" target="_blank" rel="external">https://github.com/chokcoco/boomJS</a></li>
+<li><a href="https://github.com/xxycode/UIViewXXYBoom" target="_blank" rel="external">https://github.com/xxycode/UIViewXXYBoom</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/17/study-vue-demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          学习vuejs官网示例
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/29/buptclass/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nodejs爬取空闲自习室之全过程记录</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="boom" data-title="关于一个基于canvas的原生js图片爆炸插件" data-url="https://bupt-hjm.github.io/2016/07/10/boom/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

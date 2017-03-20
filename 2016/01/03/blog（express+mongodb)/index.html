@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>基于Express+MongoDB搭建的简单功能的博客 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="总结一下自己学的，自己也总结一下跟着教程遇到的坑
+关于环境配置和模块安装首先是安装环境，node.js不用说了，还有Express和Mongodb我在本地电脑Windows跟着教程一切都进行得很顺利，然而在阿里云主机的linux上面在安装express然后npm start,一直在报错，报错的是error：缺少XX模块什么的，这就很无奈了，明明应该直接npm stall就可以安装所需的模块，但是还">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Express+MongoDB搭建的简单功能的博客">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/01/03/blog（express+mongodb)/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="总结一下自己学的，自己也总结一下跟着教程遇到的坑
+关于环境配置和模块安装首先是安装环境，node.js不用说了，还有Express和Mongodb我在本地电脑Windows跟着教程一切都进行得很顺利，然而在阿里云主机的linux上面在安装express然后npm start,一直在报错，报错的是error：缺少XX模块什么的，这就很无奈了，明明应该直接npm stall就可以安装所需的模块，但是还">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE%20(2).png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE%20(1).png">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Express+MongoDB搭建的简单功能的博客">
+<meta name="twitter:description" content="总结一下自己学的，自己也总结一下跟着教程遇到的坑
+关于环境配置和模块安装首先是安装环境，node.js不用说了，还有Express和Mongodb我在本地电脑Windows跟着教程一切都进行得很顺利，然而在阿里云主机的linux上面在安装express然后npm start,一直在报错，报错的是error：缺少XX模块什么的，这就很无奈了，明明应该直接npm stall就可以安装所需的模块，但是还">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-blog（express+mongodb)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/03/blog（express+mongodb)/" class="article-date">
+  	<time datetime="2016-01-02T16:00:00.000Z" itemprop="datePublished">2016-01-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于Express+MongoDB搭建的简单功能的博客
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/nodejs/">nodejs</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>总结一下自己学的，自己也总结一下跟着教程遇到的坑</p>
+<h2 id="关于环境配置和模块安装"><a href="#关于环境配置和模块安装" class="headerlink" title="关于环境配置和模块安装"></a><strong>关于环境配置和模块安装</strong></h2><p>首先是安装环境，node.js不用说了，还有Express和Mongodb<br>我在本地电脑Windows跟着教程一切都进行得很顺利，然而在阿里云主机的linux上面在安装express然后<code>npm start</code>,一直在报错，报错的是error：缺少XX模块什么的，这就很无奈了，明明应该直接<code>npm stall</code>就可以安装所需的模块，但是还是缺少，没办法，好的，它报缺少什么模块你就装什么咯，用<code>npm install XXX（模块）</code>一个一个装，虽然很烦，但是也无计可施，我也是一个一个装，最后发现没再报错也是比较欣喜的，学了一个阶段后，发现后面的模块安装都是先在package.json中的dependencies加上所需的模块再<code>npm install</code>即可完成<br><a id="more"></a></p>
+<h2 id="关于运行"><a href="#关于运行" class="headerlink" title="关于运行"></a><strong>关于运行</strong></h2><p>运行express的时候linux和Windows的操作是不一样的，这个可以去express官网查看，但是直接<code>npm start</code>都是可行的，比较坑的就是每次我们更新代码后就要手动停止运用并重启，这就比较麻烦了，可以安装一个supervisor模块，<code>npm install -g supervisor</code>即可，教程中用了<code>supervisor app</code>这对于高版本的express是不可行的，要使用<code>supervisor .\bin\www</code>这便可以运行，它可以帮助我们自动重启应用</p>
+<h2 id="关于MongoDB的启动"><a href="#关于MongoDB的启动" class="headerlink" title="关于MongoDB的启动"></a><strong>关于MongoDB的启动</strong></h2><p>同样的，在每次我们要运行博客的时候就要进入mongodb的目录下的bin文件夹下来启动博客，如若没有启动，博客在运行的时候就会报错，我找到的一个解决方法就是可以创建一个.bat文件放在桌面，然后你把所需的命令放进去，每次要用的时候直接点击这个.bat文件即可，如下就是我的.bat文件放的命令</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">D:</span></div><div class="line">cd <span class="regexp">/nodestudy/</span>mongodb/bin   </div><div class="line">mongod --dbpath=<span class="string">D:</span><span class="regexp">/nodestudy/</span>mongodb<span class="regexp">/bin/</span>blog</div></pre></td></tr></table></figure>
+<h2 id="其他的一些坑"><a href="#其他的一些坑" class="headerlink" title="其他的一些坑"></a><strong>其他的一些坑</strong></h2><p><code>module.exports=Post;</code><br><code>module.exports=app;</code><br>诸如此类的话要记得写，因为这样才可以让这里导出函数接口，让其他地方通过require访问，否则就会报出各种undefined的错误<br>还有由于教程是出来了一段时间了，MongoDB如果和connect-mongo不匹配的话也会报错，你就要在package.json里面把它们一起更新到新版本，然后<code>npm install</code>即可</p>
+<h2 id="搭建Express-MongoDB的简单博客的过程"><a href="#搭建Express-MongoDB的简单博客的过程" class="headerlink" title="搭建Express+MongoDB的简单博客的过程"></a><strong>搭建Express+MongoDB的简单博客的过程</strong></h2><p>我现在就只实现了简单的注册、登录、发表文章的多人博客的功能<br>总结一下过程</p>
+<ul>
+<li><p>首先是要规划好路由，你需要哪些路由，比如这个多人博客，就需要<br>/：首页<br>/login：注册<br>/reg：登录<br>/post：发表文章<br>/logout：登出<br>相应地就要用诸如<code>app.get(&#39;/&#39;，function(req,res){})</code>和响应这些的<code>app.post(&#39;/login&#39;，function(req,res){})</code>来规划，这也就是MVC框架中的C部分，controller部分</p>
+</li>
+<li><p>针对路由和所需的功能，相应地在views下面写ejs模板，这就是MVC框架中的V部分，view部分</p>
+</li>
+<li>为了记住用户的登录状态用的是会话（session）机制来记入，也就是在登陆后user存入req.session.user然后在post时把req.session.user给user，模板通过判断user来渲染不同的页面</li>
+<li>为了实现页面通知也就是注册成功错误还有登录成功错误等等，在这个博客中引入的是flash模块，结合重定向来实现</li>
+<li>实现post请求就需要创建模型与数据进行交互，这就是MVC框架中的M部分，model部分，在博客中用了两个模型一个是User对象一个是Post对象，User.prototype.save实现用户信息的存储，User.get实现用户信息的读取，Post.get和Post.prototype.save分别实现从数据库获取文章和保存文章到数据库等等</li>
+</ul>
+<blockquote>
+<p>我就只完成了简单的注册登录发表文章的功能，后面有时间再加上其他的功能</p>
+</blockquote>
+<h2 id="实现效果如下"><a href="#实现效果如下" class="headerlink" title="实现效果如下"></a><strong>实现效果如下</strong></h2><p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE%20(2).png" alt=""></p>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE%20(1).png" alt=""></p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a><strong>教程</strong></h2><blockquote>
+<p>链接：<a href="https://github.com/nswbmw/N-blog" target="_blank" rel="external">https://github.com/nswbmw/N-blog</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/05/js-popup/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          JavaScript-弹出层的实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/15/host-server-visiting/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于主机、服务器以及网站访问</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="blog（express+mongodb)" data-title="基于Express+MongoDB搭建的简单功能的博客" data-url="https://bupt-hjm.github.io/2016/01/03/blog（express+mongodb)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

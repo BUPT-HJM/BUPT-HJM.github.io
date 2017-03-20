@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>python爬虫学习(采集搜素引擎联想词) | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以360搜索和百度搜索首页为例用python采集搜索引擎联想词">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫学习(采集搜素引擎联想词)">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/02/09/python-spider-word-associations/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="以360搜索和百度搜索首页为例用python采集搜索引擎联想词">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/544.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/4646.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/89494.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/89494.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/789465113.png">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python爬虫学习(采集搜素引擎联想词)">
+<meta name="twitter:description" content="以360搜索和百度搜索首页为例用python采集搜索引擎联想词">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/544.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-python-spider-word-associations" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/09/python-spider-word-associations/" class="article-date">
+  	<time datetime="2016-02-08T16:00:00.000Z" itemprop="datePublished">2016-02-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python爬虫学习(采集搜素引擎联想词)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/爬虫/">爬虫</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>以360搜索和百度搜索首页为例用python采集搜索引擎联想词<br><a id="more"></a></p>
+<h2 id="以360搜索首页为例分析"><a href="#以360搜索首页为例分析" class="headerlink" title="以360搜索首页为例分析"></a><strong>以360搜索首页为例分析</strong></h2><blockquote>
+<p>打开www.so.com</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/544.png" alt=""></p>
+<blockquote>
+<p>右键审查元素，输入关键词，可以看到联想，并查看network</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/4646.png" alt=""></p>
+<blockquote>
+<p>可以看到它的response</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/89494.png" alt=""></p>
+<blockquote>
+<p>可以看到它的headers</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/89494.png" alt=""></p>
+<blockquote>
+<p>所以我们就可以通过python3提供的模块来获得它的response，再通过正则来提取出我们想要的数据</p>
+</blockquote>
+<p>##　<strong>代码的实现</strong></p>
+<p><strong>360搜索首页</strong></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#coding</span>:UTF-<span class="number">8</span></div><div class="line">import urllib<span class="selector-class">.request</span></div><div class="line">import urllib</div><div class="line">import re</div><div class="line">import <span class="selector-tag">time</span></div><div class="line">from random import choice</div><div class="line"></div><div class="line">iplist=[<span class="string">'110.73.142.124'</span>,<span class="string">'119.188.94.145'</span>,<span class="string">'119.48.180.182'</span>]  #用IP代理，从网上复制下来的几个免费的</div><div class="line"></div><div class="line">list=[<span class="string">"编程"</span>,<span class="string">"前端"</span>]</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list:</div><div class="line">    ip=choice(iplist)</div><div class="line">    gjc=urllib<span class="selector-class">.parse</span><span class="selector-class">.quote</span>(item)</div><div class="line">    url=<span class="string">"https://sug.so.360.cn/suggest?callback=suggest_so&amp;encodein=utf-8&amp;encodeout=utf-8&amp;format=json&amp;fields=word,obdata&amp;word="</span>+gjc</div><div class="line">    headers=&#123;</div><div class="line">             <span class="string">"Get"</span>:url,</div><div class="line">             <span class="string">"Host"</span>:<span class="string">"sug.so.360.cn"</span>,</div><div class="line">             <span class="string">"Referer"</span>:<span class="string">"https://www.so.com/?src=so.com"</span>,</div><div class="line">             <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 UBrowser/5.5.10106.5 Safari/537.36"</span></div><div class="line">             &#125;</div><div class="line">    proxy_support=urllib<span class="selector-class">.request</span><span class="selector-class">.ProxyHandler</span>(&#123;<span class="string">'http'</span>:<span class="string">'http://'</span>+ip&#125;)  #以下三行为使用IP代理</div><div class="line">    opener=urllib<span class="selector-class">.request</span><span class="selector-class">.build_opener</span>(proxy_support)</div><div class="line">    urllib<span class="selector-class">.request</span><span class="selector-class">.install_opener</span>(opener)</div><div class="line">    </div><div class="line">    req=urllib<span class="selector-class">.request</span><span class="selector-class">.Request</span>(url)</div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> headers:</div><div class="line">        req.add_header(key, headers[key])</div><div class="line">    </div><div class="line">    html=urllib<span class="selector-class">.request</span><span class="selector-class">.urlopen</span>(req).read().decode()</div><div class="line">    ss=re.findall(<span class="string">"\"word\":\"(.*?)\""</span>,html)</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> ss:</div><div class="line">        print(item)</div></pre></td></tr></table></figure>
+<p><strong>百度搜索首页</strong></p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"># coding:UTF-<span class="number">8</span></div><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> <span class="built_in">time</span></div><div class="line">from random <span class="keyword">import</span> choice</div><div class="line"></div><div class="line">iplist=[<span class="string">'110.73.142.124'</span>,<span class="string">'119.188.94.145'</span>,<span class="string">'119.48.180.182'</span>]</div><div class="line">list=[<span class="string">"编程"</span>,<span class="string">"前端"</span>]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="built_in">in</span> list:</div><div class="line">    ip=choice(iplist)</div><div class="line">    gjc=urllib.parse.quote(item)</div><div class="line">    # gjc=<span class="string">"集团"</span></div><div class="line">    # gjc=urllib.parse.quote(gjc)</div><div class="line">    # print(gjc)</div><div class="line">    url=<span class="string">"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="</span>+gjc+<span class="string">"&amp;json=1&amp;p=3&amp;sid=18285_1460_18283_12826_18560_17001_17073_15526_11784_18081_18017&amp;csor=2&amp;cb=jQuery110205117536815814674_1454926196994&amp;_=1454926197002"</span></div><div class="line">    headers=&#123;</div><div class="line">             <span class="string">"Get"</span>:url,</div><div class="line">             <span class="string">"Host"</span>:<span class="string">"sp0.baidu.com"</span>,</div><div class="line">             <span class="string">"Referer"</span>:<span class="string">"https://www.baidu.com/"</span>,</div><div class="line">             <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 UBrowser/5.5.10106.5 Safari/537.36"</span></div><div class="line">             &#125;</div><div class="line">    proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:<span class="string">'http://'</span>+ip&#125;)</div><div class="line">    opener=urllib.request.build_opener(proxy_support)</div><div class="line">    urllib.request.install_opener(opener)</div><div class="line">    </div><div class="line">    req=urllib.request.Request(url)</div><div class="line">    <span class="keyword">for</span> key <span class="built_in">in</span> headers:</div><div class="line">        req.add_header(key, headers[key])</div><div class="line">    </div><div class="line">    html=urllib.request.urlopen(req).read().decode(<span class="string">'gb2312'</span>)</div><div class="line">    ss=re.findall(<span class="string">"\"</span>s\<span class="string">":\[(.*?)\]"</span>,html)</div><div class="line">    <span class="keyword">for</span> item <span class="built_in">in</span> ss:</div><div class="line">        pass</div><div class="line">    q=re.findall(<span class="string">"\"</span>(.*?)\<span class="string">""</span>,item)</div><div class="line">    <span class="keyword">for</span> item <span class="built_in">in</span> q:</div><div class="line">       print(item)</div><div class="line">    # <span class="built_in">time</span>.sleep(<span class="number">6</span>)</div></pre></td></tr></table></figure>
+<p>##　<strong>代码运行结果</strong></p>
+<p><strong>发现360搜索和百度搜索的关键词联想一样</strong></p>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/789465113.png" alt=""></p>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/10/nodejs-spider/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          nodejs学习-网络爬虫与数据操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/08/python-spider-hanhanblog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python爬虫学习(爬取韩寒博客文章链接)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="python-spider-word-associations" data-title="python爬虫学习(采集搜素引擎联想词)" data-url="https://bupt-hjm.github.io/2016/02/09/python-spider-word-associations/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

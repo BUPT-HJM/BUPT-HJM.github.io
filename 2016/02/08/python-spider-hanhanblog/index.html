@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>python爬虫学习(爬取韩寒博客文章链接) | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用Eclipse+Pydev作为开发环境，通过python3的urllib.request爬取韩寒新浪博客所有文章链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫学习(爬取韩寒博客文章链接)">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/02/08/python-spider-hanhanblog/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="用Eclipse+Pydev作为开发环境，通过python3的urllib.request爬取韩寒新浪博客所有文章链接">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/hanhan.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/shencha.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/ye.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160208172200.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160208172228.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/fsdfa.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/fdsfsdfds.png">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python爬虫学习(爬取韩寒博客文章链接)">
+<meta name="twitter:description" content="用Eclipse+Pydev作为开发环境，通过python3的urllib.request爬取韩寒新浪博客所有文章链接">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/hanhan.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-python-spider-hanhanblog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/08/python-spider-hanhanblog/" class="article-date">
+  	<time datetime="2016-02-07T16:00:00.000Z" itemprop="datePublished">2016-02-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python爬虫学习(爬取韩寒博客文章链接)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/爬虫/">爬虫</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>用Eclipse+Pydev作为开发环境，通过python3的<code>urllib.request</code>爬取韩寒新浪博客所有文章链接<br><a id="more"></a></p>
+<h2 id="分析韩寒博客页面"><a href="#分析韩寒博客页面" class="headerlink" title="分析韩寒博客页面"></a><strong>分析韩寒博客页面</strong></h2><p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/hanhan.png" alt=""></p>
+<blockquote>
+<p>审查元素查看文章链接</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/shencha.png" alt=""></p>
+<blockquote>
+<p>这就是我们要的东西(类似如下）)</p>
+</blockquote>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a title=<span class="string">""</span> target=<span class="string">"_blank"</span> href=<span class="string">"http://blog.sina.com.cn/s/blog_4701280b0102eksm.html"</span>&gt;<span class="number">2013</span>年<span class="number">09</span>月<span class="number">06</span>日&lt;/a&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>由于要爬取多页还要分析页与页之间的联系</p>
+</blockquote>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/ye.png" alt=""></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">第一页：http:<span class="regexp">//blog</span>.sina.com.cn/<span class="regexp">s/articlelist_1191258123_0_1.html</span></div><div class="line">第二页：http://blog.sina.com.cn/<span class="regexp">s/articlelist_1191258123_0_2.html</span></div><div class="line">第三页：http://blog.sina.com.cn/<span class="regexp">s/articlelist_1191258123_0_3.html</span></div><div class="line">...</div><div class="line">第七页：http://blog.sina.com.cn/<span class="keyword">s</span>/articlelist_1191258123_0_72.html</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这也就发现了规律，只需要一个循环加字符串连接就可以解决</p>
+</blockquote>
+<h2 id="代码的实现"><a href="#代码的实现" class="headerlink" title="代码的实现"></a><strong>代码的实现</strong></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding:utf-8           #指定编码为UTF-8</span></div><div class="line"><span class="keyword">import</span> urllib.request    <span class="comment">#引入urllib.request模块</span></div><div class="line">url=[<span class="string">''</span>]*<span class="number">350</span>             <span class="comment">#初始化一个可放350个字符串的列表存放连接</span></div><div class="line">page=<span class="number">1</span>                   <span class="comment">#初始化为第一页</span></div><div class="line">link=<span class="number">1</span>                   <span class="comment">#初始化为第一个链接</span></div><div class="line">i=<span class="number">0</span>                      <span class="comment">#初始化链接列表下标</span></div><div class="line"><span class="keyword">while</span> page&lt;=<span class="number">7</span>:           <span class="comment">#循环爬遍7页</span></div><div class="line">    con=urllib.request.urlopen(<span class="string">'http://blog.sina.com.cn/s/articlelist_1191258123_0_'</span>+str(page)+<span class="string">'.html'</span>).read()        <span class="comment">#用引入模块方法读取它页面的html代码</span></div><div class="line">    con=con.decode()                         <span class="comment">#转变为UTF-8</span></div><div class="line">    title=con.find(<span class="string">r'&lt;a title'</span>)              <span class="comment">#找到title位置('r'是防止字符转义)</span></div><div class="line">    href=con.find(<span class="string">r'href='</span>,title)            <span class="comment">#从title开始搜,找到href位置</span></div><div class="line">    html=con.find(<span class="string">r'.html'</span>,href)             <span class="comment">#从href开始搜，找到html位置</span></div><div class="line">    <span class="keyword">while</span> title!=<span class="number">-1</span> <span class="keyword">and</span> href!=<span class="number">-1</span> <span class="keyword">and</span> html!=<span class="number">1</span> <span class="keyword">and</span> i&lt;<span class="number">350</span>:  <span class="comment">#如果找不到title，找不到href，找不到html，并且列表遍历完毕</span></div><div class="line">        url[i]=con[href+<span class="number">6</span>:html+<span class="number">5</span>]            <span class="comment">#这个可以通过测试切片得出url</span></div><div class="line">        print(link,<span class="string">'  '</span>,url[i])              <span class="comment">#输出url</span></div><div class="line">        title=con.find(<span class="string">r'&lt;a title'</span>,html)     <span class="comment">#下面的操作就跟上面一样了，就是循环</span></div><div class="line">        href=con.find(<span class="string">r'href='</span>,title) </div><div class="line">        html=con.find(<span class="string">r'.html'</span>,href)</div><div class="line">        i=i+<span class="number">1</span></div><div class="line">        link=link+<span class="number">1</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(page,<span class="string">'find end!'</span>)</div><div class="line">    page=page+<span class="number">1</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">'all find end'</span>)     </div><div class="line">j=<span class="number">0</span></div><div class="line">link=<span class="number">1</span></div><div class="line"><span class="keyword">while</span> j&lt;<span class="number">350</span> <span class="keyword">and</span> url[j]!=<span class="string">''</span>:                            <span class="comment">#重新设置一个循环用于写入文件，通过IO操作将链接保存下来</span></div><div class="line">    content=urllib.request.urlopen(url[j]).read()   </div><div class="line">    f=open(<span class="string">r'hanhan/'</span>+url[j][<span class="number">-26</span>:],<span class="string">'wb'</span>)</div><div class="line">    f.write(content)</div><div class="line">    print(<span class="string">'downloading'</span>,link,<span class="string">'  '</span>,url[j])</div><div class="line">    j=j+<span class="number">1</span></div><div class="line">    link=link+<span class="number">1</span></div><div class="line">    f.close()</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">'download article finished'</span>)</div></pre></td></tr></table></figure>
+<h2 id="代码运行"><a href="#代码运行" class="headerlink" title="代码运行"></a><strong>代码运行</strong></h2><p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160208172200.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160208172228.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/fsdfa.png" alt=""><br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/fdsfsdfds.png" alt=""></p>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/09/python-spider-word-associations/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          python爬虫学习(采集搜素引擎联想词)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/12/center-css/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS居中总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="python-spider-hanhanblog" data-title="python爬虫学习(爬取韩寒博客文章链接)" data-url="https://bupt-hjm.github.io/2016/02/08/python-spider-hanhanblog/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

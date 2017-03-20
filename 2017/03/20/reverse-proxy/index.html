@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>基于node的stream pipe实现反向代理 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="反向代理讲到反向代理，就先提下正向代理与反向代理的区别，正反是相对代理对象而言的，正向则是代理对象是客户端，反向的代理对象是服务端，代理的概念就是中介者，正向代理比如一些vpn,它作为客户端的代理对象，客户端的请求都让它来代替请求，服务端只知道那个代理对象，不知道你的请求，然而反向代理则不同，比如著名的反向代理服务器nginx，就起到这样一个功能，很多大型网站都不止一台服务器，然而我们就只会请求它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于node的stream pipe实现反向代理">
+<meta property="og:url" content="https://bupt-hjm.github.io/2017/03/20/reverse-proxy/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="反向代理讲到反向代理，就先提下正向代理与反向代理的区别，正反是相对代理对象而言的，正向则是代理对象是客户端，反向的代理对象是服务端，代理的概念就是中介者，正向代理比如一些vpn,它作为客户端的代理对象，客户端的请求都让它来代替请求，服务端只知道那个代理对象，不知道你的请求，然而反向代理则不同，比如著名的反向代理服务器nginx，就起到这样一个功能，很多大型网站都不止一台服务器，然而我们就只会请求它">
+<meta property="og:image" content="http://tech.meituan.com/img/stream-how-data-comes-out.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/o_ttt.jpg">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg">
+<meta property="og:updated_time" content="2017-03-20T05:12:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于node的stream pipe实现反向代理">
+<meta name="twitter:description" content="反向代理讲到反向代理，就先提下正向代理与反向代理的区别，正反是相对代理对象而言的，正向则是代理对象是客户端，反向的代理对象是服务端，代理的概念就是中介者，正向代理比如一些vpn,它作为客户端的代理对象，客户端的请求都让它来代替请求，服务端只知道那个代理对象，不知道你的请求，然而反向代理则不同，比如著名的反向代理服务器nginx，就起到这样一个功能，很多大型网站都不止一台服务器，然而我们就只会请求它">
+<meta name="twitter:image" content="http://tech.meituan.com/img/stream-how-data-comes-out.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-reverse-proxy" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/20/reverse-proxy/" class="article-date">
+  	<time datetime="2017-03-19T16:00:00.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于node的stream pipe实现反向代理
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反向代理/">反向代理</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/nodejs/">nodejs</a><a class="article-category-link" href="/categories/前端/nodejs/stream/">stream</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a><strong>反向代理</strong></h2><p>讲到反向代理，就先提下正向代理与反向代理的区别，正反是相对代理对象而言的，正向则是代理对象是客户端，反向的代理对象是服务端，代理的概念就是中介者，正向代理比如一些vpn,它作为客户端的代理对象，客户端的请求都让它来代替请求，服务端只知道那个代理对象，不知道你的请求，然而反向代理则不同，比如著名的反向代理服务器<code>nginx</code>，就起到这样一个功能，很多大型网站都不止一台服务器，然而我们就只会请求它一个地址，作为反向代理服务器，它帮我们把请求转发到相应的服务器并将返回的内容给我们，但是你并不知道那些真实返回请求的服务器是什么。<br>通俗来讲，对代理对象的正反而言，其实就是正向代理充当客户端，反向代理充当服务端<br><a id="more"></a></p>
+<blockquote>
+<p>我们实现的反向代理镜像站点，还需要实现内容的替换</p>
+</blockquote>
+<h2 id="使用nginx进行反向代理"><a href="#使用nginx进行反向代理" class="headerlink" title="使用nginx进行反向代理"></a><strong>使用nginx进行反向代理</strong></h2><p>nginx作为著名的反向代理服务器，必须谈一下它～<br>我们要实现的本机访问test.com就是访问baidu.com，并且替换<code>百度</code>为<code>test</code></p>
+<ol>
+<li><p>安装nginx-full并且安装相应替代插件<br><code>brew install nginx-full --with-subs-filter-module --with-sub</code></p>
+</li>
+<li><p>配置nginx.conf<br>需要关闭gzip，subs_filter才能正常工作</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</div><div class="line">    <span class="attribute">server_name</span>  <span class="regexp">*.test.com</span> test.com;</div><div class="line">    <span class="attribute">location</span> / &#123;</div><div class="line">        <span class="attribute">proxy_pass</span> https://www.baidu.com;</div><div class="line">        <span class="attribute">proxy_set_header</span> Accept-Encoding <span class="string">''</span>;</div><div class="line">        <span class="attribute">subs_filter</span> <span class="string">'百度'</span> <span class="string">'头条'</span>;</div><div class="line">       &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置etc/hosts<br><code>127.0.0.1 test.com www.test.com</code></p>
+</li>
+<li><p>开启nginx访问test.com<br><code>sudo nginx</code></p>
+</li>
+</ol>
+<h2 id="直接使用stream-pipe实现代理"><a href="#直接使用stream-pipe实现代理" class="headerlink" title="直接使用stream pipe实现代理"></a><strong>直接使用stream pipe实现代理</strong></h2><h3 id="stream与pipe"><a href="#stream与pipe" class="headerlink" title="stream与pipe"></a><strong>stream与pipe</strong></h3><p><code>stream</code>即流，可以理解为运载数据的流，<code>HTTP request</code>和<code>process.stdout</code>这些都是流的实例，分为可写流、可读流、可读可写流，使用<code>stream</code>可以实现数据的流式处理，<code>pipe</code>是<code>stream</code>的强大之处，跟unix中的<code>|</code>类似，可以将一个流的输出灌入另一个流的输入，很多强大的工具都使用stream pipe去实现流式处理，比如<code>gulp</code>、<code>Browserify</code>等等，本文的重点不在于介绍node的stream模块，而且网上也有文章深入地介绍了stream的原理和应用，给出几个比较好的链接，供读者阅读学习</p>
+<ul>
+<li><a href="https://github.com/substack/stream-handbook" target="_blank" rel="external">stream-handbook</a></li>
+<li><a href="https://github.com/jabez128/stream-handbook" target="_blank" rel="external">stream-handbook中文版</a></li>
+<li><a href="https://github.com/zoubin/streamify-your-node-program" target="_blank" rel="external">streamify-your-node-program</a></li>
+<li><a href="http://www.cnblogs.com/accordion/p/5560531.html" target="_blank" rel="external">node中的Stream－Readable和Writeable解读</a></li>
+<li><a href="http://web.jobbole.com/88100/" target="_blank" rel="external">深入node之Transform</a></li>
+</ul>
+<p>还有几张助于理解的图<br>（来自<a href="http://tech.meituan.com/stream-internals.html" target="_blank" rel="external">美团点评团队</a>)<br><img src="http://tech.meituan.com/img/stream-how-data-comes-out.png" alt=""><br>(来自<a href="http://www.cnblogs.com/accordion/p/5560531.html" target="_blank" rel="external">royalrover</a>)<br><img src="http://7xp9v5.com1.z0.glb.clouddn.com/o_ttt.jpg" alt=""></p>
+<h3 id="如何用pipe实现反向代理"><a href="#如何用pipe实现反向代理" class="headerlink" title="如何用pipe实现反向代理"></a><strong>如何用pipe实现反向代理</strong></h3><p>其实原理很简单</p>
+<ul>
+<li>起一个<code>express</code>服务器作为反向代理服务器，作为服务端</li>
+<li>当我们对服务端访问时，request进入服务端，request是一个可读流，我们用<code>pipe</code>把它接到真实的服务器上，怎么接呢，我们可以通过http request,图方便我使用了node的模块<code>request</code>，<code>req.pipe(r)</code>,这样就请求到了真实的服务端、</li>
+<li>那返回的内容呢，在这里我们可以看到<code>pipe</code>的强大之处，pipe后返回目标流的引用，对，我们可以继续<code>pipe</code>,<code>req.pipe(r).pipe(res)</code>,这样其实就实现了反向代理</li>
+<li>当然这个只能实现简单的get请求，对于post或者put请求带参数的，我们还需在<code>request</code>模块中将参数传递</li>
+<li>如果还有鉴权部分，我们需要在<code>headers</code>中添加cookie</li>
+<li>最后其实要实现镜像站点，很多情况下我们还是需要替换部分内容，所以我们需要在pipe的过程中拿到返回的<code>MIME</code>,判断内容类型，而且需要注意的是stream传来的是一片一片的buffer而不是完整的内容，当然你可以对每一块buffer进行处理，但是通常通过正则方式或者使用cheerio来处理，我们往往需要整块内容，可以监听data拼接buffer,或者使用<code>concat-stream</code>直接拿到拼接成一块的buffer,再<code>Buffer.toString()</code>做处理，如果有压缩<code>gzip</code>的话还需要<code>zlib</code>去解压一下再去处理</li>
+</ul>
+<h3 id="stream-pipe实例代码"><a href="#stream-pipe实例代码" class="headerlink" title="stream pipe实例代码"></a><strong>stream pipe实例代码</strong></h3><p>一个简单的反向代理服务器，可以修改为配置为其他地址，注意事项就是上面所说的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseController</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> cookie = APP_CONF.cookie;</div><div class="line">    <span class="comment">// 反向代理链接</span></div><div class="line">    <span class="keyword">var</span> options = &#123;</div><div class="line">        <span class="attr">url</span>: APP_CONF.reverse_url + req.originalUrl,</div><div class="line">        <span class="attr">headers</span>: &#123;</div><div class="line">            <span class="comment">//cookie: APP_CONF.cookie</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> url = APP_CONF.reverse_url + req.originalUrl;</div><div class="line">    <span class="keyword">var</span> r = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/POST|PUT/i</span>.test(req.method)) &#123; <span class="comment">//假如是post／put请求</span></div><div class="line">        r = request.post(<span class="built_in">Object</span>.assign(options, &#123; <span class="attr">json</span>: req.body &#125;))</div><div class="line">            .on(<span class="string">'response'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">                <span class="comment">// 响应相应post/put请求</span></div><div class="line">            &#125;);</div><div class="line">        req.pipe(r).pipe(res);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">var</span> mime = <span class="string">''</span>;</div><div class="line">        <span class="keyword">var</span> isGzip = <span class="literal">false</span>;</div><div class="line">        r = request(options)</div><div class="line">            .on(<span class="string">'response'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">                mime = response.headers[<span class="string">'content-type'</span>];</div><div class="line">                <span class="keyword">if</span> (response.headers[<span class="string">'content-encoding'</span>] == <span class="string">'gzip'</span>) &#123;</div><div class="line">                    isGzip = <span class="literal">true</span>;</div><div class="line">                &#125;</div><div class="line">                res.writeHead(response.statusCode, response.headers);</div><div class="line">            &#125;);</div><div class="line">        <span class="comment">// req 可读流 ==传递chunk==&gt; r 可写流 ==返回目标流传递chunk==&gt; concat 可写流</span></div><div class="line">        req.pipe(r).pipe(concat(<span class="function"><span class="keyword">function</span>(<span class="params">body</span>) </span>&#123;</div><div class="line">            <span class="comment">// 拦截内容，根据mime去处理不同body</span></div><div class="line">            <span class="keyword">if</span> (mime &amp;&amp; mime.indexOf(<span class="string">"text/html;"</span>) !== <span class="number">-1</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (isGzip) &#123;</div><div class="line">                    zlib.gunzip(body, <span class="function"><span class="keyword">function</span>(<span class="params">err, decoded</span>) </span>&#123;</div><div class="line">                        <span class="keyword">var</span> $ = cheerio.load(decoded.toString());</div><div class="line">                        <span class="comment">// html相关处理</span></div><div class="line">                        <span class="comment">// cheerio</span></div><div class="line">                        body = $.html();</div><div class="line">                    &#125;);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">var</span> $ = cheerio.load(decoded.toString());</div><div class="line">                    <span class="comment">// html相关处理</span></div><div class="line">                    <span class="comment">// cheerio</span></div><div class="line">                    body = $.html();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            res.end(body);</div><div class="line">        &#125;));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完整代码github地址:<a href="https://github.com/BUPT-HJM/study-js/blob/master/study-nodejs/study-stream/reverse-proxy-pipe.js" target="_blank" rel="external">https://github.com/BUPT-HJM/study-js/blob/master/study-nodejs/study-stream/reverse-proxy-pipe.js</a></p>
+<h3 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a><strong>其他方式</strong></h3><p>可以通过网上一些现成的中间件、模块来实现，不过大体原理也是通过pipe来实现</p>
+<p><strong>使用node-http-proxy反向代理</strong></p>
+<blockquote>
+<p>使用middleware中的harmon进行内容修改</p>
+</blockquote>
+<ul>
+<li>harmon: <a href="https://github.com/No9/harmon" target="_blank" rel="external">https://github.com/No9/harmon</a></li>
+<li>node-http-proxy: <a href="https://github.com/nodejitsu/node-http-proxy" target="_blank" rel="external">https://github.com/nodejitsu/node-http-proxy</a></li>
+</ul>
+<p><strong>使用hoxy进行代理</strong></p>
+<blockquote>
+<p>自带cheerio，修改方便,并且hoxy代码拦截流程以及替换流程比较直接，这个其中的拦截很方便使用，可惜它跟express不好结合</p>
+</blockquote>
+<ul>
+<li>hoxy: <a href="https://github.com/greim/hoxy" target="_blank" rel="external">https://github.com/greim/hoxy</a></li>
+<li>文档：<a href="http://greim.github.io/hoxy/#main-module" target="_blank" rel="external">http://greim.github.io/hoxy/#main-module</a></li>
+</ul>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p>谢谢阅读~<br>欢迎follow我哈哈<a href="https://github.com/BUPT-HJM" target="_blank" rel="external">https://github.com/BUPT-HJM</a><br>欢迎继续观光我的博客~</p>
+<p><strong>欢迎关注</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg" alt=""></h2><blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/13/hackathon/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记一次Hackathon经历</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="reverse-proxy" data-title="基于node的stream pipe实现反向代理" data-url="https://bupt-hjm.github.io/2017/03/20/reverse-proxy/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

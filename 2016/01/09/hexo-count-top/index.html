@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>博客优化（添加统计和回到顶部功能） | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="添加统计
+添加统计也可以通过百度统计来实现，本博客采用不蒜子统计，几行代码解决一切">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客优化（添加统计和回到顶部功能）">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/01/09/hexo-count-top/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="添加统计
+添加统计也可以通过百度统计来实现，本博客采用不蒜子统计，几行代码解决一切">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博客优化（添加统计和回到顶部功能）">
+<meta name="twitter:description" content="添加统计
+添加统计也可以通过百度统计来实现，本博客采用不蒜子统计，几行代码解决一切">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-hexo-count-top" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/09/hexo-count-top/" class="article-date">
+  	<time datetime="2016-01-08T16:00:00.000Z" itemprop="datePublished">2016-01-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      博客优化（添加统计和回到顶部功能）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/hexo/">hexo</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <h2 id="添加统计"><a href="#添加统计" class="headerlink" title="添加统计"></a><strong>添加统计</strong></h2><blockquote>
+<p>添加统计也可以通过百度统计来实现，本博客采用不蒜子统计，几行代码解决一切<br><a id="more"></a><br><strong>打开<code>layout</code>文件夹下的_<code>partial文</code>件夹，修改<code>footer.ejs</code>，修改为</strong></p>
+</blockquote>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">id</span>=<span class="string">"footer"</span>&gt;</span></span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"footer-info"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer-left"</span>&gt;</span></div><div class="line">            &amp;copy; <span class="tag">&lt;<span class="name">%=</span></span><span class="ruby"> date(new Date(), <span class="string">'YYYY'</span>) </span><span class="xml"><span class="tag">%&gt;</span> <span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> config.author <span class="params">||</span> config.title </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">              本站总访问量<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>次</div><div class="line">              本站访客数<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_uv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>人次</div><div class="line">              本文总阅读量<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_page_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>次</div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer-right"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://hexo.io/"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>Hexo<span class="tag">&lt;/<span class="name">a</span>&gt;</span>  Theme <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/litten/hexo-theme-yilia"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>Yilia<span class="tag">&lt;/<span class="name">a</span>&gt;</span> by Litten</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你想修改计数方式或者样式，可以详见<br>链接:<a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank" rel="external">http://ibruce.info/2015/04/04/busuanzi/</a></p>
+</blockquote>
+<h2 id="添加回到顶部功能"><a href="#添加回到顶部功能" class="headerlink" title="添加回到顶部功能"></a><strong>添加回到顶部功能</strong></h2><blockquote>
+<p>参照<a href="http://www.yehbeats.com/2015/04/06/hexo-topmenu/" target="_blank" rel="external">http://www.yehbeats.com/2015/04/06/hexo-topmenu/</a></p>
+</blockquote>
+<h2 id="多说评论框优化"><a href="#多说评论框优化" class="headerlink" title="多说评论框优化"></a><strong>多说评论框优化</strong></h2><p><strong>1.在多说后台管理系统中修改为盖楼（或平铺或嵌套）模式</strong></p>
+<p><strong>2.在多说后台管理系统中自定义CSS框中加入自定义的代码</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">ul</span><span class="selector-class">.ds-comments-tabs</span> <span class="selector-tag">li</span><span class="selector-class">.ds-tab</span> <span class="selector-tag">a</span><span class="selector-class">.ds-current</span>&#123;<span class="attribute">border</span>:<span class="number">0</span>;<span class="attribute">text-shadow</span>:none&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-highlight</span>&#123;<span class="attribute">font-family</span>:Microsoft YaHei,Arial,Helvetica,sans-serif;<span class="attribute">font-size</span>:<span class="number">14px</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">ul</span><span class="selector-class">.ds-comments-tabs</span> <span class="selector-tag">li</span><span class="selector-class">.ds-tab</span> <span class="selector-tag">a</span><span class="selector-class">.ds-current</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#FFF</span>;<span class="attribute">background</span>:<span class="number">#37b8eb</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">a</span><span class="selector-class">.ds-highlight</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#FFF</span><span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span>&#123;<span class="attribute">padding-left</span>:<span class="number">5px</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">li</span><span class="selector-class">.ds-post</span>,<span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-hot-posts</span>&#123;<span class="attribute">overflow</span>:visible<span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-post-self</span>&#123;<span class="attribute">padding</span>:<span class="number">10px</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">20px</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">li</span><span class="selector-class">.ds-post</span>,<span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-post-self</span>&#123;<span class="attribute">border</span>:<span class="number">0</span><span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-avatar</span>,<span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">ul</span><span class="selector-class">.ds-children</span> <span class="selector-class">.ds-avatar</span>&#123;<span class="attribute">top</span>:<span class="number">15px</span>;<span class="attribute">left</span>:-<span class="number">30px</span>;<span class="attribute">width</span>:<span class="number">55px</span><span class="meta">!important</span>;<span class="attribute">height</span>:<span class="number">55px</span><span class="meta">!important</span>;<span class="attribute">box-shadow</span>:-<span class="number">1px</span> <span class="number">0</span> <span class="number">1px</span> <span class="built_in">rgba</span>(0,0,0,.15) inset<span class="meta">!important</span>;<span class="attribute">border-radius</span>:<span class="number">50%</span><span class="meta">!important</span>;<span class="attribute">padding</span>:<span class="number">0</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-class">.ds-avatar</span> <span class="selector-tag">a</span>&#123;<span class="attribute">display</span>:inline-block;<span class="attribute">width</span>:<span class="number">45px</span>;<span class="attribute">height</span>:<span class="number">45px</span>;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#b9baa6</span>;<span class="attribute">border-radius</span>:<span class="number">50%</span><span class="meta">!important</span>;<span class="attribute">background-color</span>:<span class="number">#fff</span><span class="meta">!important</span>;<span class="attribute">margin</span>:<span class="number">4px</span>;<span class="attribute">padding</span>:<span class="number">0</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-class">.ds-avatar</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">border-color</span>:<span class="number">#de5a4e</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-class">.ds-avatar</span>&gt;<span class="selector-tag">img</span>&#123;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#b9baa6</span>;<span class="attribute">margin</span>:<span class="number">4px</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-replybox</span>&#123;<span class="attribute">box-shadow</span>:none&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">ul</span><span class="selector-class">.ds-children</span> <span class="selector-class">.ds-replybox</span><span class="selector-class">.ds-inline-replybox</span> <span class="selector-tag">a</span><span class="selector-class">.ds-avatar</span>,<span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-replybox</span><span class="selector-class">.ds-inline-replybox</span> <span class="selector-tag">a</span><span class="selector-class">.ds-avatar</span>&#123;<span class="attribute">left</span>:-<span class="number">15px</span><span class="meta">!important</span>;<span class="attribute">top</span>:<span class="number">0</span><span class="meta">!important</span>;<span class="attribute">width</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">height</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">background</span>:<span class="number">0</span>;<span class="attribute">box-shadow</span>:none;<span class="attribute">padding</span>:<span class="number">0</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-replybox</span><span class="selector-class">.ds-inline-replybox</span> <span class="selector-tag">a</span><span class="selector-class">.ds-avatar</span> <span class="selector-tag">img</span>&#123;<span class="attribute">width</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">height</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">border-radius</span>:<span class="number">50%</span><span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-replybox</span> <span class="selector-tag">a</span><span class="selector-class">.ds-avatar</span>,<span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-replybox</span> <span class="selector-class">.ds-avatar</span> <span class="selector-tag">img</span>&#123;<span class="attribute">width</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">height</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">border-radius</span>:<span class="number">5px</span>;<span class="attribute">padding</span>:<span class="number">0</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-avatar</span> <span class="selector-tag">img</span>&#123;<span class="attribute">width</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">height</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">border-radius</span>:<span class="number">50%</span><span class="meta">!important</span>;<span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">1px</span> <span class="number">3px</span> <span class="built_in">rgba</span>(0,0,0,0.22);<span class="attribute">-webkit-backface-visibility</span>:hidden;<span class="attribute">-webkit-transition</span>:.<span class="number">4s</span> all ease-in-out;<span class="attribute">-moz-transition</span>:.<span class="number">4s</span> all ease-in-out;<span class="attribute">-o-transition</span>:.<span class="number">4s</span> all ease-in-out;<span class="attribute">-ms-transition</span>:.<span class="number">4s</span> all ease-in-out;<span class="attribute">transition</span>:.<span class="number">4s</span> all ease-in-out&#125;</div><div class="line"><span class="selector-class">.ds-post-self</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.ds-avatar</span> <span class="selector-tag">img</span>&#123;<span class="attribute">-webkit-transform</span>:<span class="built_in">rotate</span>(360deg);<span class="attribute">-moz-transform</span>:<span class="built_in">rotate</span>(360deg);<span class="attribute">-o-transform</span>:<span class="built_in">rotate</span>(360deg);<span class="attribute">-ms-transform</span>:<span class="built_in">rotate</span>(360deg);<span class="attribute">transform</span>:<span class="built_in">rotate</span>(360deg)&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-comment-body</span>&#123;<span class="attribute">background</span>:<span class="number">#f0f0e3</span>;<span class="attribute">border-radius</span>:<span class="number">5px</span>;<span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(0,0,0,.15),<span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(255,255,255,.75) inset;<span class="attribute">padding</span>:<span class="number">15px</span> <span class="number">15px</span> <span class="number">15px</span> <span class="number">55px</span><span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-comments</span> <span class="selector-tag">a</span><span class="selector-class">.ds-user-name</span>&#123;<span class="attribute">font-weight</span>:<span class="number">700</span>;<span class="attribute">color</span>:<span class="number">#696a52</span><span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-comments</span> <span class="selector-tag">a</span><span class="selector-class">.ds-user-name</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#D32</span><span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-bubble</span>&#123;<span class="attribute">display</span>:none<span class="meta">!important</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-hot-posts</span>&#123;<span class="attribute">border</span>:<span class="number">0</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-hot-posts</span> <span class="selector-class">.ds-gradient-bg</span>&#123;<span class="attribute">background</span>:<span class="number">0</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-ctx</span> <span class="selector-class">.ds-ctx-entry</span>&#123;<span class="attribute">border-bottom</span>:<span class="number">1px</span> solid <span class="number">#e6e6e6</span>;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">17px</span> <span class="number">8px</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-ctx</span> <span class="selector-class">.ds-ctx-entry</span> <span class="selector-class">.ds-avatar</span>&#123;<span class="attribute">height</span>:<span class="number">55px</span>;<span class="attribute">left</span>:-<span class="number">36px</span>;<span class="attribute">top</span>:-<span class="number">9px</span>;<span class="attribute">width</span>:<span class="number">55px</span>;<span class="attribute">margin</span>:<span class="number">0</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-comment-body</span> <span class="selector-tag">a</span>&#123;<span class="attribute">color</span>:<span class="number">#999</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-comment-body</span> <span class="selector-id">#ds-ctx</span>&#123;<span class="attribute">background-color</span>:<span class="built_in">rgba</span>(0,0,0,0.03);<span class="attribute">border-left</span>:<span class="number">0</span>;<span class="attribute">border-radius</span>:<span class="number">5px</span>;<span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(0,0,0,0.2),<span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(255,255,255,0.5) inset&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-ctx</span> <span class="selector-class">.ds-ctx-entry</span> <span class="selector-class">.ds-ctx-head</span> <span class="selector-tag">a</span>&#123;<span class="attribute">color</span>:<span class="number">#696a52</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>&#125;</div><div class="line"><span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-ctx</span> <span class="selector-class">.ds-ctx-entry</span> <span class="selector-class">.ds-ctx-head</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#D32</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">ul</span><span class="selector-class">.ds-children</span> <span class="selector-class">.ds-avatar</span> <span class="selector-tag">img</span>&#123;<span class="attribute">width</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">height</span>:<span class="number">45px</span><span class="meta">!important</span>;<span class="attribute">max-width</span>:<span class="number">100%</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-tag">ul</span><span class="selector-class">.ds-children</span> <span class="selector-class">.ds-comment-body</span>,<span class="selector-id">#ds-thread</span><span class="selector-class">.ds-narrow</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-replybox</span>&#123;<span class="attribute">padding-left</span>:<span class="number">55px</span>&#125;</div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-id">#ds-reset</span> <span class="selector-class">.ds-comment-body</span> <span class="selector-tag">p</span>,<span class="selector-id">#ds-reset</span> <span class="selector-id">#ds-ctx</span> <span class="selector-class">.ds-ctx-entry</span> <span class="selector-class">.ds-ctx-content</span>&#123;<span class="attribute">color</span>:<span class="number">#787968</span>&#125;</div><div class="line"><span class="comment">/*以上为把头像变圆及增加旋转效果*/</span></div><div class="line"><span class="selector-id">#ds-thread</span> <span class="selector-class">.ds-powered-by</span>&#123;<span class="attribute">display</span>:none<span class="meta">!important</span>;&#125;</div><div class="line"><span class="comment">/*去除多说底部版权特效*/</span></div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/10/ajax-jsonp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          ajax+jsonp跨域搜索的实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/08/kill-the-computer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于一个强制关机键引发的“血案”</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="hexo-count-top" data-title="博客优化（添加统计和回到顶部功能）" data-url="https://bupt-hjm.github.io/2016/01/09/hexo-count-top/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

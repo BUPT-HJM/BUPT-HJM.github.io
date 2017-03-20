@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>制作一个可以多屏互动的酷炫3D贪吃蛇 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="制作一个可以多屏互动的酷炫3D贪吃蛇">
+<meta property="og:url" content="https://bupt-hjm.github.io/2016/08/16/3d-snake-and-websocket/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/game.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/game.gif">
+<meta property="og:updated_time" content="2017-03-18T11:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="制作一个可以多屏互动的酷炫3D贪吃蛇">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/game.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-3d-snake-and-websocket" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/16/3d-snake-and-websocket/" class="article-date">
+  	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished">2016-08-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      制作一个可以多屏互动的酷炫3D贪吃蛇
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/threejs/">threejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/websocket/">websocket</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/游戏/">游戏</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/game.png" alt=""><br><a id="more"></a></p>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a><strong>最终效果</strong></h2><p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/game.gif" alt=""></p>
+<ul>
+<li>demo访问地址（只能电脑访问哦）： <a href="http://bupt-hjm.github.io/3d-snake">http://bupt-hjm.github.io/3d-snake</a> </li>
+<li>github地址：<a href="https://github.com/BUPT-HJM/3d-snake" target="_blank" rel="external">https://github.com/BUPT-HJM/3d-snake</a></li>
+</ul>
+<blockquote>
+<p>demo只能访问到无websocket服务器的一部分，按键盘<code>上下左右</code>控制贪吃蛇的移动</p>
+</blockquote>
+<h2 id="如何愉快地玩耍"><a href="#如何愉快地玩耍" class="headerlink" title="如何愉快地玩耍"></a><strong>如何愉快地玩耍</strong></h2><ul>
+<li>第一步，<del>当然是先star啦这是必须的呀:)</del> 先<code>git clone</code>把项目下到本地</li>
+<li>第二步，当然你电脑得<code>node</code>，因为我的<code>node_modules</code>已经直接放在github上了，就不用你<code>npm install</code>了，你就可以直接一步<code>node websocket.js</code>开启websocket服务器</li>
+<li>第三步就是把index.html和index2.html都打开就可以啦，可以通过index2.html的遥控来控制index.html</li>
+</ul>
+<blockquote>
+<p>如果用手机控制电脑游戏效果更佳哦~就像一个游戏手柄一样，你也可以本地再起个服务器，然后电脑和手机同一个局域网，手机访问index2.html就行了（注意要变动下localhost），或者也可以挂到云主机上，这个我试过了效果还不错，因为这个我做的这个只支持单用户，就不放地址了</p>
+</blockquote>
+<h2 id="项目细节"><a href="#项目细节" class="headerlink" title="项目细节"></a><strong>项目细节</strong></h2><h3 id="一、threejs构建3D立体效果"><a href="#一、threejs构建3D立体效果" class="headerlink" title="一、threejs构建3D立体效果"></a><strong>一、threejs构建3D立体效果</strong></h3><blockquote>
+<p>游戏中使用threejs创建了场景,摆好相机，然后加上一个渲染器便实现了酷炫的3D效果<br>（以下只给关键代码，省去部分代码）</p>
+</blockquote>
+<p><strong>1.创建场景</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//场景</span></div><div class="line">scene = <span class="keyword">new</span> THREE.Scene();</div><div class="line"><span class="comment">//照相机</span></div><div class="line">camera = <span class="keyword">new</span> THREE.OrthographicCamera(<span class="built_in">window</span>.innerWidth / <span class="number">-2</span>, <span class="built_in">window</span>.innerWidth / <span class="number">2</span>, <span class="built_in">window</span>.innerHeight / <span class="number">2</span>, <span class="built_in">window</span>.innerHeight / <span class="number">-2</span>, <span class="number">-500</span>, <span class="number">1000</span>);</div><div class="line">camera.position.x = <span class="number">100</span>;</div><div class="line">camera.position.y = <span class="number">100</span>;</div><div class="line">camera.position.z = <span class="number">100</span>;</div><div class="line"><span class="comment">//渲染器</span></div><div class="line">renderer = <span class="keyword">new</span> THREE.CanvasRenderer();</div><div class="line">renderer.setClearColor( <span class="number">0xf0f0f0</span> );</div><div class="line">renderer.setPixelRatio( <span class="built_in">window</span>.devicePixelRatio );</div><div class="line">renderer.setSize( <span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight );</div><div class="line">container.appendChild( renderer.domElement );</div></pre></td></tr></table></figure></p>
+<p><strong>2.场景加入必要的东西</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//加入线条</span></div><div class="line"><span class="keyword">var</span> size = <span class="number">500</span>, step = <span class="number">50</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> geometry = <span class="keyword">new</span> THREE.Geometry();</div><div class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = - size; i &lt;= size; i += step) &#123;</div><div class="line"></div><div class="line">    geometry.vertices.push( <span class="keyword">new</span> THREE.Vector3( - size, <span class="number">0</span>, i ) );</div><div class="line">    geometry.vertices.push( <span class="keyword">new</span> THREE.Vector3(   size, <span class="number">0</span>, i ) );</div><div class="line"></div><div class="line">    geometry.vertices.push( <span class="keyword">new</span> THREE.Vector3( i, <span class="number">0</span>, - size ) );</div><div class="line">    geometry.vertices.push( <span class="keyword">new</span> THREE.Vector3( i, <span class="number">0</span>,   size ) );</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> material = <span class="keyword">new</span> THREE.LineBasicMaterial( &#123; <span class="attr">color</span>: <span class="number">0x000000</span>, <span class="attr">opacity</span>: <span class="number">0.2</span> &#125; );</div><div class="line"></div><div class="line"><span class="keyword">var</span> line = <span class="keyword">new</span> THREE.LineSegments( geometry, material );</div><div class="line">scene.add( line );</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//加入灯光</span></div><div class="line"><span class="keyword">var</span> ambientLight = <span class="keyword">new</span> THREE.AmbientLight( <span class="built_in">Math</span>.random() * <span class="number">0x10</span> );</div><div class="line">scene.add( ambientLight );</div><div class="line"></div><div class="line"><span class="keyword">var</span> directionalLight = <span class="keyword">new</span> THREE.DirectionalLight( <span class="number">0xffffff</span> );</div><div class="line">directionalLight.position.x = <span class="number">-0.3</span>;</div><div class="line">directionalLight.position.y = <span class="number">0.8</span>;</div><div class="line">directionalLight.position.z = <span class="number">0.3</span>;</div><div class="line">directionalLight.position.normalize();</div><div class="line">scene.add( directionalLight );</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>可能有读者疑问，那个蛇的部分哪里加进去了，蛇的部分就是一些正方体，以为蛇的长度会变动，所以并没有在<code>init</code>代码中具体加入，只给出了<code>cubeGroup = new THREE.Object3D();</code><br>而在贪吃蛇游戏部分封装了一个绘制Cube的韩式易于调用绘制蛇身，也是往<code>scene</code>加入</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cube</span>(<span class="params">x, y, z, a, color</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">    <span class="keyword">this</span>.z = z;</div><div class="line">    <span class="keyword">this</span>.a = a;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line"> &#125;</div><div class="line"></div><div class="line">Cube.prototype.draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> geometry = <span class="keyword">new</span> THREE.BoxGeometry( <span class="keyword">this</span>.a, <span class="keyword">this</span>.a, <span class="keyword">this</span>.a );</div><div class="line">    <span class="keyword">var</span> material = <span class="keyword">new</span> THREE.MeshLambertMaterial( &#123; <span class="attr">color</span>: <span class="keyword">this</span>.color, <span class="attr">overdraw</span>: <span class="number">0.5</span> &#125; );</div><div class="line">    <span class="keyword">var</span> cube = <span class="keyword">new</span> THREE.Mesh( geometry, material );</div><div class="line">    cube.position.x = <span class="keyword">this</span>.x;</div><div class="line">    cube.position.z = <span class="keyword">this</span>.z;</div><div class="line">    cubeGroup.add(cube);</div><div class="line">    scene.add(cubeGroup);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p><strong>3.创建交互动画</strong></p>
+<blockquote>
+<p>其实此部分也只是实现一直重绘，而不是空间移动，通过照相机的视角实现3D效果</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//写变化</span></div><div class="line">    scene.remove(cubeGroup);</div><div class="line">    cubeGroup = <span class="keyword">new</span> THREE.Object3D();</div><div class="line">    snake.draw();</div><div class="line">    <span class="keyword">if</span>(GameStart) &#123;</div><div class="line">        snake.move();</div><div class="line">    &#125;</div><div class="line">    food.draw();</div><div class="line">    camera.lookAt( scene.position );</div><div class="line">    renderer.render( scene, camera );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="二、贪吃蛇游戏算法部分"><a href="#二、贪吃蛇游戏算法部分" class="headerlink" title="二、贪吃蛇游戏算法部分"></a><strong>二、贪吃蛇游戏算法部分</strong></h3><blockquote>
+<p>其实贪吃蛇的算法并不难，就是刚开始先定好初始长度，其实蛇的身子就是一个数组，移动的关键在于<code>蛇头</code>,要特别的取出蛇头，在键盘交互或者消息传输来后给出移动方向后，在蛇头处“缓存”一个相同的蛇头，根据坐标判断是否吃到东西，假如蛇头碰到食物，就直接让原来的蛇头往那个方向移动，刚刚放的那个相同的蛇头就在原处（就是其他不变），这样就实现了增长和移动,假如没碰到食物，还是让原来那个蛇头也是往那个方向移动，但是要把这个蛇的身子的这个数组<code>pop()</code>掉最后一个元素，实现蛇身长度没变。这样一直做下去，其实也就实现了贪吃蛇游戏。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Snake</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> snakeArr = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</div><div class="line">        <span class="keyword">var</span> cube = <span class="keyword">new</span> Cube(i*<span class="number">50</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="number">50</span>, <span class="number">0xffffff</span>);</div><div class="line">        snakeArr.splice(<span class="number">0</span>,<span class="number">0</span>,cube);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> head = snakeArr[<span class="number">0</span>];</div><div class="line">    head.color = <span class="string">"red"</span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">this</span>.head = snakeArr[<span class="number">0</span>];</div><div class="line">    <span class="keyword">this</span>.snakeArr = snakeArr;</div><div class="line">    <span class="keyword">this</span>.direction = <span class="number">39</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Snake.prototype.draw = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.isover) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.snakeArr.length; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.snakeArr[i].draw();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Snake.prototype.move = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> cube = <span class="keyword">new</span> Cube(<span class="keyword">this</span>.head.x, <span class="keyword">this</span>.head.y, <span class="keyword">this</span>.head.z, <span class="keyword">this</span>.head.a, <span class="number">0xffffff</span>);</div><div class="line">    <span class="keyword">this</span>.snakeArr.splice(<span class="number">1</span>, <span class="number">0</span>, cube);</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">if</span> (isEat()) &#123;</div><div class="line">        food = <span class="keyword">new</span> getRandomFood();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">this</span>.snakeArr.pop();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">switch</span> (<span class="keyword">this</span>.direction) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">37</span>:<span class="comment">//左</span></div><div class="line">            <span class="keyword">this</span>.head.x -= <span class="keyword">this</span>.head.a;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">38</span>:<span class="comment">//上</span></div><div class="line">            <span class="keyword">this</span>.head.z -= <span class="keyword">this</span>.head.a;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">39</span>: <span class="comment">//右</span></div><div class="line">            <span class="keyword">this</span>.head.x += <span class="keyword">this</span>.head.a;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">40</span>:<span class="comment">//下</span></div><div class="line">            <span class="keyword">this</span>.head.z += <span class="keyword">this</span>.head.a;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.head.x &gt; <span class="number">450</span> || <span class="keyword">this</span>.head.x &lt; <span class="number">-500</span> || <span class="keyword">this</span>.head.z &gt; <span class="number">450</span> || <span class="keyword">this</span>.head.z &lt; <span class="number">-500</span>)&#123;</div><div class="line">            <span class="keyword">this</span>.isover= <span class="literal">true</span>;</div><div class="line">            stop();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.snakeArr.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.snakeArr[i].x == <span class="keyword">this</span>.head.x &amp;&amp; <span class="keyword">this</span>.snakeArr[i].z == <span class="keyword">this</span>.head.z)&#123;</div><div class="line">            <span class="keyword">this</span>.isover= <span class="literal">true</span>;</div><div class="line">            stop();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>到这里基本贪吃蛇游戏关键部分讲解也就结束了，我这里也只是粗略的讲解，代码只截取部分，有需要的可以直接上<a href="https://github.com/BUPT-HJM/3d-snake" target="_blank" rel="external">https://github.com/BUPT-HJM/3d-snake</a>查看。建议读者可以先尝试用<code>canvas</code>去写,原理都是一样的。</p>
+</blockquote>
+<h3 id="三、websocket多屏互动部分"><a href="#三、websocket多屏互动部分" class="headerlink" title="三、websocket多屏互动部分"></a><strong>三、websocket多屏互动部分</strong></h3><blockquote>
+<p>这里我使用了<code>nodejs-websocket</code>，其实用起来也不是很复杂</p>
+</blockquote>
+<p><strong>1.websocket服务器部分</strong><br>在服务器这里的部分就是需要开server，listen一下端口，判断游戏端和控制端是否都加载完成，并且要判断是游戏端还是控制端来保存connection对象，具体可以参考<a href="https://www.npmjs.com/package/nodejs-websocket" target="_blank" rel="external">https://www.npmjs.com/package/nodejs-websocket</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ws = <span class="built_in">require</span>(<span class="string">"nodejs-websocket"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"开始建立连接..."</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> gameReady = <span class="literal">false</span>;</div><div class="line"><span class="keyword">var</span> controlReady = <span class="literal">false</span>;</div><div class="line"><span class="keyword">var</span> game = <span class="literal">null</span>;</div><div class="line"><span class="keyword">var</span> cotrol = <span class="literal">null</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> server = ws.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">conn</span>) </span>&#123;</div><div class="line">    conn.on(<span class="string">"text"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"收到的信息为:"</span> + str)</div><div class="line">        <span class="keyword">if</span> (str === <span class="string">"game"</span>) &#123;</div><div class="line">            game = conn;</div><div class="line">            gameReady = <span class="literal">true</span>;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"Game is ready"</span>)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (str === <span class="string">"control"</span>) &#123;</div><div class="line">            control = conn;</div><div class="line">            controlReady = <span class="literal">true</span>;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"Control is ready"</span>)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (gameReady &amp;&amp; controlReady) &#123;</div><div class="line">            game.sendText(str);</div><div class="line">        &#125;</div><div class="line">        conn.sendText(str);</div><div class="line">    &#125;)</div><div class="line">    conn.on(<span class="string">"close"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">code, reason</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"关闭连接"</span>)</div><div class="line">    &#125;);</div><div class="line">    conn.on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">code, reason</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"异常关闭"</span>)</div><div class="line">    &#125;);</div><div class="line">&#125;).listen(<span class="number">8001</span>)</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"WebSocket建立完毕"</span>)</div></pre></td></tr></table></figure></p>
+<p><strong>2.游戏端部分</strong><br>游戏端通过<code>onmessage</code>来接收消息，然后根据消息对页面交互<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.WebSocket) &#123;</div><div class="line">        <span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:8001'</span>);</div><div class="line"></div><div class="line">        ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"连接服务器成功"</span>);</div><div class="line">            ws.send(<span class="string">"game"</span>);</div><div class="line">        &#125;</div><div class="line">        ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"服务器关闭"</span>);</div><div class="line">        &#125;</div><div class="line">        ws.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"连接出错"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">            <span class="keyword">switch</span>(e.data)&#123;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"left"</span>:&#123;</div><div class="line">                        <span class="keyword">if</span> (snake.direction !== <span class="number">39</span>)&#123;</div><div class="line">                            GameStart = <span class="literal">true</span>;</div><div class="line">                            snake.direction = <span class="number">37</span>;</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"top"</span>:&#123;</div><div class="line">                        <span class="keyword">if</span> (snake.direction !== <span class="number">40</span>)&#123;</div><div class="line">                            GameStart = <span class="literal">true</span>;</div><div class="line">                            snake.direction = <span class="number">38</span>;</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"right"</span>:&#123;</div><div class="line">                        <span class="keyword">if</span> (snake.direction !== <span class="number">37</span>)&#123;</div><div class="line">                            GameStart = <span class="literal">true</span>;</div><div class="line">                            snake.direction = <span class="number">39</span>;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"bottom"</span>:&#123;</div><div class="line">                        <span class="keyword">if</span> (snake.direction !== <span class="number">38</span>)&#123;</div><div class="line">                            GameStart = <span class="literal">true</span>;</div><div class="line">                            snake.direction = <span class="number">40</span>;</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"restart"</span>: &#123;</div><div class="line">                        location.reload();</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">default</span>:</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>3.控制端部分</strong><br>通过点击<code>send</code>不同的消息<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.WebSocket) &#123;</div><div class="line">        <span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:8001'</span>);</div><div class="line"></div><div class="line">        ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"连接服务器成功"</span>);</div><div class="line">            ws.send(<span class="string">"control"</span>);</div><div class="line">        &#125;</div><div class="line">        ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"服务器关闭"</span>);</div><div class="line">        &#125;</div><div class="line">        ws.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"连接出错"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.querySelector(<span class="string">".item-1 .item-tri-1"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        ws.send(<span class="string">"top"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.querySelector(<span class="string">".item-1 .item-tri-2"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        ws.send(<span class="string">"bottom"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.querySelector(<span class="string">".item-2 .item-tri-1"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        ws.send(<span class="string">"left"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.querySelector(<span class="string">".item-2 .item-tri-2"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        ws.send(<span class="string">"right"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.querySelector(<span class="string">"#restart"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        ws.send(<span class="string">"restart"</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>最后大功告成啦哈哈哈~看完记得给star啦~送上github地址<a href="https://github.com/BUPT-HJM/3d-snake" target="_blank" rel="external">https://github.com/BUPT-HJM/3d-snake</a>,欢迎<code>clone</code>愉快地玩耍~</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a><strong>参考</strong></h2><ul>
+<li><a href="http://techbrood.com/threejs/docs/#使用指南/入门介绍/创建一个场景(Scene" target="_blank" rel="external">threejs中文文档</a>)</li>
+<li><a href="http://www.cnblogs.com/axes/p/3586132.html" target="_blank" rel="external">http://www.cnblogs.com/axes/p/3586132.html</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/21/ten-drop/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          基于canvas的十滴水小游戏
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/26/css-3d/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">带你玩转css3的3D！</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="3d-snake-and-websocket" data-title="制作一个可以多屏互动的酷炫3D贪吃蛇" data-url="https://bupt-hjm.github.io/2016/08/16/3d-snake-and-websocket/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
