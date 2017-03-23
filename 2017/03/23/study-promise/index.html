@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="zqz8eJXRAQ" />
+  <title>理解Promise简单实现的背后原理 | 小深刻的秋鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在写javascript时我们往往离不开异步操作，过去我们往往通过回调函数多层嵌套来解决后一个异步操作依赖前一个异步操作，然后为了解决回调地域的痛点，出现了一些解决方案比如事件订阅／发布的、事件监听的方式，再后来出现了Promise、Generator、async/await等的异步解决方案。co模块使用了Promise自动执行Generator，async/await这个Node7.6开始默认支">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Promise简单实现的背后原理">
+<meta property="og:url" content="https://bupt-hjm.github.io/2017/03/23/study-promise/index.html">
+<meta property="og:site_name" content="小深刻的秋鼠">
+<meta property="og:description" content="在写javascript时我们往往离不开异步操作，过去我们往往通过回调函数多层嵌套来解决后一个异步操作依赖前一个异步操作，然后为了解决回调地域的痛点，出现了一些解决方案比如事件订阅／发布的、事件监听的方式，再后来出现了Promise、Generator、async/await等的异步解决方案。co模块使用了Promise自动执行Generator，async/await这个Node7.6开始默认支">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%8812.54.09.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%884.41.53.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%8812.54.09.png">
+<meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg">
+<meta property="og:updated_time" content="2017-03-23T09:44:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解Promise简单实现的背后原理">
+<meta name="twitter:description" content="在写javascript时我们往往离不开异步操作，过去我们往往通过回调函数多层嵌套来解决后一个异步操作依赖前一个异步操作，然后为了解决回调地域的痛点，出现了一些解决方案比如事件订阅／发布的、事件监听的方式，再后来出现了Promise、Generator、async/await等的异步解决方案。co模块使用了Promise自动执行Generator，async/await这个Node7.6开始默认支">
+<meta name="twitter:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%8812.54.09.png">
+  
+    <link rel="alternative" href="/atom.xml" title="小深刻的秋鼠" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://bupt-hjm.github.io/img/hjm.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?05c2b82638acf7921e46f407c8f221af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">HJM</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱分享，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 12.5px;">ajax</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/ejs/" style="font-size: 10px;">ejs</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 17.5px;">nodejs</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/主机、服务器/" style="font-size: 10px;">主机、服务器</a> <a href="/tags/前端/" style="font-size: 12.5px;">前端</a> <a href="/tags/反向代理/" style="font-size: 10px;">反向代理</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">来自bupt的小伙伴</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">HJM</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://bupt-hjm.github.io/img/hjm.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">HJM</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱分享，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://bupt-hjm.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BUPT-HJM" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-study-promise" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/23/study-promise/" class="article-date">
+  	<time datetime="2017-03-22T16:00:00.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      理解Promise简单实现的背后原理
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/javascript/">javascript</a><a class="article-category-link" href="/categories/前端/javascript/promise/">promise</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      <p style="color: #BCB9B9">本文总浏览量<span id="busuanzi_value_page_pv"></span>次</p>
+      
+      
+        <p>在写javascript时我们往往离不开异步操作，过去我们往往通过回调函数多层嵌套来解决后一个异步操作依赖前一个异步操作，然后为了解决回调地域的痛点，出现了一些解决方案比如事件订阅／发布的、事件监听的方式，再后来出现了Promise、Generator、async/await等的异步解决方案。co模块使用了Promise自动执行Generator，async/await这个Node7.6开始默认支持的最新解决方案也是依赖于Promise,所以了解Promise是非常有必要的，而理解它背后的实现原理则能在使用它的时候更加游刃有余。<br><a id="more"></a></p>
+<h2 id="实现一个简单的异步方案"><a href="#实现一个简单的异步方案" class="headerlink" title="实现一个简单的异步方案"></a>实现一个简单的异步方案</h2><p>我们知道<code>Promise</code>实现多个相互依赖异步操作的执行是通过<code>.then</code>来实现的，我们会不由发出疑问，后面的操作是如何得知前面异步操作的完成的，我们可能会产生一种想法，后面有一个函数在一直监听着前面异步操作的完成，你说的是发布／订阅模式？Promise的实现个人觉得也有点发布／订阅的味道，不过它因为有<code>.then</code>的链式调用，又没有使用on/emit这种很明显的订阅／发布的东西，让实现变得看起来有点复杂</p>
+<p>不过我们可以先想想发布／订阅是怎么做的，首先有一个事件数组来收集事件，然后订阅通过on将事件放入数组，emit触发数组相应事件，嗯嗯，这并不是很复杂，理解了这个以后，我们开始真正地讲解实现。</p>
+<p>Promise其实内部也有一个<code>defers</code>队列存放事件，<code>.then</code>的事件就在里面,聪明的你就想到了，程序开始执行的时候，<code>.then</code>就已经放入下一个事件，然后后面当异步操作完成时，<code>resolve</code>触发事件队列中的事件，便完成了一个<code>.then</code>操作， 其实到这里我们就可以很快地想出一种解决方案，每次异步操作完成通过<code>resolve</code>触发事件并将事件从事件队列中移除，通过事件队列中的事件的<code>resolve</code>使事件的触发持续下去，我们可以用十几行代码就可以实现这样的逻辑，实现一个简单的异步编程方案</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">P</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> value = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">var</span> events = [];</div><div class="line">    <span class="keyword">this</span>.then = <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</div><div class="line">        events.push(f);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">newValue</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> f = events.shift();</div><div class="line">        f(newValue, resolve);</div><div class="line">    &#125;</div><div class="line">    fn(resolve);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> P(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"get..."</span>);</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"get 1"</span>);</div><div class="line">            resolve(<span class="number">1</span>);</div><div class="line">        &#125;, <span class="number">1000</span>)</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">a().then(<span class="function"><span class="keyword">function</span>(<span class="params">value, resolve</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"get..."</span>);</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"get 2"</span>);</div><div class="line">        resolve(<span class="number">2</span>);</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">value, resolve</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(value)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这样就得到控制台如下的结果</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">get</span>... </div><div class="line"><span class="keyword">get</span> <span class="number">1</span></div><div class="line"><span class="keyword">get</span>...</div><div class="line"><span class="keyword">get</span> <span class="number">2</span></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<p>我们当然只是初步地简单接触异步的一种方案，我们没有<code>reject</code>,没有进行错误处理，这不是完整的，读者想要扩展的话，可以再自行去实现,接下来我们要去接触真正的 Promises/A+规范所实现的Promise</p>
+<h2 id="简单理解Promise-A-规范的promise背后的实现"><a href="#简单理解Promise-A-规范的promise背后的实现" class="headerlink" title="简单理解Promise/A+规范的promise背后的实现"></a>简单理解Promise/A+规范的promise背后的实现</h2><p><strong>Promise/A+规范：</strong> <a href="https://promisesaplus.com/" target="_blank" rel="external">https://promisesaplus.com/</a></p>
+<p>我是通过这篇<a href="http://tech.meituan.com/promise-insight.html" target="_blank" rel="external">《剖析 Promise 之基础篇》</a>学习的，本文后面使用的代码也是来自于此文，读者可以先看完上文再来加深理解。</p>
+<p>假设我们有一个场景，我们需要异步先获取到用户id,再通过用户id异步再获取到用户名字，拿到名字输出，<br>我们很迅速地写出Promise的代码（因为不是Promise的完整实现，就用MyPromise)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getID</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> MyPromise(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"get id..."</span>);</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      resolve(<span class="string">"666"</span>);</div><div class="line">    &#125;, <span class="number">1000</span>);</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getNameByID</span>(<span class="params">id</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> MyPromise(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(id);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"get name..."</span>);</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      resolve(<span class="string">"hjm"</span>);</div><div class="line">    &#125;, <span class="number">1000</span>);</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line">getID().then(getNameByID).then(<span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(name);</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(err);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>正确输出了我们想要的结果，后面的fn拿到了前面resolve的value</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">get</span> <span class="built_in">id</span>...</div><div class="line"><span class="number">666</span></div><div class="line"><span class="keyword">get</span> <span class="built_in">name</span>...</div><div class="line">hjm</div></pre></td></tr></table></figure>
+<p>其实我们最大的疑问会在于两个promise它是如何通过<code>.then</code>连接起来的,一图胜千言。</p>
+<p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%8812.54.09.png" alt=""></p>
+<blockquote>
+<p>橙色：是刚开始初始化产生的东西（一堆.then产生的）</p>
+<p>紫色：是异步开始执行后的一系列流程</p>
+</blockquote>
+<p>第一眼看起来很复杂，下面我们慢慢去一步步拆开</p>
+<h3 id="先抛开紫色的不看"><a href="#先抛开紫色的不看" class="headerlink" title="先抛开紫色的不看"></a>先抛开紫色的不看</h3><p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%884.41.53.png" alt=""></p>
+<p>每个Promise实例包含状态<code>state</code>、事件队列<code>defers</code>、<code>value</code>、<code>resolve</code>、<code>reject</code></p>
+<p>还有一个<code>handle</code>函数，当状态为<code>pending</code>时是将Defered{}（包含onFulfilled、onRejected、resolve、reject）放入队列的操作，当状态为<code>fulfilled</code>或<code>rejected</code>会执行相应事件的函数<code>onFulfilled</code>/<code>onRejected</code>并且resolve返回的东西</p>
+<p>然后为了实现串行Promise，<code>.then</code>其实又产生了一个新的Promise实例作为中间Promise,<br>它将<code>then</code>里的函数再与自己的实例中的<code>resolve</code>,<code>reject</code>共同组成一个Defered{}（包含onFulfilled、onRejected、resolve、reject）,注意这里非常关键，它放入了自己实例的<code>resolve</code>、<code>reject</code>，这将是串行Promise桥梁的关键之处（通过闭包实现的），用<code>handle</code>函数把这个对象放入前一个Promise实例的事件队列里</p>
+<h3 id="异步开始！"><a href="#异步开始！" class="headerlink" title="异步开始！"></a>异步开始！</h3><p><img src="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%8812.54.09.png" alt=""></p>
+<blockquote>
+<p>紫色：是异步开始执行后的一系列流程</p>
+<p>跟着标号看～假如前面的东西理解的话，你会看得下去的～哈哈</p>
+</blockquote>
+<ol>
+<li>getID setTimeout 1000s时间到,调用实例的resolve(<br>“666”)</li>
+<li>当前Promise实例的状态改变（等待=&gt;完成），实例的value(=&gt;666)</li>
+<li>调用当前handle函数，由于状态是fulfilled,传入当前value 666进入事件队列中的相应函数（它返回的也是一个Promise），getNameByID开始执行</li>
+<li>调用resolve通过判断返回的是不是Promise,如果是的话就调用当前返回的<code>.then</code></li>
+<li>调用<code>.then</code>将前面实例的resolve、reject传过去作为onFulfilled、onRejected</li>
+<li>可以仔细看图的这条线，这样就很奇妙地将这个事件队列中返回的promise和下一个.then中间Promise串起来了，它们引用都是同样的resolve、reject</li>
+<li>当第二个异步操作getNameByID setTimeout 1000s再次执行完成,调用实例的resolve(“hjm”)</li>
+<li>当前Promise实例的状态改变（等待=&gt;完成），实例的value(=&gt;hjm)</li>
+<li>调用当前handle函数，由于状态是fulfilled,传入当前value hjm进入事件队列中的相应函数，其实就是下一个中间Promise的resolve(“hjm”)</li>
+<li>当前中间Promise实例的状态改变（等待=&gt;完成），实例的value(=&gt;hjm)</li>
+<li>调用当前handle函数，由于状态是fulfilled,传入当前value hjm进入事件队列中的相应函数，打印出console.log(“hjm”),成功拿到name</li>
+<li>调用resolve,发现事件队列已经没有东西了，程序也就结束了</li>
+</ol>
+<p>此文的代码地址在github上：<a href="https://github.com/BUPT-HJM/study-js/blob/master/%E5%85%B6%E4%BB%96/promise.js" target="_blank" rel="external">https://github.com/BUPT-HJM/study-js/blob/master/%E5%85%B6%E4%BB%96/promise.js</a></p>
+<p>想要自己运行的同学可以试试看，理清了整个流程会对Promise清晰很多～</p>
+<h2 id="Promise的小test"><a href="#Promise的小test" class="headerlink" title="Promise的小test"></a>Promise的小test</h2><p>这两个问题是从<a href="https://github.com/ElemeFE/node-interview/blob/master/sections/event-async.md#promise" target="_blank" rel="external">饿了么 node-interview</a>摘出</p>
+<h3 id="判断输出以及相应的时间"><a href="#判断输出以及相应的时间" class="headerlink" title="判断输出以及相应的时间"></a>判断输出以及相应的时间</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> doSth = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line">  resolve();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  doSth.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'over'</span>);</div><div class="line">  &#125;)</div><div class="line">&#125;, <span class="number">10000</span>);</div></pre></td></tr></table></figure>
+<h3 id="判断输出顺序"><a href="#判断输出顺序" class="headerlink" title="判断输出顺序"></a>判断输出顺序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">executor</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">  <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span> ; i&lt;<span class="number">10000</span> ; i++ ) &#123;</div><div class="line">    i == <span class="number">9999</span> &amp;&amp; resolve();</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">5</span>);</div></pre></td></tr></table></figure>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>其实这两题用三个tip就可以解决</p>
+<ul>
+<li>Promise函数调用就执行</li>
+<li><a href="https://promisesaplus.com/" target="_blank" rel="external">Promise/A+规范</a>中then置于当前事件循环的末尾</li>
+<li>setTimeout(fn,0)会在下一个事件循环出现</li>
+</ul>
+<blockquote>
+<p>这里往深处分析，涉及到event loop、macro-task、micro-task等一些东西，个人也没怎么深入了解，就不加以深入分析了</p>
+<p>有兴趣的同学可以阅读： <a href="https://github.com/creeperyang/blog/issues/21" target="_blank" rel="external">https://github.com/creeperyang/blog/issues/21</a></p>
+</blockquote>
+<p>回到题目，第一题由tip1,所以是马上console.log(hello),然后隔10s后输出over</p>
+<p>第二题用用三个tip，Promise执行输出2，调用resolve，再输出3，然后调用then将输出4置于事件循环末尾，然后输出5，到达末尾，输出4，下一个事件循环，输出刚开始的1，所以顺序是23541</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p>谢谢阅读~<br>欢迎follow我哈哈<a href="https://github.com/BUPT-HJM" target="_blank" rel="external">https://github.com/BUPT-HJM</a><br>欢迎继续观光我的博客~</p>
+<p><strong>欢迎关注</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg" alt=""></h2><blockquote>
+<p>可自由转载、引用，但需署名作者且注明文章出处。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/20/reverse-proxy/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于node的stream pipe实现反向代理</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="study-promise" data-title="理解Promise简单实现的背后原理" data-url="https://bupt-hjm.github.io/2017/03/23/study-promise/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bupt-hjm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<!--<div class="footer-left">
+    		&copy; 2017 HJM
+    	</div>-->
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      <!--本文总阅读量<span id="busuanzi_value_page_pv"></span>次-->
+      	<!--<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>-->
+    </div>
+  </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;z-index: 9999;">
+<a title="返回顶部"><img src="http://7xp9v5.com1.z0.glb.clouddn.com/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
