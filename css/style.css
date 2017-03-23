@@ -337,6 +337,10 @@ a {
     padding-right: 0;
     padding-top: 10px;
   }
+  #container .article .article-entry ul,
+  #container .article .article-entry ol {
+    font-size: 14px;
+  }
   #container .article .article-title {
     font-size: 18px;
     max-width: 185px;
@@ -969,25 +973,22 @@ a {
   word-break: normal;
 }
 .article-entry p {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .article-entry p code,
 .article-entry li code {
   padding: 1px 3px;
   margin: 0 3px;
-  background: #ddd;
   border: 1px solid #ccc;
   font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
   word-wrap: break-word;
   font-size: 14px;
 }
 .article-entry blockquote {
-  background: #ddd;
-  border-left: 5px solid #ccc;
   padding: 15px 20px;
   margin-top: 10px;
-  border-left: 5px solid #657b83;
-  background: #f6f6f6;
+  color: #9a9999;
+  border-left: 4px solid #ddd;
 }
 .article-entry blockquote p {
   margin-top: 0;
@@ -1009,7 +1010,7 @@ a {
 }
 .article-entry ul,
 .article-entry ol {
-  font-size: 14px;
+  font-size: 16px;
   margin: 10px 0px;
 }
 .article-entry li ul,
@@ -1022,11 +1023,12 @@ a {
   background: #dedede;
 }
 .article-entry h1 {
+  font-weight: bold;
   margin-top: 30px;
 }
 .article-entry h2 {
   margin-top: 20px;
-  font-weight: 300;
+  font-weight: bold;
   color: #574c4c;
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
@@ -1036,7 +1038,7 @@ a {
 .article-entry h5,
 .article-entry h6 {
   margin-top: 20px;
-  font-weight: 300;
+  font-weight: bold;
   color: #574c4c;
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
@@ -1493,12 +1495,13 @@ a {
 }
 .article-entry pre,
 .article-entry code {
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 .article-entry code {
-  background: #eee;
+  background: #f8f8f8;
   padding: 0 0.3em;
   border: none;
+  color: #ff4c00;
 }
 .article-entry pre {
   color: #fff;
@@ -1551,7 +1554,7 @@ a {
 }
 .article-entry .highlight .line {
   font-size: 15px;
-  height: 15px;
+  height: 20px;
 }
 .article-entry .gist {
   margin: 0 -20px;
