@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%884.41.53.png">
 <meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-03-23%20%E4%B8%8B%E5%8D%8812.54.09.png">
 <meta property="og:image" content="http://7xp9v5.com1.z0.glb.clouddn.com/qrcode_for_gh_f4166e610ee5_344.jpg">
-<meta property="og:updated_time" content="2017-03-23T09:44:45.000Z">
+<meta property="og:updated_time" content="2017-03-23T11:59:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解Promise简单实现的背后原理">
 <meta name="twitter:description" content="在写javascript时我们往往离不开异步操作，过去我们往往通过回调函数多层嵌套来解决后一个异步操作依赖前一个异步操作，然后为了解决回调地域的痛点，出现了一些解决方案比如事件订阅／发布的、事件监听的方式，再后来出现了Promise、Generator、async/await等的异步解决方案。co模块使用了Promise自动执行Generator，async/await这个Node7.6开始默认支">
@@ -261,8 +261,8 @@ var _hmt = _hmt || [];
 <li>getID setTimeout 1000s时间到,调用实例的resolve(<br>“666”)</li>
 <li>当前Promise实例的状态改变（等待=&gt;完成），实例的value(=&gt;666)</li>
 <li>调用当前handle函数，由于状态是fulfilled,传入当前value 666进入事件队列中的相应函数（它返回的也是一个Promise），getNameByID开始执行</li>
-<li>调用resolve通过判断返回的是不是Promise,如果是的话就调用当前返回的<code>.then</code></li>
-<li>调用<code>.then</code>将前面实例的resolve、reject传过去作为onFulfilled、onRejected</li>
+<li>调用resolve通过判断返回的是不是Promise,如果是的话就调用当前返回的.then</li>
+<li>调用.then将前面实例的resolve、reject传过去作为onFulfilled、onRejected</li>
 <li>可以仔细看图的这条线，这样就很奇妙地将这个事件队列中返回的promise和下一个.then中间Promise串起来了，它们引用都是同样的resolve、reject</li>
 <li>当第二个异步操作getNameByID setTimeout 1000s再次执行完成,调用实例的resolve(“hjm”)</li>
 <li>当前Promise实例的状态改变（等待=&gt;完成），实例的value(=&gt;hjm)</li>
