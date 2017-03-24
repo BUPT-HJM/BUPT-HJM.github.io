@@ -716,77 +716,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-2048(pc)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/12/2048(pc)/" class="article-date">
-  	<time datetime="2015-12-11T16:00:00.000Z" itemprop="datePublished">2015-12-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/12/2048(pc)/">2048小游戏的实现（PC版）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry markdown-body" itemprop="articleBody">
-      
-      
-        <h2 id="游戏逻辑"><a href="#游戏逻辑" class="headerlink" title="游戏逻辑"></a><strong>游戏逻辑</strong></h2><blockquote>
-<p>游戏分为两类：一种是基于时间流逝的游戏，一种是基于玩家响应的游戏，2048属于后者，2048是基于用户在电脑上，监听用户按下的上下左右来进行一系列的逻辑，然后实现页面上的变化<br>keaibaobao</p>
-</blockquote>
-<h2 id="代码的实现"><a href="#代码的实现" class="headerlink" title="代码的实现"></a><strong>代码的实现</strong></h2><blockquote>
-<p>首先是页面的设计，需要有一个标题2048还有score，还有下面的移动方格，方格的底子可以直接写出来，但是由于有数字的格子是会变化的，则需要用js控制动态生成<br>实现动态生成的部分代码</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateBoardView</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">".number-cell"</span>).remove();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++)&#123;</div><div class="line">            $(<span class="string">"#grid-container"</span>).append(<span class="string">'&lt;div class="number-cell" id="number-cell-'</span>+i+<span class="string">'-'</span>+j+<span class="string">'"&gt;&lt;/div&gt;'</span>);</div><div class="line">            <span class="keyword">var</span> theNumberCell=$(<span class="string">'#number-cell-'</span>+i+<span class="string">'-'</span>+j);</div><div class="line">            <span class="keyword">if</span>(board[i][j]==<span class="number">0</span>)&#123;</div><div class="line">                theNumberCell.css(<span class="string">'width'</span>,<span class="string">'0px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'height'</span>,<span class="string">'0px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'top'</span>,getPosTop(i,j)+<span class="number">50</span>);</div><div class="line">                theNumberCell.css(<span class="string">'left'</span>,getPosLeft(i,j)+<span class="number">50</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                theNumberCell.css(<span class="string">'width'</span>,<span class="string">'100px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'height'</span>,<span class="string">'100px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'top'</span>,getPosTop(i,j));</div><div class="line">                theNumberCell.css(<span class="string">'left'</span>,getPosLeft(i,j));</div><div class="line">                theNumberCell.css(<span class="string">'background-color'</span>,getNumberBackgroundColor(board[i][j]));</div><div class="line">                theNumberCell.text(board[i][j]);                </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/12/2048(pc)/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-css-specification" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -844,6 +773,77 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a  href="/2015/12/12/css-specification/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2048(pc)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/12/2048(pc)/" class="article-date">
+  	<time datetime="2015-12-11T16:00:00.000Z" itemprop="datePublished">2015-12-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/12/2048(pc)/">2048小游戏的实现（PC版）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+      
+        <h2 id="游戏逻辑"><a href="#游戏逻辑" class="headerlink" title="游戏逻辑"></a><strong>游戏逻辑</strong></h2><blockquote>
+<p>游戏分为两类：一种是基于时间流逝的游戏，一种是基于玩家响应的游戏，2048属于后者，2048是基于用户在电脑上，监听用户按下的上下左右来进行一系列的逻辑，然后实现页面上的变化<br>keaibaobao</p>
+</blockquote>
+<h2 id="代码的实现"><a href="#代码的实现" class="headerlink" title="代码的实现"></a><strong>代码的实现</strong></h2><blockquote>
+<p>首先是页面的设计，需要有一个标题2048还有score，还有下面的移动方格，方格的底子可以直接写出来，但是由于有数字的格子是会变化的，则需要用js控制动态生成<br>实现动态生成的部分代码</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateBoardView</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">".number-cell"</span>).remove();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++)&#123;</div><div class="line">            $(<span class="string">"#grid-container"</span>).append(<span class="string">'&lt;div class="number-cell" id="number-cell-'</span>+i+<span class="string">'-'</span>+j+<span class="string">'"&gt;&lt;/div&gt;'</span>);</div><div class="line">            <span class="keyword">var</span> theNumberCell=$(<span class="string">'#number-cell-'</span>+i+<span class="string">'-'</span>+j);</div><div class="line">            <span class="keyword">if</span>(board[i][j]==<span class="number">0</span>)&#123;</div><div class="line">                theNumberCell.css(<span class="string">'width'</span>,<span class="string">'0px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'height'</span>,<span class="string">'0px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'top'</span>,getPosTop(i,j)+<span class="number">50</span>);</div><div class="line">                theNumberCell.css(<span class="string">'left'</span>,getPosLeft(i,j)+<span class="number">50</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                theNumberCell.css(<span class="string">'width'</span>,<span class="string">'100px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'height'</span>,<span class="string">'100px'</span>);</div><div class="line">                theNumberCell.css(<span class="string">'top'</span>,getPosTop(i,j));</div><div class="line">                theNumberCell.css(<span class="string">'left'</span>,getPosLeft(i,j));</div><div class="line">                theNumberCell.css(<span class="string">'background-color'</span>,getNumberBackgroundColor(board[i][j]));</div><div class="line">                theNumberCell.text(board[i][j]);                </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/12/2048(pc)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
